@@ -788,13 +788,22 @@ main {
             <marker id="arr-coral" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#D85A30" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
             <marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
           </defs>
-          <text x="220" y="290" fill="#888780" font-size="13" opacity="0.7" text-anchor="middle">冰岛</text>
-          <text x="500" y="260" fill="#888780" font-size="13" opacity="0.7" text-anchor="middle">英国</text>
-          <polygon points="215,340 203,360 227,360" fill="#B4B2A9" opacity="0.3"/>
-          <polygon points="185,380 173,400 197,400" fill="#B4B2A9" opacity="0.3"/>
-          <polygon points="240,370 228,390 252,390" fill="#B4B2A9" opacity="0.3"/>
-          <polygon points="265,350 253,370 277,370" fill="#B4B2A9" opacity="0.3"/>
-          <polygon points="180,425 168,445 192,445" fill="#B4B2A9" opacity="0.3"/>
+          <g id="europe-terrain" fill="#F0ECDC" stroke="#DDD7BD" stroke-width="2" stroke-linejoin="round" pointer-events="none">
+            <!-- Iceland -->
+            <path d="M 135 348 C 128 320, 175 312, 222 320 C 270 330, 298 358, 292 398 C 285 432, 240 442, 192 434 C 145 425, 122 395, 135 348 Z"/>
+            <!-- British Isles (UK rough outline) -->
+            <path d="M 470 250 C 502 238, 548 250, 565 285 C 578 322, 575 365, 560 400 C 540 425, 502 432, 478 418 C 455 400, 444 370, 448 328 C 452 292, 458 266, 470 250 Z M 425 305 C 418 295, 405 300, 405 318 C 408 335, 420 345, 432 340 C 438 330, 435 315, 425 305 Z"/>
+            <!-- Iberian Peninsula -->
+            <path d="M 145 875 C 122 890, 105 925, 122 980 C 140 1040, 178 1090, 230 1115 C 295 1138, 372 1132, 442 1108 C 518 1082, 595 1046, 632 988 C 652 945, 638 902, 600 878 C 540 855, 458 850, 378 854 C 288 858, 195 866, 145 875 Z"/>
+            <!-- Continental Europe (France/Germany/Austria/Hungary/Balkans) -->
+            <path d="M 580 870 C 558 800, 548 720, 558 640 C 565 580, 558 510, 590 478 C 640 458, 720 455, 800 455 C 880 455, 945 425, 1020 405 C 1085 388, 1175 380, 1245 405 C 1315 432, 1385 475, 1428 528 C 1475 590, 1490 660, 1478 720 C 1462 785, 1420 840, 1360 880 C 1330 900, 1300 905, 1265 905 C 1230 905, 1200 895, 1170 888 C 1135 880, 1100 875, 1065 872 C 1030 870, 995 868, 962 868 C 920 865, 880 865, 840 868 C 790 870, 730 870, 680 870 C 640 870, 605 870, 580 870 Z"/>
+            <!-- Italian Peninsula (boot extending south) -->
+            <path d="M 850 855 C 855 880, 865 905, 880 932 C 900 962, 925 990, 955 1018 C 990 1048, 1028 1080, 1062 1090 C 1085 1095, 1085 1078, 1070 1062 C 1055 1045, 1035 1028, 1015 1010 C 1042 1010, 1065 1018, 1078 1015 C 1085 1010, 1075 998, 1052 990 C 1028 982, 1000 982, 980 975 C 962 955, 945 932, 930 905 C 918 882, 905 862, 885 855 C 870 850, 858 850, 850 855 Z"/>
+          </g>
+          <text x="200" y="295" fill="#A8A496" font-size="13" opacity="0.7" text-anchor="middle">冰岛</text>
+          <text x="510" y="240" fill="#A8A496" font-size="13" opacity="0.7" text-anchor="middle">英国</text>
+          <text x="380" y="1180" fill="#A8A496" font-size="13" opacity="0.65" text-anchor="middle">伊比利亚半岛</text>
+          <text x="1100" y="350" fill="#A8A496" font-size="13" opacity="0.55" text-anchor="middle">欧洲大陆</text>
           <g id="route-lines"></g>
           <g id="route-labels"></g>
           <line x1="340" y1="880" x2="1540" y2="1200" stroke="#888780" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.45"/>
