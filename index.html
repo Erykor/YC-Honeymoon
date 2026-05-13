@@ -7,7 +7,18 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>Y♡C · 2026 欧洲蜜月 · 90天行程</title>
+  <title>Y♡C · 2026 欧洲蜜月</title>
+  <script>
+    // Apply persisted theme before paint to avoid FOUC. Default: dark.
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        document.documentElement.setAttribute('data-theme', saved === 'light' ? 'light' : 'dark');
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
   <style>
     :root {
       --bg-page: #FAFAF7;
@@ -35,6 +46,52 @@
       --shadow-lg: 0 4px 24px rgba(0, 0, 0, 0.08);
       --radius: 10px;
       --radius-sm: 6px;
+
+      --map-land: #F0ECDC;
+      --map-border: #DDD7BD;
+      --map-region-text: #A8A496;
+      --map-arrow: #888780;
+      --header-bg: rgba(255, 255, 255, 0.96);
+      --hover-ring: rgba(186, 117, 23, 0.25);
+      --focus-halo: #FFFFFF;
+    }
+
+    html[data-theme="dark"] {
+      --bg-page: #14151A;
+      --bg-card: #1E1F25;
+      --bg-soft: #262830;
+      --bg-tint: #2D2618;
+      --border: #2E303A;
+      --border-strong: #44464F;
+      --text: #ECEAE4;
+      --text-mid: #B2B0A9;
+      --text-soft: #7C7B75;
+      --accent: #E0A24A;
+      --star: #F5B547;
+      --blue: #5BA4F0;
+      --coral: #EE7B53;
+      --teal: #3FBE94;
+      --red-bg: #3A1F1F;
+      --red-text: #F4B5B5;
+      --orange-bg: #3A2A18;
+      --orange-text: #EFC078;
+      --yellow-bg: #3A2D14;
+      --green-bg: #1E2F18;
+      --green-text: #B8E69A;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 4px 24px rgba(0, 0, 0, 0.5);
+
+      --map-land: #1F2129;
+      --map-border: #363A45;
+      --map-region-text: #8389A0;
+      --map-arrow: #707684;
+      --header-bg: rgba(30, 31, 37, 0.96);
+      --hover-ring: rgba(224, 162, 74, 0.35);
+      --focus-halo: #1E1F25;
+    }
+
+    html[data-theme="dark"] body {
+      color-scheme: dark;
     }
 
     * {
@@ -61,12 +118,13 @@
     }
 
     .app-header {
-      background: var(--bg-card);
+      background: var(--header-bg);
       border-bottom: 1px solid var(--border);
       padding: 20px 32px 0;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.96);
       flex-shrink: 0;
+      backdrop-filter: saturate(1.4) blur(8px);
+      -webkit-backdrop-filter: saturate(1.4) blur(8px);
     }
 
     main {
@@ -267,6 +325,102 @@
       font-weight: 700;
     }
 
+    /* SVG terrain themed via CSS vars (overrides inline fill/stroke) */
+    #europe-terrain {
+      fill: var(--map-land);
+      stroke: var(--map-border);
+    }
+
+    #region-labels text {
+      fill: var(--map-region-text);
+    }
+
+    .return-arrow-line {
+      stroke: var(--map-arrow);
+    }
+
+    .return-arrow-text {
+      fill: var(--map-arrow);
+    }
+
+    /* Route lines and labels themed via CSS so they swap with dark mode */
+    .route-line.flight {
+      stroke: var(--blue);
+    }
+
+    .route-line.drive {
+      stroke: var(--coral);
+    }
+
+    .route-line.train {
+      stroke: var(--teal);
+    }
+
+    .route-label.flight {
+      fill: var(--blue);
+    }
+
+    .route-label.drive {
+      fill: var(--coral);
+    }
+
+    .route-label.train {
+      fill: var(--teal);
+    }
+
+    #arr-blue path {
+      stroke: var(--blue);
+    }
+
+    #arr-coral path {
+      stroke: var(--coral);
+    }
+
+    #arr-teal path {
+      stroke: var(--teal);
+    }
+
+    /* Node circles + labels driven by per-station custom properties on <g>.
+       Light mode uses the original pastel bg + dark text. Dark mode swaps to
+       a translucent stroke-tinted disc with a lightened text color so each
+       station keeps its identity but stays readable on dark map. */
+    .node-circle {
+      fill: var(--c-bg);
+      stroke: var(--c-stroke);
+    }
+
+    .node-num,
+    .node-name {
+      fill: var(--c-color);
+    }
+
+    .node-sub1 {
+      fill: var(--c-stroke);
+    }
+
+    .node-sub2:not(.starred) {
+      fill: #888780;
+    }
+
+    html[data-theme="dark"] .node-circle {
+      fill: var(--c-tint, var(--bg-card));
+      stroke: var(--c-stroke);
+    }
+
+    html[data-theme="dark"] .node-num,
+    html[data-theme="dark"] .node-name,
+    html[data-theme="dark"] .node-sub1 {
+      fill: var(--c-light, var(--text));
+    }
+
+    html[data-theme="dark"] .node-sub2:not(.starred) {
+      fill: var(--text-soft);
+    }
+
+    html[data-theme="dark"] .node-sub2.starred {
+      fill: var(--star);
+    }
+
     /* HOVER STABILITY FIX */
     .city-node {
       cursor: pointer;
@@ -286,7 +440,7 @@
 
     .city-node:hover .node-ring,
     .city-node:focus-visible .node-ring {
-      stroke: rgba(186, 117, 23, 0.25);
+      stroke: var(--hover-ring);
     }
 
     .city-node.active .node-ring {
@@ -300,7 +454,7 @@
     }
 
     .city-node:focus-visible .node-circle {
-      filter: drop-shadow(0 0 0 2px white) drop-shadow(0 0 0 4px var(--accent));
+      filter: drop-shadow(0 0 0 2px var(--focus-halo)) drop-shadow(0 0 0 4px var(--accent));
     }
 
     /* ============ DETAIL PANEL ============ */
@@ -351,6 +505,15 @@
       font-weight: 700;
       font-size: 15px;
       flex-shrink: 0;
+      background: var(--c-bg);
+      color: var(--c-color);
+      border: 1px solid transparent;
+    }
+
+    html[data-theme="dark"] .detail-num {
+      background: var(--c-tint, var(--bg-soft));
+      color: var(--c-light, var(--text));
+      border-color: var(--c-stroke);
     }
 
     .detail-title-block {
@@ -766,15 +929,24 @@
     }
 
     .station-pill {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       width: 24px;
       height: 24px;
       border-radius: 50%;
-      text-align: center;
-      line-height: 24px;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 12px;
-      color: white;
+      background: var(--c-bg);
+      color: var(--c-color);
+      border: 1px solid transparent;
+      vertical-align: middle;
+    }
+
+    html[data-theme="dark"] .station-pill {
+      background: var(--c-tint, var(--bg-soft));
+      color: var(--c-light, var(--text));
+      border-color: var(--c-stroke);
     }
 
     .festival-card {
@@ -868,10 +1040,10 @@
       border-radius: 4px;
       flex-shrink: 0;
       cursor: pointer;
-      background: white;
+      background: var(--bg-card);
       margin-top: 2px;
       position: relative;
-      transition: background 0.15s;
+      transition: background 0.15s, border-color 0.15s;
     }
 
     .packing-check.checked {
@@ -979,6 +1151,15 @@
       font-weight: 700;
       font-size: 13px;
       flex-shrink: 0;
+      background: var(--c-bg);
+      color: var(--c-color);
+      border: 1px solid transparent;
+    }
+
+    html[data-theme="dark"] .station-card-num {
+      background: var(--c-tint, var(--bg-soft));
+      color: var(--c-light, var(--text));
+      border-color: var(--c-stroke);
     }
 
     .station-card-name {
@@ -1034,9 +1215,69 @@
       }
     }
 
+    /* ============ THEME TOGGLE (last item in .tabs, looks like a tab) ============ */
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 16px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-mid);
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .theme-toggle:hover {
+      color: var(--text);
+      background: var(--bg-soft);
+    }
+
+    .theme-toggle .tab-icon {
+      margin-right: 0;
+      opacity: 0.85;
+      font-size: 14px;
+    }
+
+    /* Default (light theme): show "depart to dark" affordance */
+    .theme-toggle .toggle-light {
+      display: none;
+    }
+
+    html[data-theme="dark"] .theme-toggle .toggle-light {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    html[data-theme="dark"] .theme-toggle .toggle-dark {
+      display: none;
+    }
+
+    .theme-toggle .toggle-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
     @media (max-width: 720px) {
+      html,
+      body {
+        font-size: 15px;
+      }
+
+      body {
+        line-height: 1.6;
+      }
+
       .app-header {
-        padding: 16px 16px 0;
+        padding: 12px 14px 0;
       }
 
       .header-stats {
@@ -1044,28 +1285,226 @@
       }
 
       .view {
-        padding: 16px;
+        padding: 14px 14px 24px;
+      }
+
+      #view-map.active {
+        padding: 12px 14px 14px;
       }
 
       .header-top {
-        margin-bottom: 12px;
+        margin-bottom: 10px;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: nowrap;
+      }
+
+      .header-titles {
+        flex: 1;
+        min-width: 0;
       }
 
       .header-titles h1 {
-        font-size: 18px;
+        font-size: 17px;
+        margin-bottom: 2px;
+      }
+
+      .header-titles p {
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .theme-toggle {
+        padding: 12px 10px;
+        font-size: 13px;
       }
 
       .map-container {
-        padding: 8px;
+        padding: 10px;
+      }
+
+      .map-legend {
+        gap: 12px;
+        font-size: 11px;
+        padding: 0 4px 10px;
+      }
+
+      .tabs {
+        gap: 0;
+        margin: 0 -14px;
+        padding: 0 14px;
+      }
+
+      .tab {
+        padding: 12px 12px;
+        font-size: 13px;
+      }
+
+      .station-card-grid,
+      .packing-group {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .summary-card {
+        padding: 14px 16px;
+      }
+
+      .summary-card .value {
+        font-size: 19px;
+      }
+
+      .section-title {
+        font-size: 15px;
+        margin-bottom: 12px;
+      }
+
+      /* Cards / tables: more breathing room, larger text */
+      .data-card {
+        padding: 12px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .data-table {
+        font-size: 13px;
+      }
+
+      .data-table th,
+      .data-table td {
+        padding: 10px 8px;
+      }
+
+      .data-table th {
+        font-size: 11px;
+      }
+
+      .data-table .col-id {
+        width: 28px;
+      }
+
+      /* Detail panel: bigger, more readable */
+      .detail-header {
+        padding: 16px 16px;
+      }
+
+      .detail-title,
+      .day-detail-title {
+        font-size: 18px;
+      }
+
+      .detail-body {
+        padding: 12px 16px 20px;
+      }
+
+      .day-row {
+        padding: 14px 14px;
+        grid-template-columns: 50px 1fr;
+        gap: 10px;
+        margin: 0 -16px;
+      }
+
+      .day-am,
+      .day-pm {
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .day-date-num {
+        font-size: 14px;
+      }
+
+      .day-detail-text {
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      .day-detail-section {
+        padding: 14px 0;
+      }
+
+      .detail-footer {
+        padding: 12px 16px;
+      }
+
+      .meta-chip {
+        font-size: 12px;
+        padding: 5px 11px;
+      }
+
+      /* Festivals: stack on mobile */
+      .festival-card {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        padding: 14px 0;
+      }
+
+      .fest-cost {
+        text-align: left;
+        font-size: 13px;
+      }
+
+      .fest-date {
+        font-size: 12px;
+        color: var(--text-mid);
+      }
+
+      .fest-name {
+        font-size: 15px;
+      }
+
+      .fest-desc {
+        font-size: 13px;
+      }
+
+      .packing-cat {
+        padding: 14px 16px;
+      }
+
+      .packing-item {
+        padding: 10px 0;
+        font-size: 14px;
+      }
+
+      .packing-check {
+        width: 20px;
+        height: 20px;
+      }
+
+      .packing-check.checked::after {
+        font-size: 14px;
+      }
+
+      .tips-box {
+        font-size: 13px;
+        line-height: 1.65;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header-titles p {
+        font-size: 11px;
       }
 
       .tab {
         padding: 10px 10px;
-        font-size: 13px;
+        font-size: 12px;
       }
 
-      .station-card-grid {
-        grid-template-columns: 1fr;
+      .map-legend {
+        font-size: 10px;
+        gap: 10px;
       }
     }
   </style>
@@ -1075,7 +1514,7 @@
   <header class="app-header">
     <div class="header-top">
       <div class="header-titles">
-        <h1>Y♡C · 2026 欧洲蜜月 · 90天行程</h1>
+        <h1>Y♡C · 2026 欧洲蜜月</h1>
         <p>2026/8/4 北京/上海 → 2026/11/2 波尔图返航 · 14 站 · 5 大节日</p>
       </div>
       <div class="header-stats">
@@ -1093,6 +1532,10 @@
       <button class="tab" data-view="bookings" role="tab"><span class="tab-icon">⏱</span>订票时间轴</button>
       <button class="tab" data-view="budget" role="tab"><span class="tab-icon">$</span>预算</button>
       <button class="tab" data-view="packing" role="tab"><span class="tab-icon">▣</span>装备清单</button>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="切换深色 / 浅色主题">
+        <span class="toggle-dark" aria-hidden="true"><span class="tab-icon">☾</span>深色模式</span>
+        <span class="toggle-light" aria-hidden="true"><span class="tab-icon">☀</span>浅色模式</span>
+      </button>
     </nav>
   </header>
 
@@ -1145,16 +1588,18 @@
                 <!-- Sardinia: vertical oval west of Italy -->
                 <path d="M 850 968 L 842 988 L 842 1012 L 850 1028 L 862 1028 L 866 1010 L 866 988 L 858 970 L 850 968 Z" />
               </g>
-              <text x="200" y="298" fill="#A8A496" font-size="13" opacity="0.7" text-anchor="middle">冰岛</text>
-              <text x="510" y="240" fill="#A8A496" font-size="13" opacity="0.7" text-anchor="middle">英国</text>
-              <text x="418" y="298" fill="#A8A496" font-size="12" opacity="0.6" text-anchor="middle">爱尔兰</text>
-              <text x="380" y="1175" fill="#A8A496" font-size="13" opacity="0.65" text-anchor="middle">伊比利亚半岛</text>
-              <text x="1100" y="370" fill="#A8A496" font-size="13" opacity="0.55" text-anchor="middle">欧洲大陆</text>
-              <text x="1075" y="1098" fill="#A8A496" font-size="12" opacity="0.6" text-anchor="middle">意大利</text>
+              <g id="region-labels">
+                <text x="200" y="298" font-size="13" opacity="0.7" text-anchor="middle">冰岛</text>
+                <text x="510" y="240" font-size="13" opacity="0.7" text-anchor="middle">英国</text>
+                <text x="418" y="298" font-size="12" opacity="0.6" text-anchor="middle">爱尔兰</text>
+                <text x="380" y="1175" font-size="13" opacity="0.65" text-anchor="middle">伊比利亚半岛</text>
+                <text x="1100" y="370" font-size="13" opacity="0.55" text-anchor="middle">欧洲大陆</text>
+                <text x="1075" y="1098" font-size="12" opacity="0.6" text-anchor="middle">意大利</text>
+              </g>
               <g id="route-lines"></g>
               <g id="route-labels"></g>
-              <line x1="340" y1="880" x2="1540" y2="1200" stroke="#888780" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.45" />
-              <text x="1540" y="1225" fill="#888780" font-size="14" text-anchor="end">✈ 11/2 → 北京/上海</text>
+              <line class="return-arrow-line" x1="340" y1="880" x2="1540" y2="1200" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.45" />
+              <text class="return-arrow-text" x="1540" y="1225" font-size="14" text-anchor="end">✈ 11/2 → 北京/上海</text>
               <g id="city-nodes"></g>
             </svg>
           </div>
@@ -1802,6 +2247,51 @@
 
     document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => tabClick(t.dataset.view)));
 
+    // Theme toggle: persists to localStorage, defaults to dark.
+    (function () {
+      const btn = document.getElementById('theme-toggle');
+      if (!btn) return;
+      function syncLabel() {
+        const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+        btn.setAttribute('aria-pressed', String(isDark));
+      }
+      syncLabel();
+      btn.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+        const next = isDark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) { }
+        syncLabel();
+      });
+    })();
+
+    // Color utilities used for per-station dark-mode tints.
+    function hexToRgb(hex) {
+      const h = hex.replace('#', '');
+      return [
+        parseInt(h.slice(0, 2), 16),
+        parseInt(h.slice(2, 4), 16),
+        parseInt(h.slice(4, 6), 16),
+      ];
+    }
+    function hexToRgba(hex, a) {
+      const [r, g, b] = hexToRgb(hex);
+      return `rgba(${r}, ${g}, ${b}, ${a})`;
+    }
+    // Mix hex toward white (amount 0..1). Used to brighten station strokes
+    // for legibility on dark map.
+    function lightenHex(hex, amount) {
+      const [r, g, b] = hexToRgb(hex);
+      const mix = (c) => Math.round(c + (255 - c) * amount);
+      return `rgb(${mix(r)}, ${mix(g)}, ${mix(b)})`;
+    }
+    // Inline style string exposing per-station CSS vars. Lets HTML badges
+    // (.detail-num, .station-card-num, etc.) pick up the same light/dark
+    // swap rules used by the SVG map nodes.
+    function stationVars(s) {
+      return `--c-bg:${s.bg};--c-color:${s.color};--c-stroke:${s.stroke};--c-tint:${hexToRgba(s.stroke, 0.22)};--c-light:${lightenHex(s.stroke, 0.55)}`;
+    }
+
     function renderMap() {
       const linesG = document.getElementById('route-lines');
       const labelsG = document.getElementById('route-labels');
@@ -1824,6 +2314,7 @@
         const x2 = to.x - ux * 32, y2 = to.y - uy * 32;
 
         const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('class', 'route-line ' + rl.mode);
         line.setAttribute('x1', x1); line.setAttribute('y1', y1);
         line.setAttribute('x2', x2); line.setAttribute('y2', y2);
         line.setAttribute('stroke', s.color);
@@ -1835,6 +2326,7 @@
 
         if (rl.label && rl.lpos) {
           const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          text.setAttribute('class', 'route-label ' + rl.mode);
           text.setAttribute('x', rl.lpos.x);
           text.setAttribute('y', rl.lpos.y);
           text.setAttribute('fill', s.color);
@@ -1856,6 +2348,12 @@
         g.setAttribute('tabindex', '0');
         g.setAttribute('role', 'button');
         g.setAttribute('aria-label', s.nameZh + '详细行程');
+        // Per-station custom properties power both light and dark themes via CSS.
+        g.style.setProperty('--c-bg', s.bg);
+        g.style.setProperty('--c-color', s.color);
+        g.style.setProperty('--c-stroke', s.stroke);
+        g.style.setProperty('--c-tint', hexToRgba(s.stroke, 0.22));
+        g.style.setProperty('--c-light', lightenHex(s.stroke, 0.55));
 
         const ring = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         ring.setAttribute('class', 'node-ring');
@@ -1873,6 +2371,7 @@
         g.appendChild(circle);
 
         const num = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        num.setAttribute('class', 'node-num');
         num.setAttribute('x', s.x); num.setAttribute('y', s.y);
         num.setAttribute('fill', s.color);
         num.setAttribute('font-size', '18');
@@ -1892,6 +2391,7 @@
         const off = labelOffsets[s.labelPos] || labelOffsets.down;
 
         const nameText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        nameText.setAttribute('class', 'node-name');
         nameText.setAttribute('x', s.x + off.name[0]);
         nameText.setAttribute('y', s.y + off.name[1]);
         nameText.setAttribute('fill', s.color);
@@ -1903,6 +2403,7 @@
         g.appendChild(nameText);
 
         const sub1 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        sub1.setAttribute('class', 'node-sub1');
         sub1.setAttribute('x', s.x + off.sub1[0]);
         sub1.setAttribute('y', s.y + off.sub1[1]);
         sub1.setAttribute('fill', s.stroke);
@@ -1913,10 +2414,12 @@
         g.appendChild(sub1);
 
         if (s.festival) {
+          const starred = s.festival.includes('★');
           const sub2 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          sub2.setAttribute('class', 'node-sub2' + (starred ? ' starred' : ''));
           sub2.setAttribute('x', s.x + off.sub2[0]);
           sub2.setAttribute('y', s.y + off.sub2[1]);
-          sub2.setAttribute('fill', s.festival.includes('★') ? '#EF9F27' : '#888780');
+          sub2.setAttribute('fill', starred ? '#EF9F27' : '#888780');
           sub2.setAttribute('font-size', '12');
           sub2.setAttribute('text-anchor', off.anchor);
           sub2.setAttribute('pointer-events', 'none');
@@ -1969,7 +2472,7 @@
     <div class="detail-header">
       <button class="close-detail" aria-label="关闭" onclick="clearSelection()">✕</button>
       <div class="detail-header-top">
-        <div class="detail-num" style="background: ${s.bg}; color: ${s.color};">${s.id}</div>
+        <div class="detail-num" style="${stationVars(s)}">${s.id}</div>
         <div class="detail-title-block">
           <h2 class="detail-title">${s.nameZh}</h2>
           <div class="detail-country">${s.country} · ${s.name}</div>
@@ -2038,7 +2541,7 @@
       <button class="close-detail" aria-label="关闭" onclick="clearSelection()">✕</button>
       <button class="back-detail" onclick="selectCity(${cityId})">← 返回 ${escapeHtml(s.nameZh)} 全程</button>
       <div class="detail-header-top">
-        <div class="detail-num" style="background: ${s.bg}; color: ${s.color};">${s.id}</div>
+        <div class="detail-num" style="${stationVars(s)}">${s.id}</div>
         <div class="detail-title-block">
           <h2 class="day-detail-title">${d.date}<span class="day-detail-week">${d.week}</span></h2>
           <div class="detail-country">${escapeHtml(s.nameZh)} · ${escapeHtml(d.city)}</div>
@@ -2079,7 +2582,7 @@
         html += `
       <div class="station-card" onclick="goToMap(${s.id})">
         <div class="station-card-top">
-          <div class="station-card-num" style="background: ${s.bg}; color: ${s.color};">${s.id}</div>
+          <div class="station-card-num" style="${stationVars(s)}">${s.id}</div>
           <div>
             <div class="station-card-name">${s.nameZh}</div>
             <div style="font-size: 11px; color: var(--text-soft);">${s.country} · ${s.name}</div>
@@ -2114,7 +2617,7 @@
         <tr ${d.star ? 'style="background: var(--bg-tint);"' : ''}>
           <td class="col-id">${dayNum}</td>
           <td><strong>${d.date}</strong><br><span style="color: var(--text-soft); font-size: 11px;">${d.week}</span></td>
-          <td><span class="station-pill" style="background: ${s.color};">${s.id}</span> <span style="margin-left: 4px;">${escapeHtml(d.city || s.name)}</span></td>
+          <td><span class="station-pill" style="${stationVars(s)}">${s.id}</span> <span style="margin-left: 4px;">${escapeHtml(d.city || s.name)}</span></td>
           <td>${star}${escapeHtml(d.am)}</td>
           <td style="color: var(--text-mid);">${escapeHtml(d.pm)}</td>
           <td style="font-size: 11px; color: var(--text-soft); white-space: nowrap;">${escapeHtml(d.lodging)}</td>
