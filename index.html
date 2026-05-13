@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>2026 欧洲蜜月 · 90天行程</title>
+<style>
+:root {
+  --bg-page: #FAFAF7;
+  --bg-card: #FFFFFF;
+  --bg-soft: #F4F2EC;
+  --bg-tint: #FFFCF2;
+  --border: #E8E6DD;
+  --border-strong: #D3D1C7;
+  --text: #2C2C2A;
+  --text-mid: #5F5E5A;
+  --text-soft: #888780;
+  --accent: #BA7517;
+  --star: #EF9F27;
+  --blue: #378ADD;
+  --coral: #D85A30;
+  --teal: #1D9E75;
+  --red-bg: #FCEBEB;
+  --red-text: #501313;
+  --orange-bg: #FAEEDA;
+  --orange-text: #633806;
+  --yellow-bg: #FAEEDA;
+  --green-bg: #EAF3DE;
+  --green-text: #173404;
+  --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+  --shadow-lg: 0 4px 24px rgba(0,0,0,0.08);
+  --radius: 10px;
+  --radius-sm: 6px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Roboto, sans-serif;
+  background: var(--bg-page);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.55;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 32px 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.96);
+  flex-shrink: 0;
+}
+main {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.header-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.header-titles h1 {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+.header-titles p {
+  font-size: 13px;
+  color: var(--text-mid);
+}
+.header-stats {
+  display: flex;
+  gap: 20px;
+  font-size: 12px;
+  color: var(--text-soft);
+}
+.stat strong {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-mid);
+  background: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+  font-family: inherit;
+}
+.tab:hover { color: var(--text); }
+.tab.active {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+.tab-icon {
+  display: inline-block;
+  width: 16px;
+  text-align: center;
+  margin-right: 6px;
+  opacity: 0.7;
+}
+
+.view {
+  display: none;
+  flex: 1;
+  min-height: 0;
+  padding: 24px 32px 32px;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+  overflow-y: auto;
+}
+.view.active {
+  display: flex;
+  flex-direction: column;
+}
+#view-map.active {
+  overflow: hidden;
+  padding: 16px 32px 16px;
+}
+
+/* ============ MAP VIEW ============ */
+.map-layout {
+  display: grid;
+  grid-template-columns: 1fr 460px;
+  gap: 24px;
+  align-items: stretch;
+  flex: 1;
+  min-height: 0;
+}
+.map-container {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 16px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+.map-viewport {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  background: var(--bg-card);
+  border-radius: var(--radius-sm);
+  cursor: grab;
+  touch-action: none;
+  min-height: 0;
+}
+.map-viewport.dragging { cursor: grabbing; }
+.map-viewport.dragging .map-svg { transition: none !important; }
+.map-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  user-select: none;
+  transition: transform 0.18s ease;
+  transform-origin: 0 0;
+}
+
+.map-legend {
+  display: flex;
+  gap: 20px;
+  padding: 0 8px 12px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: var(--text-mid);
+  flex-wrap: wrap;
+}
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.legend-line { width: 24px; height: 2px; flex-shrink: 0; }
+.legend-line.dashed { background: repeating-linear-gradient(to right, var(--blue) 0 4px, transparent 4px 7px); }
+.legend-line.solid { background: var(--coral); }
+.legend-line.dotted { background: repeating-linear-gradient(to right, var(--teal) 0 2px, transparent 2px 4px); }
+.legend-star { color: var(--star); font-weight: 700; }
+
+/* HOVER STABILITY FIX */
+.city-node { cursor: pointer; }
+.city-node .hit-area {
+  fill: transparent;
+}
+.city-node .node-ring {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 6;
+  pointer-events: none;
+  transition: stroke 0.15s ease;
+}
+.city-node:hover .node-ring,
+.city-node:focus-visible .node-ring {
+  stroke: rgba(186, 117, 23, 0.25);
+}
+.city-node.active .node-ring {
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-opacity: 0.5;
+}
+.city-node:focus { outline: none; }
+.city-node:focus-visible .node-circle {
+  filter: drop-shadow(0 0 0 2px white) drop-shadow(0 0 0 4px var(--accent));
+}
+
+/* ============ DETAIL PANEL ============ */
+.detail-panel {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+#detail-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+#detail-content:empty { display: none; }
+.detail-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  flex-shrink: 0;
+  background: var(--bg-card);
+}
+.detail-header-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.detail-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.detail-title-block { flex: 1; min-width: 0; }
+.detail-title {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.detail-country {
+  font-size: 12px;
+  color: var(--text-soft);
+  margin-top: 2px;
+}
+.detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  margin-top: 12px;
+}
+.meta-chip {
+  background: var(--bg-soft);
+  color: var(--text-mid);
+  padding: 4px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.meta-chip.festival {
+  background: var(--bg-tint);
+  color: var(--accent);
+  border: 1px solid #F5DBA2;
+}
+.detail-body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 16px 24px 24px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+.detail-body::-webkit-scrollbar {
+  width: 8px;
+}
+.detail-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.detail-body::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+.detail-body::-webkit-scrollbar-thumb:hover {
+  background: var(--text-soft);
+}
+.day-row {
+  padding: 12px 16px;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 14px;
+  align-items: flex-start;
+  margin: 0 -16px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+}
+.day-row:last-child { border-bottom: none; }
+.day-date-box { text-align: right; padding-top: 2px; }
+.day-date-num {
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.day-week {
+  font-size: 11px;
+  color: var(--text-soft);
+  margin-top: 1px;
+}
+.day-content { font-size: 13px; line-height: 1.6; }
+.day-am { color: var(--text); margin-bottom: 4px; }
+.day-pm { color: var(--text-mid); }
+.day-lodging {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 2px 8px;
+  background: var(--bg-soft);
+  border-radius: 4px;
+  font-size: 11px;
+  color: var(--text-soft);
+}
+.star-mark {
+  color: var(--star);
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.detail-footer {
+  padding: 14px 24px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-soft);
+  flex-shrink: 0;
+}
+.budget-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+.budget-amount {
+  font-size: 16px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.tips-box {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: var(--bg-tint);
+  border-left: 3px solid var(--star);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-mid);
+}
+.tips-box strong { color: var(--accent); }
+
+.detail-empty {
+  padding: 80px 24px;
+  text-align: center;
+  color: var(--text-soft);
+}
+.detail-empty-icon { font-size: 40px; margin-bottom: 12px; opacity: 0.4; }
+.detail-empty h3 { font-size: 15px; font-weight: 500; margin-bottom: 8px; color: var(--text-mid); }
+.detail-empty p { font-size: 12px; line-height: 1.6; }
+
+.close-detail {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--text-soft);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.close-detail:hover { background: var(--bg-soft); }
+
+/* ============ TABLE VIEWS ============ */
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.data-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 20px 24px;
+  margin-bottom: 16px;
+}
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.data-table th {
+  text-align: left;
+  padding: 10px 12px;
+  font-weight: 500;
+  color: var(--text-mid);
+  border-bottom: 1px solid var(--border-strong);
+  background: var(--bg-soft);
+  font-size: 12px;
+  text-transform: none;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+.data-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.data-table tbody tr:hover { background: var(--bg-soft); }
+.data-table tbody tr:last-child td { border-bottom: none; }
+.data-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.data-table .center { text-align: center; }
+.data-table .col-id {
+  width: 36px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-mid);
+}
+.data-table.total-row tfoot td {
+  font-weight: 600;
+  background: var(--bg-soft);
+  border-top: 2px solid var(--border-strong);
+}
+
+.urgency {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.urgency.red {
+  background: var(--red-bg);
+  color: var(--red-text);
+}
+.urgency.orange {
+  background: var(--orange-bg);
+  color: var(--orange-text);
+}
+.urgency.yellow {
+  background: var(--yellow-bg);
+  color: var(--accent);
+  opacity: 0.85;
+}
+.urgency.green {
+  background: var(--green-bg);
+  color: var(--green-text);
+}
+.urgency.gray {
+  background: var(--bg-soft);
+  color: var(--text-mid);
+}
+
+.station-pill {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 24px;
+  font-weight: 600;
+  font-size: 12px;
+  color: white;
+}
+
+.festival-card {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.festival-card:last-child { border-bottom: none; }
+.festival-card.starred {
+  background: var(--bg-tint);
+  margin: 0 -16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: var(--radius-sm);
+}
+.fest-date {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.fest-name {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.fest-place {
+  font-size: 12px;
+  color: var(--text-soft);
+  margin-bottom: 6px;
+}
+.fest-desc {
+  font-size: 12px;
+  color: var(--text-mid);
+  line-height: 1.5;
+}
+.fest-cost {
+  text-align: right;
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--accent);
+}
+
+.packing-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+.packing-cat {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 16px 20px;
+}
+.packing-cat h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-mid);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.packing-item {
+  display: flex;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 13px;
+  align-items: flex-start;
+}
+.packing-check {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 4px;
+  flex-shrink: 0;
+  cursor: pointer;
+  background: white;
+  margin-top: 2px;
+  position: relative;
+  transition: background 0.15s;
+}
+.packing-check.checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.packing-check.checked::after {
+  content: '✓';
+  position: absolute;
+  inset: 0;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.packing-item-text { flex: 1; }
+.packing-item-name { color: var(--text); }
+.packing-item.checked .packing-item-name {
+  text-decoration: line-through;
+  color: var(--text-soft);
+}
+.packing-item-note {
+  font-size: 11px;
+  color: var(--text-soft);
+  margin-top: 2px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.summary-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+}
+.summary-card .label {
+  font-size: 12px;
+  color: var(--text-soft);
+  margin-bottom: 6px;
+}
+.summary-card .value {
+  font-size: 22px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+.summary-card .sub {
+  font-size: 11px;
+  color: var(--text-soft);
+  margin-top: 2px;
+}
+
+.station-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.station-card:hover {
+  border-color: var(--accent);
+}
+.station-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+.station-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.station-card-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.station-card-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+.station-card-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--text-soft);
+  margin-bottom: 8px;
+}
+.station-card-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.station-card-highlight {
+  font-size: 12px;
+  color: var(--text-mid);
+  line-height: 1.5;
+}
+
+@media (max-width: 1100px) {
+  .map-layout {
+    grid-template-columns: 1fr;
+    flex: none;
+  }
+  #view-map.active { overflow-y: auto; }
+  .map-container { min-height: 420px; }
+  .map-viewport { aspect-ratio: 1600 / 1250; }
+  .detail-panel { min-height: 360px; max-height: 70vh; }
+  .close-detail { display: flex; }
+}
+@media (max-width: 720px) {
+  .app-header { padding: 16px 16px 0; }
+  .header-stats { display: none; }
+  .view { padding: 16px; }
+  .header-top { margin-bottom: 12px; }
+  .header-titles h1 { font-size: 18px; }
+  .map-container { padding: 8px; }
+  .tab { padding: 10px 10px; font-size: 13px; }
+  .station-card-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<header class="app-header">
+  <div class="header-top">
+    <div class="header-titles">
+      <h1>2026 欧洲蜜月 · 90天行程</h1>
+      <p>2026/8/4 北京/上海 → 2026/11/2 波尔图返航 · 14 站 · 5 大节日</p>
+    </div>
+    <div class="header-stats">
+      <div class="stat"><strong>91</strong>天</div>
+      <div class="stat"><strong>14</strong>站</div>
+      <div class="stat"><strong>5</strong>大节日</div>
+      <div class="stat"><strong>$30,200</strong>总预算</div>
+    </div>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-view="map" role="tab"><span class="tab-icon">◉</span>地图</button>
+    <button class="tab" data-view="overview" role="tab"><span class="tab-icon">▤</span>总览</button>
+    <button class="tab" data-view="daily" role="tab"><span class="tab-icon">▦</span>每日行程</button>
+    <button class="tab" data-view="festivals" role="tab"><span class="tab-icon">★</span>节日重点</button>
+    <button class="tab" data-view="bookings" role="tab"><span class="tab-icon">⏱</span>订票时间轴</button>
+    <button class="tab" data-view="budget" role="tab"><span class="tab-icon">$</span>预算</button>
+    <button class="tab" data-view="packing" role="tab"><span class="tab-icon">▣</span>装备清单</button>
+  </nav>
+</header>
+
+<main>
+
+<section class="view active" id="view-map">
+  <div class="map-layout">
+    <div class="map-container">
+      <div class="map-legend">
+        <div class="legend-item"><div class="legend-line dashed"></div>飞行</div>
+        <div class="legend-item"><div class="legend-line solid"></div>自驾</div>
+        <div class="legend-item"><div class="legend-line dotted"></div>火车</div>
+        <div class="legend-item"><span class="legend-star">★</span>节日核心</div>
+        <div class="legend-item" style="margin-left: auto; color: var(--text-soft); font-size: 11px;">点击节点查看详细行程</div>
+      </div>
+      <div class="map-viewport" id="map-viewport">
+        <svg class="map-svg" viewBox="0 0 1600 1250" xmlns="http://www.w3.org/2000/svg" id="map-svg">
+          <defs>
+            <marker id="arr-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#378ADD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+            <marker id="arr-coral" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#D85A30" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+            <marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+          </defs>
+          <text x="220" y="290" fill="#888780" font-size="13" opacity="0.7" text-anchor="middle">冰岛</text>
+          <text x="500" y="260" fill="#888780" font-size="13" opacity="0.7" text-anchor="middle">英国</text>
+          <polygon points="215,340 203,360 227,360" fill="#B4B2A9" opacity="0.3"/>
+          <polygon points="185,380 173,400 197,400" fill="#B4B2A9" opacity="0.3"/>
+          <polygon points="240,370 228,390 252,390" fill="#B4B2A9" opacity="0.3"/>
+          <polygon points="265,350 253,370 277,370" fill="#B4B2A9" opacity="0.3"/>
+          <polygon points="180,425 168,445 192,445" fill="#B4B2A9" opacity="0.3"/>
+          <g id="route-lines"></g>
+          <g id="route-labels"></g>
+          <line x1="340" y1="880" x2="1540" y2="1200" stroke="#888780" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.45"/>
+          <text x="1540" y="1225" fill="#888780" font-size="14" text-anchor="end">✈ 11/2 → 北京/上海</text>
+          <g id="city-nodes"></g>
+        </svg>
+      </div>
+    </div>
+    <aside class="detail-panel" id="detail-panel">
+      <div class="detail-empty" id="detail-empty" style="display: none;">
+        <div class="detail-empty-icon">🗺️</div>
+        <h3>选择一个目的地</h3>
+        <p>点击地图上任意编号节点</p>
+      </div>
+      <div id="detail-content"></div>
+    </aside>
+  </div>
+</section>
+
+<section class="view" id="view-overview">
+  <div class="summary-grid">
+    <div class="summary-card"><div class="label">总天数</div><div class="value">91</div><div class="sub">天</div></div>
+    <div class="summary-card"><div class="label">城市/地区</div><div class="value">14</div><div class="sub">站</div></div>
+    <div class="summary-card"><div class="label">两人总预算</div><div class="value">$30,200</div><div class="sub">含国际机票</div></div>
+    <div class="summary-card"><div class="label">每人每天</div><div class="value">$166</div><div class="sub">约 ¥1,200</div></div>
+    <div class="summary-card"><div class="label">国家数</div><div class="value">10</div><div class="sub">个</div></div>
+    <div class="summary-card"><div class="label">核心节日</div><div class="value">5</div><div class="sub">大</div></div>
+  </div>
+  <h2 class="section-title">14 站快速导航 (点击进入)</h2>
+  <div class="station-card-grid" id="overview-cards"></div>
+</section>
+
+<section class="view" id="view-daily">
+  <h2 class="section-title">91 天完整行程</h2>
+  <div class="data-card">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th class="col-id">Day</th>
+          <th>日期</th>
+          <th>站点</th>
+          <th>上午 / 全天活动</th>
+          <th>下午 / 晚间</th>
+          <th>住宿</th>
+        </tr>
+      </thead>
+      <tbody id="daily-tbody"></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="view" id="view-festivals">
+  <h2 class="section-title">16 个 2026 年核心节日 + 必看活动</h2>
+  <div class="data-card" id="festivals-list"></div>
+</section>
+
+<section class="view" id="view-bookings">
+  <h2 class="section-title">关键订票时间轴 · 从今天到 8/4 出发</h2>
+  <div class="data-card">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>截止</th>
+          <th>紧迫度</th>
+          <th>项目</th>
+          <th>预订渠道</th>
+          <th class="num">预算 ($)</th>
+        </tr>
+      </thead>
+      <tbody id="bookings-tbody"></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="view" id="view-budget">
+  <h2 class="section-title">三个月预算明细</h2>
+  <div class="data-card">
+    <table class="data-table total-row">
+      <thead>
+        <tr>
+          <th>类别</th>
+          <th class="num">8 月</th>
+          <th class="num">9 月</th>
+          <th class="num">10 月</th>
+          <th class="num">合计</th>
+          <th>备注</th>
+        </tr>
+      </thead>
+      <tbody id="budget-tbody"></tbody>
+      <tfoot id="budget-tfoot"></tfoot>
+    </table>
+  </div>
+</section>
+
+<section class="view" id="view-packing">
+  <h2 class="section-title">装备 + 应急清单 (33 项)</h2>
+  <p style="font-size: 12px; color: var(--text-soft); margin-bottom: 16px;">点击方框打勾 (本地保存于浏览器)</p>
+  <div class="packing-group" id="packing-groups"></div>
+</section>
+
+</main>
+
+<script>
+const TRIP = {"stations": [{"id": 1, "name": "Edinburgh", "nameZh": "爱丁堡", "fullName": "爱丁堡 Edinburgh", "country": "🇬🇧 英国", "dates": "8/4 - 8/10", "nights": 6, "activities": "Fringe 艺穗节 · 高地一日游 · Arthur's Seat 徒步", "color": "#3C3489", "bg": "#EEEDFE", "stroke": "#534AB7", "x": 540, "y": 340, "labelPos": "down", "festival": "★ Edinburgh Fringe 艺穗节", "tips": "<strong>必订：</strong> Fringe 演出 6 月公布完整阵容, 4 月起早鸟价。Tattoo 票 (8/7 周五场可加) 2 月就开始紧张。", "days": [{"day": 1, "date": "8/4", "week": "周二", "city": "爱丁堡", "am": "✈ 北京/上海 → 爱丁堡(经赫尔辛基/AMS, 15h)。Airlink 100 巴士到市中心", "pm": "入住 New Town 酒店。简餐+早睡倒时差", "lodging": "New Town £180/晚", "station_id": 1, "star": false}, {"day": 2, "date": "8/5", "week": "周三", "city": "爱丁堡", "am": "皇家英里大道步行 + Edinburgh Castle (£22, 提前预约)", "pm": "Royal Mile 街头表演 + 19:00 Fringe 喜剧场 £15-20", "lodging": "New Town", "station_id": 1, "star": false}, {"day": 3, "date": "8/6", "week": "周四", "city": "爱丁堡", "am": "8:00 Arthur's Seat 火山口徒步 (2h)", "pm": "Stockbridge 区 + Dean Village + 21:00 Stand Comedy Club £18", "lodging": "New Town", "station_id": 1, "star": false}, {"day": 4, "date": "8/7", "week": "周五", "city": "爱丁堡", "am": "★ Fringe Opening Day。11:00 George Square 户外免费表演群", "pm": "15:00 Traverse Theatre £22 + 21:30 Late-night cabaret £25", "lodging": "New Town", "station_id": 1, "star": true}, {"day": 5, "date": "8/8", "week": "周六", "city": "爱丁堡", "am": "皇家植物园 £8.5 + Stockbridge Market 美食", "pm": "3 场连看 Fringe (Underbelly day pass) + 晚 Grassmarket 酒吧", "lodging": "New Town", "station_id": 1, "star": false}, {"day": 6, "date": "8/9", "week": "周日", "city": "爱丁堡", "am": "★ 高地一日游: Rabbie's 巴士 Loch Ness+Glen Coe+Inverness £65/人 7:30-20:00", "pm": "晚回酒店打包", "lodging": "New Town", "station_id": 1, "star": true}]}, {"id": 2, "name": "Budapest", "nameZh": "布达佩斯", "fullName": "布达佩斯 Budapest", "country": "🇭🇺 匈牙利", "dates": "8/10 - 8/16", "nights": 6, "activities": "Sziget Festival 5 日通票 · Széchenyi 温泉", "color": "#72243E", "bg": "#FBEAF0", "stroke": "#993556", "x": 1100, "y": 420, "labelPos": "right", "festival": "★ Sziget Festival 8/11-15", "tips": "<strong>必订：</strong> Sziget 5-Day Pass 早鸟 ~€330/人。<strong>留时间恢复：</strong> Sziget 节奏伤体力, 中间安排温泉日。", "days": [{"day": 7, "date": "8/10", "week": "周一", "city": "转场日", "am": "上午 Calton Hill + National Museum (免费)", "pm": "✈ Edinburgh → Budapest (Wizz/Ryanair, 3h, £80)。入住 Pest 5/7 区", "lodging": "Budapest Pest 区 €100", "station_id": 2, "star": false}, {"day": 8, "date": "8/11", "week": "周二", "city": "布达佩斯", "am": "★ SZIGET DAY 1 开幕。14:00 进岛", "pm": "Main stage 18:00。深夜 02:00-04:00 EDM", "lodging": "Budapest €100", "station_id": 2, "star": true}, {"day": 9, "date": "8/12", "week": "周三", "city": "布达佩斯", "am": "★ SZIGET DAY 2。中午前恢复, 14:00 重返岛上", "pm": "Art Zone + Yoga 区。晚 main stage", "lodging": "Budapest", "station_id": 2, "star": true}, {"day": 10, "date": "8/13", "week": "周四", "city": "布达佩斯", "am": "Sziget 休息日。10:00 Széchenyi 温泉浴场 €25 (4h)", "pm": "英雄广场 + 城市公园 + 19:00 多瑙河晚餐游船 €45/人", "lodging": "Budapest", "station_id": 2, "star": false}, {"day": 11, "date": "8/14", "week": "周五", "city": "布达佩斯", "am": "★ SZIGET DAY 3。14:00 进岛", "pm": "看完一晚 headliner", "lodging": "Budapest", "station_id": 2, "star": true}, {"day": 12, "date": "8/15", "week": "周六", "city": "布达佩斯", "am": "★ SZIGET DAY 4 高峰。圣斯蒂芬大教堂 + Liszt Ferenc 广场", "pm": "18:00 Sziget 周六主舞台大牌", "lodging": "Budapest", "station_id": 2, "star": true}, {"day": 13, "date": "8/16", "week": "周日", "city": "转场日", "am": "✈ Budapest → Reykjavík (经哥本哈根 SAS, 8h, €350/人)", "pm": "傍晚抵 KEF, 取车自驾 50min 到市区", "lodging": "Reykjavík $200", "station_id": 2, "star": false}]}, {"id": 3, "name": "Reykjavík", "nameZh": "冰岛", "fullName": "冰岛 Iceland (环岛)", "country": "🇮🇸 冰岛", "dates": "8/16 - 8/26", "nights": 10, "activities": "4WD 自驾环岛 · 金圈+南岸+东峡湾+米湖+斯奈山 · 极光季开端", "color": "#0C447C", "bg": "#E6F1FB", "stroke": "#185FA5", "x": 200, "y": 380, "labelPos": "down", "festival": "★ 极光季开端 + 4WD 环岛", "tips": "<strong>极光：</strong> 每晚 22:00 后查 Vedur.is 极光预报 + 云图。KP ≥3 即可在黑暗处看见。10 晚里大概率 2-4 晚可见。<strong>装备：</strong> 防水冲锋衣 + 头灯红光 + 三脚架。", "days": [{"day": 14, "date": "8/17", "week": "周一", "city": "雷克雅未克", "am": "Hallgrímskirkja 教堂塔顶 £8 + Harpa 音乐厅外观", "pm": "Reykjanes 半岛 (板块桥 + Gunnuhver 地热)。Bæjarins Beztu 街头热狗", "lodging": "Reykjavík", "station_id": 3, "star": false}, {"day": 15, "date": "8/18", "week": "周二", "city": "金圈", "am": "Þingvellir 国家公园(板块裂缝) → Geysir 间歇泉 → Gullfoss 大瀑布", "pm": "Friðheimar 番茄温室餐厅 €15 (推荐午餐)", "lodging": "Selfoss $180", "station_id": 3, "star": false}, {"day": 16, "date": "8/19", "week": "周三", "city": "南岸瀑布", "am": "Seljalandsfoss(瀑布后) → Skógafoss → DC-3 飞机残骸(1h往返)", "pm": "Reynisfjara 黑沙滩 + Dyrhólaey 灯塔", "lodging": "Vík $220", "station_id": 3, "star": false}, {"day": 17, "date": "8/20", "week": "周四", "city": "冰川", "am": "★ Sólheimajökull 冰川徒步 3h tour with crampons €100/人", "pm": "Skaftafell 国家公园短徒步", "lodging": "Höfn $200", "station_id": 3, "star": true}, {"day": 18, "date": "8/21", "week": "周五", "city": "冰湖", "am": "8:00 ★ Jökulsárlón 冰川泻湖 + Diamond Beach。可选 zodiac 快艇 €120/人", "pm": "东峡湾启程(4h, 风景一流)", "lodging": "Egilsstaðir $180", "station_id": 3, "star": true}, {"day": 19, "date": "8/22", "week": "周六", "city": "东→米湖", "am": "Seyðisfjörður 彩虹街+音乐胶囊小镇 (绕道 1h, 必去)", "pm": "继续到 Mývatn 米湖。★ Nature Baths 温泉 €35/人", "lodging": "Mývatn 木屋 $220", "station_id": 3, "star": true}, {"day": 20, "date": "8/23", "week": "周日", "city": "米湖区域", "am": "Krafla 火山口 + Hverir 硫磺地", "pm": "Goðafoss 神之瀑布", "lodging": "Akureyri $200", "station_id": 3, "star": false}, {"day": 21, "date": "8/24", "week": "周一", "city": "北→西", "am": "Akureyri 漫步 (北方首府)", "pm": "开车到 Snæfellsnes 半岛 4h", "lodging": "Stykkishólmur $220", "station_id": 3, "star": false}, {"day": 22, "date": "8/25", "week": "周二", "city": "斯奈山", "am": "★ Kirkjufell 教堂山 + Kirkjufellsfoss 瀑布", "pm": "Djúpalónssandur 黑滩 + Lóndrangar 玄武岩 + Snæfellsjökull", "lodging": "Stykkishólmur", "station_id": 3, "star": true}, {"day": 23, "date": "8/26", "week": "周三", "city": "转场", "am": "上午半岛悠闲。下午开车回 KEF 3h", "pm": "夜航或睡 KEF 周边", "lodging": "KEF 区域", "station_id": 3, "star": false}]}, {"id": 4, "name": "Interlaken", "nameZh": "因特拉肯", "fullName": "因特拉肯 Interlaken", "country": "🇨🇭 瑞士", "dates": "8/26 - 9/3", "nights": 8, "activities": "Jungfraujoch · Schilthorn · 滑翔伞 · Bachalpsee 徒步", "color": "#791F1F", "bg": "#FCEBEB", "stroke": "#A32D2D", "x": 660, "y": 620, "labelPos": "left", "festival": "★ Jungfraujoch + Schilthorn + 滑翔伞", "tips": "<strong>必买：</strong> Swiss Travel Pass 8 天 ~CHF 419/人, 覆盖所有山区交通 + 多数缆车 50% 折扣。<strong>装备：</strong> 高山 3,471m 海拔, 有过往高反史须备 Diamox。", "days": [{"day": 24, "date": "8/27", "week": "周四", "city": "因特拉肯", "am": "✈ KEF → Zurich (Icelandair, 3h)。SBB 火车到 Interlaken Ost 2h", "pm": "入住 Lauterbrunnen Hotel Schützen CHF 180", "lodging": "Lauterbrunnen", "station_id": 4, "star": false}, {"day": 25, "date": "8/28", "week": "周五", "city": "Lauterbrunnen", "am": "Trümmelbach Falls 山体内瀑布 CHF 14", "pm": "村庄漫步看 72 条瀑布", "lodging": "Lauterbrunnen", "station_id": 4, "star": false}, {"day": 26, "date": "8/29", "week": "周六", "city": "少女峰", "am": "★ 7:30 Jungfraujoch \"Top of Europe\" CHF 95。冰宫 + Sphinx 3,571m", "pm": "下午 Männlichen→Kleine Scheidegg 全景徒步 (4.5km, 2h)", "lodging": "Lauterbrunnen", "station_id": 4, "star": true}, {"day": 27, "date": "8/30", "week": "周日", "city": "Schilthorn", "am": "★ 缆车上 Schilthorn 007 Piz Gloria 旋转餐厅 (2,970m)", "pm": "Northface Trail 6km 环线 (Mürren)", "lodging": "Lauterbrunnen", "station_id": 4, "star": true}, {"day": 28, "date": "8/31", "week": "周一", "city": "Interlaken", "am": "★ 双人滑翔伞 CHF 200/人 20min (Skywings/Paragliding Interlaken)", "pm": "Interlaken 镇 + Höhematte 草坪野餐", "lodging": "Lauterbrunnen", "station_id": 4, "star": true}, {"day": 29, "date": "9/1", "week": "周二", "city": "Grindelwald", "am": "Grindelwald → First 缆车 2,168m。First Cliff Walk 悬空步道", "pm": "★ Bachalpsee 徒步 6km 2h + First Flyer 钢索", "lodging": "Lauterbrunnen", "station_id": 4, "star": true}, {"day": 30, "date": "9/2", "week": "周三", "city": "伯尔尼/卢塞恩", "am": "火车伯尔尼或卢塞恩一日远游(任选)", "pm": "黄昏回 Lauterbrunnen 收拾", "lodging": "Lauterbrunnen", "station_id": 4, "star": false}, {"day": 31, "date": "9/3", "week": "周四", "city": "转场", "am": "Interlaken → Zurich → ✈ Barcelona (Swiss/Vueling, 2h, €100/人)", "pm": "入住 Barcelona Eixample 区", "lodging": "Barcelona €130", "station_id": 4, "star": false}]}, {"id": 5, "name": "Barcelona", "nameZh": "巴塞罗那", "fullName": "巴塞罗那 Barcelona", "country": "🇪🇸 西班牙", "dates": "9/3 - 9/9", "nights": 6, "activities": "高迪建筑 · Montserrat · Costa Brava", "color": "#854F0B", "bg": "#FAEEDA", "stroke": "#BA7517", "x": 580, "y": 940, "labelPos": "down", "festival": "高迪 + Montserrat", "tips": "<strong>遗憾错过：</strong> La Mercè 节 9/23-27, 但同期多洛米蒂 9 月前三周户外黄金窗口更值得。<strong>必订：</strong> Sagrada 1 个月前订票。", "days": [{"day": 32, "date": "9/4", "week": "周五", "city": "高迪日 1", "am": "★ Sagrada Família + 塔顶 €40 (提前 1 月订)", "pm": "Park Güell €10 + El Born 区 Tapas 巡游", "lodging": "Barcelona", "station_id": 5, "star": true}, {"day": 33, "date": "9/5", "week": "周六", "city": "高迪日 2", "am": "Casa Batlló €35 + Casa Milà €28", "pm": "Gothic Quarter + Picasso 博物馆 €15 + Flamenco Tablao Cordobés €52", "lodging": "Barcelona", "station_id": 5, "star": false}, {"day": 34, "date": "9/6", "week": "周日", "city": "户外", "am": "Tibidabo 山顶(公交+缆车)", "pm": "Barceloneta 海滩 + 海鲜午餐。晚 FC Barcelona 主场如有 €80-150", "lodging": "Barcelona", "station_id": 5, "star": false}, {"day": 35, "date": "9/7", "week": "周一", "city": "Montserrat", "am": "★ Montserrat 一日游: R5 火车+缆车 1.5h 到山顶修道院", "pm": "Sant Jeroni 山顶短徒步 (3h)", "lodging": "Barcelona", "station_id": 5, "star": true}, {"day": 36, "date": "9/8", "week": "周二", "city": "Costa Brava", "am": "Girona 一日 (《权游》取景, 犹太老城) 或 Tossa de Mar", "pm": "晚回 Barcelona 打包", "lodging": "Barcelona", "station_id": 5, "star": false}, {"day": 37, "date": "9/9", "week": "周三", "city": "转场", "am": "✈ Barcelona → Dubrovnik (Vueling, 2h, €120/人)", "pm": "入住 Dubrovnik 老城 €140。黄昏城墙散步 €35 (2h)", "lodging": "Dubrovnik €140", "station_id": 5, "star": false}]}, {"id": 6, "name": "Croatia", "nameZh": "克罗地亚", "fullName": "克罗地亚 Croatia", "country": "🇭🇷 克罗地亚", "dates": "9/9 - 9/16", "nights": 7, "activities": "Dubrovnik 城墙 · Split · Krka 游泳 · Plitvice 十六湖", "color": "#085041", "bg": "#E1F5EE", "stroke": "#0F6E56", "x": 1280, "y": 870, "labelPos": "right", "festival": "十六湖 + 城墙", "tips": "<strong>Krka vs Plitvice：</strong> Krka 允许游泳 9 月仍温暖。Plitvice 不允许涉水但栈道更梦幻。<strong>租车：</strong> 跨境到意大利需办跨境保险, 提前 1 个月预订。", "days": [{"day": 38, "date": "9/10", "week": "周四", "city": "Dubrovnik", "am": "★ 8:00 城墙环走 (避热)", "pm": "Lokrum 岛 €27 来回船(铁王座+孔雀)。晚 Buža Bar 悬崖酒吧日落", "lodging": "Dubrovnik", "station_id": 6, "star": true}, {"day": 39, "date": "9/11", "week": "周五", "city": "→Split", "am": "自驾 4h 或渡轮 Jadrolinija 4.5h €40", "pm": "Split 老城入住戴克里先宫殿内 €130。Riva 海滨", "lodging": "Split €130", "station_id": 6, "star": false}, {"day": 40, "date": "9/12", "week": "周六", "city": "Split+Trogir", "am": "戴克里先宫殿地下室 + 大教堂登顶", "pm": "自驾 30min Trogir UNESCO 小岛半日。晚回 Split", "lodging": "Split", "station_id": 6, "star": false}, {"day": 41, "date": "9/13", "week": "周日", "city": "Krka", "am": "★ Krka 国家公园(自驾 1h, €30, 可游泳)", "pm": "Skradinski Buk 大瀑布池", "lodging": "Skradin 或回 Split", "station_id": 6, "star": true}, {"day": 42, "date": "9/14", "week": "周一", "city": "→Plitvice", "am": "自驾 3h 到 Plitvice 16 湖入口", "pm": "15:00 后入园 €15(B 票)。走 H 线短段熟悉", "lodging": "Mukinje 村 €100", "station_id": 6, "star": false}, {"day": 43, "date": "9/15", "week": "周二", "city": "Plitvice", "am": "★ 7:30 入园。走 K 线全程 8h, 18km", "pm": "船渡 P3→P1 + 缆车", "lodging": "Mukinje", "station_id": 6, "star": true}, {"day": 44, "date": "9/16", "week": "周三", "city": "转场", "am": "Plitvice → Zagreb 机场 2h → ✈ Venice (Volotea/Croatia Air, 1h, €120/人)", "pm": "Venice 取车 → Val Gardena 2.5h。住 Ortisei €160", "lodging": "Ortisei €160", "station_id": 6, "star": false}]}, {"id": 7, "name": "Val Gardena", "nameZh": "多洛米蒂", "fullName": "多洛米蒂 Val Gardena", "country": "🇮🇹 意大利", "dates": "9/16 - 9/22", "nights": 6, "activities": "Tre Cime 大环线 · Seceda · Lago di Braies · Alpe di Siusi", "color": "#27500A", "bg": "#EAF3DE", "stroke": "#3B6D11", "x": 1080, "y": 740, "labelPos": "right", "festival": "★ Val Gardena 徒步黄金窗口", "tips": "<strong>必订：</strong> Lago di Braies 停车场提前预约 (braies.eu), 否则无法到达。<strong>装备：</strong> Tre Cime 下坡对膝盖磨损大, 登山杖一双必备。", "days": [{"day": 45, "date": "9/17", "week": "周四", "city": "Seceda", "am": "★ Ortisei → Seceda 缆车 2,519m €40 往返", "pm": "Adolf Munkel Weg 山谷面对 Odle 北壁 9km 3h", "lodging": "Ortisei", "station_id": 7, "star": true}, {"day": 46, "date": "9/18", "week": "周五", "city": "Alpe di Siusi", "am": "★ 缆车上欧洲最大高山牧场", "pm": "牧场内徒步 5-8h。Rifugio Sanon 午餐", "lodging": "Ortisei", "station_id": 7, "star": true}, {"day": 47, "date": "9/19", "week": "周六", "city": "Tre Cime", "am": "★★ Tre Cime di Lavaredo 大环线 10km 4h (自驾 1.5h, Auronzo 收费道 €30)", "pm": "中途 Rifugio Locatelli 午餐", "lodging": "Ortisei", "station_id": 7, "star": true}, {"day": 48, "date": "9/20", "week": "周日", "city": "Lago di Braies", "am": "★ 7:30 出发 (必须提前预约停车)。9:00 前到环湖 3.5km", "pm": "下午 Cinque Torri + WWI 战壕半日游", "lodging": "Ortisei", "station_id": 7, "star": true}, {"day": 49, "date": "9/21", "week": "周一", "city": "缓冲", "am": "Ortisei 镇休闲 + 缆车 Resciesa", "pm": "自驾 Bolzano (多洛米蒂南门)。Ötzi 冰人博物馆 €13", "lodging": "Bolzano", "station_id": 7, "star": false}, {"day": 50, "date": "9/22", "week": "周二", "city": "转场", "am": "火车 EC Bolzano → München Hbf 4h €60", "pm": "下午到慕尼黑 Old Town 入住。傍晚到 Theresienwiese 现场感受", "lodging": "Munich Glockenbach €200", "station_id": 7, "star": false}]}, {"id": 8, "name": "München", "nameZh": "慕尼黑", "fullName": "慕尼黑 Munich", "country": "🇩🇪 德国", "dates": "9/22 - 9/26", "nights": 4, "activities": "Oktoberfest 第 191 届 · Schottenhamel 帐篷 · 新天鹅堡", "color": "#633806", "bg": "#FAEEDA", "stroke": "#854F0B", "x": 830, "y": 620, "labelPos": "up", "festival": "★★ Oktoberfest 第 191 届", "tips": "<strong>帐篷预订必做：</strong> oktoberfest-reservierungen.de 或代订平台, 周三下午档比周末易订。<strong>服饰：</strong> Dirndl/Lederhosen C&A 或 Lodenfrey €80-150。", "days": [{"day": 51, "date": "9/23", "week": "周三", "city": "Oktoberfest", "am": "★★ 预订 Schottenhamel 帐篷下午 15:00-19:00 档 €100/人 (2 杯 1L + 半烤鸡)", "pm": "晚 19:00 后游艺区(摩天轮+过山车)", "lodging": "Munich", "station_id": 8, "star": true}, {"day": 52, "date": "9/24", "week": "周四", "city": "老城", "am": "Residenz 慕尼黑王宫 €9 + Viktualienmarkt 露天市场", "pm": "BMW Welt(免费)+ Olympic Park。晚休 1 晚不去 Wiesn", "lodging": "Munich", "station_id": 8, "star": false}, {"day": 53, "date": "9/25", "week": "周五", "city": "新天鹅堡", "am": "★ 自驾 1.5h 到 Hohenschwangau。Neuschwanstein €23 (网订)", "pm": "Marienbrücke 桥 + Lake Eibsee 环湖 10km。晚回慕尼黑", "lodging": "Munich", "station_id": 8, "star": true}, {"day": 54, "date": "9/26", "week": "周六", "city": "转场", "am": "火车 1.5h €30 到 Salzburg。Mozarts Geburtshaus €12", "pm": "Mirabell 花园 + Stiegl Brauwelt Sound of Music 主题晚餐 €75", "lodging": "Salzburg", "station_id": 8, "star": false}]}, {"id": 9, "name": "Salzburg", "nameZh": "萨尔茨堡", "fullName": "萨尔茨堡 Salzburg", "country": "🇦🇹 奥地利", "dates": "9/26 - 9/30", "nights": 4, "activities": "莫扎特故居 · Hallstatt · Königssee · Berchtesgaden", "color": "#3C3489", "bg": "#EEEDFE", "stroke": "#534AB7", "x": 1000, "y": 540, "labelPos": "up", "festival": "Hallstatt + 莫扎特", "tips": "<strong>Hallstatt 攻略：</strong> 住 Gosau 或 Obertraun 比镇上便宜 50% 且安静。<strong>奥地利驾驶：</strong> 高速需 Vignette (£10/月), 加油站买。", "days": [{"day": 55, "date": "9/27", "week": "周日", "city": "Hallstatt", "am": "★ 自驾 1.5h 到 Hallstatt。Salzwelten 盐矿 €38", "pm": "5,000 鞍湖区缆车上 Skywalk。黄昏小镇核心区", "lodging": "Gosau/Obertraun €130", "station_id": 9, "star": true}, {"day": 56, "date": "9/28", "week": "周一", "city": "Berchtesgaden", "am": "★ 自驾 1.5h Königssee。电动船游湖 + St. Bartholomä €23", "pm": "Ice Chapel 冰洞短徒步", "lodging": "Salzburg", "station_id": 9, "star": true}, {"day": 57, "date": "9/29", "week": "周二", "city": "Salzkammergut", "am": "Wolfgangsee + St. Wolfgang 小镇", "pm": "★ Schafberg 齿轮山火车 1,783m €43", "lodging": "Salzburg", "station_id": 9, "star": true}, {"day": 58, "date": "9/30", "week": "周三", "city": "转场", "am": "✈ Salzburg → Florence (Austrian 经维也纳, 3.5h, €220/人)", "pm": "下午到佛罗伦萨入住", "lodging": "Florence €150", "station_id": 9, "star": false}]}, {"id": 10, "name": "Tuscany", "nameZh": "托斯卡纳", "fullName": "托斯卡纳 Tuscany", "country": "🇮🇹 意大利", "dates": "9/30 - 10/11", "nights": 11, "activities": "Florence · Chianti 农庄 · Wine to Wine 周末 · 白松露猎搜 · Cinque Terre", "color": "#791F1F", "bg": "#FCEBEB", "stroke": "#A32D2D", "x": 880, "y": 830, "labelPos": "right", "festival": "★ Wine to Wine + 白松露猎搜", "tips": "<strong>白松露猎搜：</strong> 这是体验感最强的一天, San Miniato 附近多家可选, 提前 2 周预约。<strong>农庄：</strong> agriturismo.it 找带泳池+早餐的。", "days": [{"day": 59, "date": "10/1", "week": "周四", "city": "Florence", "am": "★ Uffizi Gallery €25 (提前订)", "pm": "Ponte Vecchio + Piazza della Signoria。晚 Trattoria Mario / Cibreo", "lodging": "Florence", "station_id": 10, "star": true}, {"day": 60, "date": "10/2", "week": "周五", "city": "Florence", "am": "★ Accademia 看 David €16 + Duomo 登顶 €30", "pm": "Boboli 花园 + Palazzo Pitti", "lodging": "Florence", "station_id": 10, "star": true}, {"day": 61, "date": "10/3", "week": "周六", "city": "Panzano", "am": "★★ Wine to Wine 周末: 60+ 酒庄品鉴 €20 套票", "pm": "自驾 1h 来回 Florence", "lodging": "Florence", "station_id": 10, "star": true}, {"day": 62, "date": "10/4", "week": "周日", "city": "Greve", "am": "Greve in Chianti 主广场 + Montefioralle 古村", "pm": "Wine to Wine Day 2。晚回 Florence", "lodging": "Florence", "station_id": 10, "star": false}, {"day": 63, "date": "10/5", "week": "周一", "city": "→农庄", "am": "入住 Chianti agriturismo €180/晚 (Castellina/Greve)", "pm": "★ Castello di Verrazzano 酒庄品鉴 €35 + 午餐 €70", "lodging": "Chianti 农庄", "station_id": 10, "star": true}, {"day": 64, "date": "10/6", "week": "周二", "city": "白松露", "am": "★★ 白松露猎搜半日 San Miniato €150/人 (猎犬+森林+午餐)", "pm": "下午农庄泳池+读书", "lodging": "Chianti 农庄", "station_id": 10, "star": true}, {"day": 65, "date": "10/7", "week": "周三", "city": "Siena", "am": "★ Siena: Piazza del Campo + Duomo + Torre del Mangia 登顶", "pm": "Osteria Le Logge 午餐。晚回农庄", "lodging": "Chianti 农庄", "station_id": 10, "star": true}, {"day": 66, "date": "10/8", "week": "周四", "city": "Val d'Orcia", "am": "★ Pienza (pecorino 奶酪) + Montepulciano + Montalcino (Brunello)", "pm": "整天美食公路", "lodging": "Chianti 农庄", "station_id": 10, "star": true}, {"day": 67, "date": "10/9", "week": "周五", "city": "Cinque Terre", "am": "★ 早火车 Florence → La Spezia 2.5h → 五村", "pm": "Monterosso → Vernazza → Corniglia → Manarola → Riomaggiore", "lodging": "Chianti 农庄", "station_id": 10, "star": true}, {"day": 68, "date": "10/10", "week": "周六", "city": "酿酒", "am": "★ 农庄参与式酿酒工作坊 €120/人", "pm": "下午泳池。晚农庄主家庭晚餐", "lodging": "Chianti 农庄", "station_id": 10, "star": true}, {"day": 69, "date": "10/11", "week": "周日", "city": "转场", "am": "自驾 Tuscany → Alba 3.5h (经热那亚或米兰)", "pm": "入住 La Morra 葡萄园 agriturismo €180", "lodging": "La Morra €180", "station_id": 10, "star": false}]}, {"id": 11, "name": "Alba", "nameZh": "阿尔巴", "fullName": "阿尔巴 Alba", "country": "🇮🇹 意大利", "dates": "10/11 - 10/18", "nights": 7, "activities": "白松露节第 96 届 · Barolo / Barbaresco 酒庄 · Cuneo 栗子节", "color": "#712B13", "bg": "#FAECE7", "stroke": "#993C1D", "x": 700, "y": 800, "labelPos": "down", "festival": "★★ 白松露节第 96 届", "tips": "<strong>白松露市场：</strong> 周末 10/17-18 高峰, 工作日清晨进更易。€350/100g 起, 5g €18 可试。<strong>酒庄：</strong> Barolo 顶级酒庄需提前 1 周预约 €30-60/人。", "days": [{"day": 70, "date": "10/12", "week": "周一", "city": "Alba 老城", "am": "Cortile della Maddalena 松露市场(工作日小开市)", "pm": "La Morra 葡萄园观景 + Cappella del Barolo 彩色教堂", "lodging": "La Morra", "station_id": 11, "star": false}, {"day": 71, "date": "10/13", "week": "周二", "city": "Barolo", "am": "★ Barolo 葡萄酒博物馆 WiMu €15 + Marchesi di Barolo 酒庄 €25", "pm": "La Morra Bovio 餐厅 + Pio Cesare/Ceretto 第二轮", "lodging": "La Morra", "station_id": 11, "star": true}, {"day": 72, "date": "10/14", "week": "周三", "city": "Cuneo 栗子节", "am": "★ 自驾 50min Cuneo。Fiera del Marrone 街头美食市集", "pm": "晚回 La Morra", "lodging": "La Morra", "station_id": 11, "star": true}, {"day": 73, "date": "10/15", "week": "周四", "city": "Bra+Slow Food", "am": "Bra 城 Slow Food 起源 + Eataly 旗舰原型", "pm": "Castello di Roddi 城堡午餐", "lodging": "La Morra", "station_id": 11, "star": false}, {"day": 74, "date": "10/16", "week": "周五", "city": "Asti", "am": "Asti 自驾 1h: 老城 + Asti Spumante 起泡酒酒庄", "pm": "Moncalvo 山顶村庄", "lodging": "La Morra", "station_id": 11, "star": false}, {"day": 75, "date": "10/17", "week": "周六", "city": "松露市场高峰", "am": "★★ 9:00 World Truffle Market 入场 (拍卖+品尝+购买)", "pm": "Cooking class with truffle €130/人 (午餐含)。晚回 La Morra", "lodging": "La Morra", "station_id": 11, "star": true}, {"day": 76, "date": "10/18", "week": "周日", "city": "转场", "am": "上午继续逛市场。自驾 Torino 1h", "pm": "✈ Torino → Lisbon (TAP, 2.5h, €130/人)", "lodging": "Lisbon Alfama €130", "station_id": 11, "star": false}]}, {"id": 12, "name": "Lisbon", "nameZh": "里斯本", "fullName": "里斯本 Lisbon", "country": "🇵🇹 葡萄牙", "dates": "10/18 - 10/23", "nights": 5, "activities": "Alfama · Belém 蛋挞 · Sintra Pena 宫 · Cabo da Roca", "color": "#085041", "bg": "#E1F5EE", "stroke": "#0F6E56", "x": 220, "y": 1050, "labelPos": "down", "festival": "Sintra + Belém", "tips": "<strong>Pastéis de Belém：</strong> 1837 年原版老店, 必去。<strong>Sintra：</strong> 早 8:00 前到 Pena Palace 避开旅游团。", "days": [{"day": 77, "date": "10/19", "week": "周一", "city": "Day 1", "am": "28 路有轨电车经典线", "pm": "Castelo de São Jorge 圣乔治城堡 + Clube de Fado 演出 €40 含晚餐", "lodging": "Lisbon", "station_id": 12, "star": false}, {"day": 78, "date": "10/20", "week": "周二", "city": "Belém", "am": "★ Mosteiro dos Jerónimos €18 + Belém 塔 + Pastéis de Belém 蛋挞原产店", "pm": "LX Factory 文艺街区 + Time Out Market", "lodging": "Lisbon", "station_id": 12, "star": true}, {"day": 79, "date": "10/21", "week": "周三", "city": "Sintra", "am": "★ Sintra 一日: Pena Palace €15 + Quinta da Regaleira €15", "pm": "Cabo da Roca 欧亚大陆最西端。住 Sintra €160", "lodging": "Sintra €160", "station_id": 12, "star": true}, {"day": 80, "date": "10/22", "week": "周四", "city": "Lisbon", "am": "早返 Lisbon", "pm": "★ Tagus 河 sunset 帆船 €45/人", "lodging": "Lisbon", "station_id": 12, "star": true}]}, {"id": 13, "name": "Nazaré", "nameZh": "纳扎雷", "fullName": "纳扎雷 Nazaré", "country": "🇵🇹 葡萄牙", "dates": "10/23 - 10/28", "nights": 5, "activities": "大浪季开端观浪 · Baleal 冲浪课 · Óbidos 中世纪小镇", "color": "#0C447C", "bg": "#E6F1FB", "stroke": "#185FA5", "x": 280, "y": 970, "labelPos": "left", "festival": "★ 大浪季开端观浪", "tips": "<strong>大浪运气：</strong> 10 月是\"边界月\", 核心 11-2 月。预测仅 1 周内准。<strong>替代方案：</strong> 没大浪去 Peniche/Baleal 学温和浪。", "days": [{"day": 81, "date": "10/23", "week": "周五", "city": "→Nazaré", "am": "巴士或租车 2h 北上", "pm": "入住 Sítio 悬崖老城 €100。海岸散步", "lodging": "Nazaré Sítio €100", "station_id": 13, "star": false}, {"day": 82, "date": "10/24", "week": "周六", "city": "大浪季开端", "am": "★ 监控 nazarewaves.com + surf-forecast.com 1 周预报", "pm": "圣米格尔灯塔 + 大浪博物馆 €2 + 老镇集市", "lodging": "Nazaré", "station_id": 13, "star": true}, {"day": 83, "date": "10/25", "week": "周日", "city": "冲浪课", "am": "★ 自驾 30min Baleal。初级冲浪课 €40/2h 含板+潜水服", "pm": "晚回 Nazaré", "lodging": "Nazaré", "station_id": 13, "star": true}, {"day": 84, "date": "10/26", "week": "周一", "city": "Óbidos", "am": "★ 自驾 20min Óbidos: 城墙环走 + 樱桃酒 ginja", "pm": "Alcobaça 修道院 €6。晚回 Nazaré", "lodging": "Nazaré", "station_id": 13, "star": true}, {"day": 85, "date": "10/27", "week": "周二", "city": "灵活日", "am": "如有大浪预报: 全天蹲守 Praia do Norte 灯塔观浪", "pm": "无大浪: 继续冲浪练习", "lodging": "Nazaré", "station_id": 13, "star": false}, {"day": 86, "date": "10/28", "week": "周三", "city": "转场", "am": "自驾或火车 2h 北上", "pm": "入住 Ribeira 区 €130", "lodging": "Porto Ribeira €130", "station_id": 13, "star": false}]}, {"id": 14, "name": "Porto", "nameZh": "波尔图", "fullName": "波尔图 Porto", "country": "🇵🇹 葡萄牙", "dates": "10/28 - 11/2", "nights": 5, "activities": "Livraria Lello · Douro 酒乡一日游 · Gaia 酒窖 · 返航", "color": "#444441", "bg": "#F1EFE8", "stroke": "#5F5E5A", "x": 340, "y": 880, "labelPos": "up", "festival": "Douro 酒乡 + 返航", "tips": "<strong>Livraria Lello：</strong> 哈利波特灵感书店, 必须网订 €8 (现场买不到), 早 9:30 开门前到。<strong>返航：</strong> 经伊斯坦布尔土航通常比法兰克福汉莎便宜 $300+。", "days": [{"day": 87, "date": "10/29", "week": "周四", "city": "Day 1", "am": "★ Livraria Lello 书店 €8 (网订) + São Bento 火车站瓷砖大厅", "pm": "Clérigos 塔登顶 €8。晚 Vila Nova de Gaia 看 Porto 夜景", "lodging": "Porto", "station_id": 14, "star": true}, {"day": 88, "date": "10/30", "week": "周五", "city": "Douro 酒乡", "am": "★★ Douro Valley day tour €75/人 (船游+2 quinta 品酒+午餐)", "pm": "葡萄牙最经典酒乡景观", "lodging": "Porto", "station_id": 14, "star": true}, {"day": 89, "date": "10/31", "week": "周六", "city": "酒窖日", "am": "★ Vila Nova de Gaia 酒窖参观 (Taylor's/Graham's/Sandeman 选 2)", "pm": "Cantinho do Avillez 米其林推荐午餐 + 晚 Fado", "lodging": "Porto", "station_id": 14, "star": true}, {"day": 90, "date": "11/1", "week": "周日", "city": "自由日", "am": "Foz do Douro 入海口散步", "pm": "Bolhão 市场最后采购。打包", "lodging": "Porto", "station_id": 14, "star": false}, {"day": 91, "date": "11/2", "week": "周一", "city": "返航", "am": "✈ Porto → Beijing/Shanghai (经法兰克福/伊斯坦布尔, 14h)", "pm": "欧洲段结束", "lodging": "—", "station_id": 14, "star": false}]}], "budget": [{"category": "国际机票 (两人)", "aug": 3500, "sep": 0, "oct": 0, "note": "北京→爱丁堡, Porto→中国"}, {"category": "申根 + 英国签证", "aug": 400, "sep": 0, "oct": 0, "note": "C 签 180 天多次 + UK Standard Visitor"}, {"category": "旅行保险", "aug": 500, "sep": 0, "oct": 0, "note": "World Nomads 含医疗撤离"}, {"category": "住宿", "aug": 2800, "sep": 3300, "oct": 3100, "note": "8 月旺季冰岛/爱丁堡偏高"}, {"category": "城际+境内交通", "aug": 1100, "sep": 1300, "oct": 900, "note": "冰岛租车 $1500 含 8 月"}, {"category": "欧洲段航班", "aug": 800, "sep": 700, "oct": 250, "note": "Edin→Buda, Buda→Rkv, Rkv→Zur, Zur→Bcn, Bcn→Dbk, Zag→Vce, Slz→Flr, Tor→Lis"}, {"category": "租车+油费", "aug": 1500, "sep": 400, "oct": 400, "note": "冰岛 8 月 $1500, 克罗地亚/托斯卡纳/葡萄牙各 $400"}, {"category": "餐饮", "aug": 1300, "sep": 1800, "oct": 1900, "note": "两人每天 $70-95"}, {"category": "门票+体验+品酒", "aug": 800, "sep": 1500, "oct": 1500, "note": "Sziget pass + Oktoberfest 帐篷 + 酒庄 + 松露"}, {"category": "装备+SIM+杂项", "aug": 600, "sep": 200, "oct": 200, "note": "防水冲锋衣 + eSIM"}], "bookings": [{"deadline": "5/13-5/20", "urgency": "🔴 本周", "item": "父母接狗时间表锁定 (6/1 起住父母家磨合 2 周)", "link": "—", "cost": 0}, {"deadline": "5/13-5/20", "urgency": "🔴 本周", "item": "Sziget Festival 5-Day Pass (早鸟会涨价)", "link": "szigetfestival.com", "cost": 660}, {"deadline": "5/13-5/20", "urgency": "🔴 本周", "item": "冰岛 8 月旺季住宿 10 晚 (旺季顶峰)", "link": "booking.com / airbnb.com", "cost": 2000}, {"deadline": "5/13-5/20", "urgency": "🔴 本周", "item": "冰岛 4WD 租车 8/16-8/26", "link": "rentalcars.com / blueсarrental.is", "cost": 1500}, {"deadline": "5/13-5/20", "urgency": "🟠 本周", "item": "Edinburgh New Town 6 晚住宿 (Fringe 期间不订就没有)", "link": "booking.com", "cost": 1080}, {"deadline": "5/21-5/31", "urgency": "🔴", "item": "Oktoberfest Schottenhamel 帐篷 9/23 周三下午档", "link": "oktoberfest-reservierungen.de", "cost": 200}, {"deadline": "5/21-5/31", "urgency": "🟠", "item": "国际机票: 北京→爱丁堡 8/4", "link": "ctrip / skyscanner / qatarairways", "cost": 1500}, {"deadline": "5/21-5/31", "urgency": "🟠", "item": "国际机票: Porto→北京/上海 11/2", "link": "skyscanner", "cost": 2000}, {"deadline": "5/21-5/31", "urgency": "🟡", "item": "申根 + 英国签证材料准备", "link": "—", "cost": 0}, {"deadline": "6/1-6/19", "urgency": "🟡", "item": "婚礼准备期 + 让狗住父母家磨合", "link": "—", "cost": 0}, {"deadline": "6/1-6/19", "urgency": "🟡", "item": "Fringe 完整阵容 6/4 公布, 选场次", "link": "edfringe.com", "cost": 200}, {"deadline": "6/22-6/30", "urgency": "🔴 婚后立即", "item": "送签申根 (意大利使馆, 主要停留地)", "link": "VFS Global", "cost": 200}, {"deadline": "6/22-6/30", "urgency": "🔴 婚后立即", "item": "送签英国 (UK Standard Visitor)", "link": "gov.uk", "cost": 200}, {"deadline": "6/22-6/30", "urgency": "🟠", "item": "Sagrada Família 提前订票 (提前 1 月起售)", "link": "sagradafamilia.org", "cost": 80}, {"deadline": "6/22-6/30", "urgency": "🟠", "item": "Uffizi + Accademia + Duomo 登顶", "link": "uffizi.it", "cost": 150}, {"deadline": "6/22-6/30", "urgency": "🟠", "item": "Pena Palace + Quinta da Regaleira", "link": "parquesdesintra.pt", "cost": 60}, {"deadline": "6/22-6/30", "urgency": "🟠", "item": "Livraria Lello 网订", "link": "livrarialello.pt", "cost": 20}, {"deadline": "7/1-7/15", "urgency": "🔴", "item": "欧洲段航班全部出 (8 段)", "link": "skyscanner / google flights", "cost": 1750}, {"deadline": "7/1-7/15", "urgency": "🟠", "item": "Tuscany Chianti 农庄 7 晚 (Castellina/Greve)", "link": "agriturismo.it", "cost": 1260}, {"deadline": "7/1-7/15", "urgency": "🟠", "item": "Alba La Morra agriturismo 7 晚", "link": "—", "cost": 1260}, {"deadline": "7/1-7/15", "urgency": "🟠", "item": "Val Gardena Ortisei 公寓 6 晚", "link": "booking.com", "cost": 960}, {"deadline": "7/1-7/15", "urgency": "🟠", "item": "Lago di Braies 停车场预约 (必须)", "link": "braies.eu", "cost": 30}, {"deadline": "7/15-7/31", "urgency": "🟠", "item": "其他段住宿全订 (Budapest/Salzburg/Lisbon/Nazaré/Porto)", "link": "booking.com", "cost": 2400}, {"deadline": "7/15-7/31", "urgency": "🟠", "item": "Swiss Travel Pass 8 天 (两人)", "link": "sbb.ch", "cost": 920}, {"deadline": "7/15-7/31", "urgency": "🟠", "item": "克罗地亚自驾租车 9/9-9/16", "link": "rentalcars.com", "cost": 400}, {"deadline": "7/15-7/31", "urgency": "🟠", "item": "Tuscany 自驾租车 9/30-10/11", "link": "—", "cost": 600}, {"deadline": "7/15-7/31", "urgency": "🟠", "item": "葡萄牙自驾租车 10/23-11/2", "link": "—", "cost": 500}, {"deadline": "7/15-7/31", "urgency": "🟠", "item": "Royal Edinburgh Tattoo 8/7 周五场 (可选)", "link": "edintattoo.co.uk", "cost": 220}, {"deadline": "7/15-7/31", "urgency": "🟠", "item": "Tuscany 白松露猎搜 + 酒庄品鉴预约", "link": "—", "cost": 300}, {"deadline": "7/15-7/31", "urgency": "🟠", "item": "Alba 白松露 World Market 门票", "link": "fieradeltartufo.org", "cost": 18}, {"deadline": "7/15-7/31", "urgency": "🟠", "item": "Douro Valley day tour", "link": "viator / getyourguide", "cost": 150}, {"deadline": "7/28-8/3", "urgency": "🟡 最后", "item": "购置防水冲锋衣+徒步鞋磨合", "link": "—", "cost": 800}, {"deadline": "7/28-8/3", "urgency": "🟡 最后", "item": "eSIM 3 个月 (Airalo Europe)", "link": "airalo.com", "cost": 90}, {"deadline": "7/28-8/3", "urgency": "🟡 最后", "item": "现金兑换 €/£/CHF/CZK/HRK", "link": "—", "cost": 1000}, {"deadline": "7/28-8/3", "urgency": "🟡 最后", "item": "Revolut 多币种卡激活", "link": "revolut.com", "cost": 0}, {"deadline": "7/28-8/3", "urgency": "🟡 最后", "item": "送狗到父母家 (留 1-2 周适应)", "link": "—", "cost": 0}, {"deadline": "7/28-8/3", "urgency": "🟡 最后", "item": "公寓打包 + 退订订阅 + 邮件假期回复", "link": "—", "cost": 0}], "festivals": [{"date": "8/7-8/31", "name": "Edinburgh Festival Fringe", "place": "爱丁堡", "desc": "全球最大艺术节, 3,500+ 演出", "link": "edfringe.com", "cost": 200}, {"date": "8/7 周五", "name": "Royal Edinburgh Military Tattoo (可选)", "place": "爱丁堡城堡前", "desc": "军乐节露天演出", "link": "edintattoo.co.uk", "cost": 220}, {"date": "8/11-8/15", "name": "★ Sziget Festival", "place": "布达佩斯多瑙河岛", "desc": "欧洲最大音乐节之一, 5 日通票", "link": "szigetfestival.com", "cost": 660}, {"date": "8/16-8/26", "name": "★ 冰岛极光季开端 + 环岛", "place": "冰岛全境", "desc": "Vedur 极光预报追踪", "link": "—", "cost": 0}, {"date": "8/29", "name": "Jungfraujoch \"Top of Europe\"", "place": "瑞士少女峰", "desc": "海拔 3,571m 冰宫+Sphinx", "link": "jungfrau.ch", "cost": 190}, {"date": "8/31", "name": "Interlaken 滑翔伞", "place": "瑞士", "desc": "Skywings / Paragliding Interlaken", "link": "skywings.ch", "cost": 400}, {"date": "9/19-10/4", "name": "★★ Munich Oktoberfest 第 191 届", "place": "慕尼黑 Theresienwiese", "desc": "全球最大啤酒节", "link": "oktoberfest-reservierungen.de", "cost": 200}, {"date": "9/19", "name": "Tre Cime di Lavaredo 大环线", "place": "多洛米蒂", "desc": "10km, 4h, 多洛米蒂第一名片", "link": "—", "cost": 30}, {"date": "10/3-10/4", "name": "Wine to Wine 周末", "place": "Panzano in Chianti", "desc": "60+ 酒庄主广场品鉴", "link": "—", "cost": 40}, {"date": "10/6", "name": "★ 白松露猎搜半日", "place": "San Miniato 附近林区", "desc": "猎犬带队+森林+午餐", "link": "tuscanytruffles.com", "cost": 300}, {"date": "10/10-12/6", "name": "★★ Alba 白松露节第 96 届", "place": "皮埃蒙特阿尔巴", "desc": "World Truffle Market 周末高峰", "link": "fieradeltartufo.org", "cost": 36}, {"date": "10/17-10/18", "name": "Alba White Truffle World Market 周末", "place": "Cortile della Maddalena", "desc": "拍卖+品尝+购买+品酒券", "link": "fieradeltartufo.org", "cost": 18}, {"date": "10/16-10/18", "name": "Cuneo 栗子节 Fiera del Marrone", "place": "Cuneo", "desc": "皮埃蒙特栗子美食节", "link": "—", "cost": 50}, {"date": "10/24 起", "name": "Nazaré 大浪季开端", "place": "葡萄牙 Praia do Norte", "desc": "全球最大冲浪浪季观浪", "link": "nazarewaves.com 监控", "cost": 0}, {"date": "10/25", "name": "Baleal 冲浪课", "place": "Peniche 附近", "desc": "初级 2h 含板+潜水服", "link": "—", "cost": 80}, {"date": "10/30", "name": "Douro Valley 一日游", "place": "葡萄牙杜罗河谷", "desc": "船游 + 2 quinta 品酒 + 午餐", "link": "viator / getyourguide", "cost": 150}], "packing": [{"category": "通用衣物", "item": "防水冲锋衣 (Gore-Tex)", "note": "冰岛/苏格兰/阿尔卑斯必备"}, {"category": "通用衣物", "item": "抓绒中层 / 薄羽绒服", "note": "高海拔 2000m+ 早晚低于冰点"}, {"category": "通用衣物", "item": "速干内层 ×3", "note": "户外活动恢复快"}, {"category": "通用衣物", "item": "防风裤 + 速干裤 ×2", "note": "—"}, {"category": "通用衣物", "item": "毛线帽 + 防水手套", "note": "冰岛专用"}, {"category": "通用衣物", "item": "羊毛袜 ×3", "note": "冰岛+阿尔卑斯保暖"}, {"category": "装备", "item": "中高帮防水徒步鞋 (已磨合)", "note": "Tre Cime + 苏格兰 + 冰岛"}, {"category": "装备", "item": "35-45L 一日徒步包", "note": "白天用"}, {"category": "装备", "item": "登山杖一双", "note": "Tre Cime 下坡保护膝盖"}, {"category": "装备", "item": "充电宝 20,000 mAh + Type-C 多接口", "note": "航班可带"}, {"category": "装备", "item": "万能转换插头 (欧标+英标+瑞士标)", "note": "瑞士 J 型与欧标不同"}, {"category": "装备", "item": "防晒霜 SPF 50+ + 太阳镜", "note": "高山雪地紫外线"}, {"category": "装备", "item": "雨伞紧凑型", "note": "葡萄牙10月有雨"}, {"category": "拍照", "item": "三脚架 (轻量) + 广角镜头", "note": "极光摄影"}, {"category": "拍照", "item": "头灯 (红光模式)", "note": "极光观测保护夜视"}, {"category": "拍照", "item": "防水袋", "note": "冰岛瀑布溅水"}, {"category": "证件", "item": "护照 (出发时仍有 6 月+有效期)", "note": "—"}, {"category": "证件", "item": "申根签证 + 英国签证", "note": "复印件 2 份"}, {"category": "证件", "item": "国际驾照公证 (中国驾照不直接认)", "note": "申根多数接受 + 翻译件"}, {"category": "证件", "item": "出生证 + 结婚证 (英文公证)", "note": "应急"}, {"category": "钱财", "item": "Visa + Mastercard 双卡组合", "note": "—"}, {"category": "钱财", "item": "Revolut 多币种卡 (汇率最优)", "note": "$1,200 免提现费"}, {"category": "钱财", "item": "现金 €500 + £200 + CHF 300", "note": "应急"}, {"category": "通讯", "item": "eSIM (Airalo Europe 30days unlimited ×3)", "note": "$30 × 3 月"}, {"category": "通讯", "item": "Google Maps offline 各国地图下载", "note": "—"}, {"category": "健康", "item": "破伤风加强针 (出发前打)", "note": "户外"}, {"category": "健康", "item": "高反药 Diamox (少女峰 3,471m)", "note": "如有需要"}, {"category": "健康", "item": "止泻药 + 创可贴 + 红霉素眼膏", "note": "—"}, {"category": "健康", "item": "处方药 (够 3 个月)", "note": "—"}, {"category": "健康", "item": "境外旅行保险 (含医疗撤离)", "note": "World Nomads / 平安境外"}, {"category": "应急", "item": "112 欧洲通用紧急电话", "note": "存手机"}, {"category": "应急", "item": "中国驻各国大使馆联系方式", "note": "存手机+纸质副本"}, {"category": "应急", "item": "应急资金 $3,000 缓冲", "note": "汇率波动 / 突发情况"}]};
+
+const STATIONS_BY_ID = {};
+TRIP.stations.forEach(s => { STATIONS_BY_ID[s.id] = s; });
+
+const ROUTE_LINES = [
+  {from: 1, to: 2, mode: 'flight', label: '8/10 ✈ 3h', lpos: {x: 810, y: 350, r: -8}},
+  {from: 2, to: 3, mode: 'flight', label: '8/16 ✈ 3.5h', lpos: {x: 660, y: 320, r: 0}},
+  {from: 3, to: 4, mode: 'flight', label: '8/26 ✈', lpos: {x: 380, y: 510, r: 27}},
+  {from: 4, to: 5, mode: 'flight', label: '9/3 ✈ 2h', lpos: {x: 590, y: 790, r: 82}},
+  {from: 5, to: 6, mode: 'flight', label: '9/9 ✈ 2h', lpos: {x: 900, y: 920, r: -4}},
+  {from: 6, to: 7, mode: 'drive', label: '9/9-16 自驾', lpos: {x: 1200, y: 830, r: -30}},
+  {from: 7, to: 8, mode: 'train', label: '9/22 火车 4h', lpos: {x: 985, y: 690, r: -23}},
+  {from: 8, to: 9, mode: 'drive', label: '9/25 自驾', lpos: {x: 945, y: 582, r: 0}},
+  {from: 9, to: 10, mode: 'flight', label: '9/30 ✈', lpos: {x: 1020, y: 685, r: -66}},
+  {from: 10, to: 11, mode: 'drive', label: '10/11 自驾', lpos: {x: 770, y: 826, r: 12}},
+  {from: 11, to: 12, mode: 'flight', label: '10/18 ✈ 2.5h', lpos: {x: 485, y: 944, r: 22}},
+  {from: 12, to: 13, mode: 'drive', label: '', lpos: null},
+  {from: 13, to: 14, mode: 'drive', label: '', lpos: null},
+];
+
+function tabClick(view) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.view === view));
+  document.querySelectorAll('.view').forEach(v => v.classList.toggle('active', v.id === 'view-' + view));
+  if (view === 'overview') renderOverviewCards();
+  if (view === 'daily') renderDaily();
+  if (view === 'festivals') renderFestivals();
+  if (view === 'bookings') renderBookings();
+  if (view === 'budget') renderBudget();
+  if (view === 'packing') renderPacking();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => tabClick(t.dataset.view)));
+
+function renderMap() {
+  const linesG = document.getElementById('route-lines');
+  const labelsG = document.getElementById('route-labels');
+  const nodesG = document.getElementById('city-nodes');
+  
+  const modeStyle = {
+    flight: {color: '#378ADD', dash: '8 4', marker: 'url(#arr-blue)'},
+    drive:  {color: '#D85A30', dash: '',    marker: 'url(#arr-coral)'},
+    train:  {color: '#1D9E75', dash: '2 3', marker: 'url(#arr-teal)'},
+  };
+  
+  ROUTE_LINES.forEach(rl => {
+    const from = STATIONS_BY_ID[rl.from];
+    const to = STATIONS_BY_ID[rl.to];
+    const s = modeStyle[rl.mode];
+    const dx = to.x - from.x, dy = to.y - from.y;
+    const d = Math.sqrt(dx*dx + dy*dy);
+    const ux = dx/d, uy = dy/d;
+    const x1 = from.x + ux * 32, y1 = from.y + uy * 32;
+    const x2 = to.x - ux * 32, y2 = to.y - uy * 32;
+    
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', x1); line.setAttribute('y1', y1);
+    line.setAttribute('x2', x2); line.setAttribute('y2', y2);
+    line.setAttribute('stroke', s.color);
+    line.setAttribute('stroke-width', '2.4');
+    if (s.dash) line.setAttribute('stroke-dasharray', s.dash);
+    line.setAttribute('opacity', '0.85');
+    line.setAttribute('marker-end', s.marker);
+    linesG.appendChild(line);
+    
+    if (rl.label && rl.lpos) {
+      const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      text.setAttribute('x', rl.lpos.x);
+      text.setAttribute('y', rl.lpos.y);
+      text.setAttribute('fill', s.color);
+      text.setAttribute('font-size', '13');
+      text.setAttribute('text-anchor', 'middle');
+      text.setAttribute('font-weight', '500');
+      if (rl.lpos.r) text.setAttribute('transform', `rotate(${rl.lpos.r} ${rl.lpos.x} ${rl.lpos.y})`);
+      const tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+      tspan.textContent = rl.label;
+      text.appendChild(tspan);
+      labelsG.appendChild(text);
+    }
+  });
+  
+  TRIP.stations.forEach(s => {
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('class', 'city-node');
+    g.setAttribute('data-city', s.id);
+    g.setAttribute('tabindex', '0');
+    g.setAttribute('role', 'button');
+    g.setAttribute('aria-label', s.nameZh + '详细行程');
+    
+    const ring = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    ring.setAttribute('class', 'node-ring');
+    ring.setAttribute('cx', s.x); ring.setAttribute('cy', s.y);
+    ring.setAttribute('r', '34');
+    g.appendChild(ring);
+    
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('class', 'node-circle');
+    circle.setAttribute('cx', s.x); circle.setAttribute('cy', s.y);
+    circle.setAttribute('r', '28');
+    circle.setAttribute('fill', s.bg);
+    circle.setAttribute('stroke', s.stroke);
+    circle.setAttribute('stroke-width', '2.5');
+    g.appendChild(circle);
+    
+    const num = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    num.setAttribute('x', s.x); num.setAttribute('y', s.y);
+    num.setAttribute('fill', s.color);
+    num.setAttribute('font-size', '18');
+    num.setAttribute('font-weight', '700');
+    num.setAttribute('text-anchor', 'middle');
+    num.setAttribute('dominant-baseline', 'central');
+    num.setAttribute('pointer-events', 'none');
+    num.textContent = s.id;
+    g.appendChild(num);
+    
+    const labelOffsets = {
+      down: {name: [0, 58], sub1: [0, 80], sub2: [0, 102], anchor: 'middle'},
+      up:   {name: [0, -78], sub1: [0, -56], sub2: [0, -34], anchor: 'middle'},
+      right:{name: [48, -12], sub1: [48, 10], sub2: [48, 32], anchor: 'start'},
+      left: {name: [-48, -12], sub1: [-48, 10], sub2: [-48, 32], anchor: 'end'},
+    };
+    const off = labelOffsets[s.labelPos] || labelOffsets.down;
+    
+    const nameText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    nameText.setAttribute('x', s.x + off.name[0]);
+    nameText.setAttribute('y', s.y + off.name[1]);
+    nameText.setAttribute('fill', s.color);
+    nameText.setAttribute('font-size', '17');
+    nameText.setAttribute('font-weight', '700');
+    nameText.setAttribute('text-anchor', off.anchor);
+    nameText.setAttribute('pointer-events', 'none');
+    nameText.textContent = s.name;
+    g.appendChild(nameText);
+    
+    const sub1 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    sub1.setAttribute('x', s.x + off.sub1[0]);
+    sub1.setAttribute('y', s.y + off.sub1[1]);
+    sub1.setAttribute('fill', s.stroke);
+    sub1.setAttribute('font-size', '13');
+    sub1.setAttribute('text-anchor', off.anchor);
+    sub1.setAttribute('pointer-events', 'none');
+    sub1.textContent = s.dates + ' · ' + s.nights + ' 晚';
+    g.appendChild(sub1);
+    
+    if (s.festival) {
+      const sub2 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      sub2.setAttribute('x', s.x + off.sub2[0]);
+      sub2.setAttribute('y', s.y + off.sub2[1]);
+      sub2.setAttribute('fill', s.festival.includes('★') ? '#EF9F27' : '#888780');
+      sub2.setAttribute('font-size', '12');
+      sub2.setAttribute('text-anchor', off.anchor);
+      sub2.setAttribute('pointer-events', 'none');
+      sub2.textContent = s.festival;
+      g.appendChild(sub2);
+    }
+    
+    g.addEventListener('click', () => selectCity(s.id));
+    g.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectCity(s.id);
+      }
+    });
+    
+    nodesG.appendChild(g);
+  });
+}
+
+function selectCity(cityId) {
+  document.querySelectorAll('.city-node').forEach(n => {
+    n.classList.toggle('active', parseInt(n.dataset.city) === cityId);
+  });
+  
+  const s = STATIONS_BY_ID[cityId];
+  if (!s) return;
+  
+  const empty = document.getElementById('detail-empty');
+  const content = document.getElementById('detail-content');
+  empty.style.display = 'none';
+  
+  let daysHtml = '';
+  s.days.forEach(d => {
+    const star = d.star ? '<span class="star-mark">★</span>' : '';
+    daysHtml += `
+      <div class="day-row">
+        <div class="day-date-box">
+          <div class="day-date-num">${d.date}</div>
+          <div class="day-week">${d.week}</div>
+        </div>
+        <div class="day-content">
+          <div class="day-am">${star}${escapeHtml(d.am)}</div>
+          ${d.pm ? `<div class="day-pm">${escapeHtml(d.pm)}</div>` : ''}
+          ${d.lodging ? `<div class="day-lodging">🏨 ${escapeHtml(d.lodging)}</div>` : ''}
+        </div>
+      </div>`;
+  });
+  
+  content.innerHTML = `
+    <div class="detail-header">
+      <button class="close-detail" aria-label="关闭" onclick="clearSelection()">✕</button>
+      <div class="detail-header-top">
+        <div class="detail-num" style="background: ${s.bg}; color: ${s.color};">${s.id}</div>
+        <div class="detail-title-block">
+          <h2 class="detail-title">${s.nameZh}</h2>
+          <div class="detail-country">${s.country} · ${s.name}</div>
+        </div>
+      </div>
+      <div class="detail-meta">
+        <span class="meta-chip">📅 ${s.dates}</span>
+        <span class="meta-chip">🌙 ${s.nights} 晚</span>
+        ${s.festival ? `<span class="meta-chip festival">${s.festival}</span>` : ''}
+      </div>
+    </div>
+    <div class="detail-body">${daysHtml}</div>
+    <div class="detail-footer">
+      <div class="budget-line">
+        <span style="color: var(--text-mid);">本段预算 (两人合计)</span>
+        <span class="budget-amount" style="color: ${s.color};">${getBudgetForStation(s.id)}</span>
+      </div>
+      ${s.tips ? `<div class="tips-box">${s.tips}</div>` : ''}
+    </div>
+  `;
+}
+
+const STATION_BUDGETS = {
+  1: '$2,800', 2: '$2,400', 3: '$4,200', 4: '$3,000', 5: '$2,400',
+  6: '$2,700', 7: '$2,400', 8: '$2,400', 9: '$1,800', 10: '$4,500',
+  11: '$3,000', 12: '$2,000', 13: '$1,500', 14: '$2,200'
+};
+function getBudgetForStation(id) { return STATION_BUDGETS[id] || '—'; }
+
+function clearSelection() {
+  document.querySelectorAll('.city-node').forEach(n => n.classList.remove('active'));
+  document.getElementById('detail-content').innerHTML = '';
+  document.getElementById('detail-empty').style.display = '';
+}
+
+function escapeHtml(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function renderOverviewCards() {
+  const container = document.getElementById('overview-cards');
+  if (container.dataset.rendered) return;
+  container.dataset.rendered = '1';
+  let html = '';
+  TRIP.stations.forEach(s => {
+    html += `
+      <div class="station-card" onclick="goToMap(${s.id})">
+        <div class="station-card-top">
+          <div class="station-card-num" style="background: ${s.bg}; color: ${s.color};">${s.id}</div>
+          <div>
+            <div class="station-card-name">${s.nameZh}</div>
+            <div style="font-size: 11px; color: var(--text-soft);">${s.country} · ${s.name}</div>
+          </div>
+        </div>
+        <div class="station-card-meta">
+          <span>📅 ${s.dates}</span>
+          <span>🌙 ${s.nights} 晚</span>
+        </div>
+        <div class="station-card-highlight">${escapeHtml(s.activities)}</div>
+      </div>`;
+  });
+  container.innerHTML = html;
+}
+
+function goToMap(id) {
+  tabClick('map');
+  setTimeout(() => selectCity(id), 100);
+}
+
+function renderDaily() {
+  const tbody = document.getElementById('daily-tbody');
+  if (tbody.dataset.rendered) return;
+  tbody.dataset.rendered = '1';
+  let html = '';
+  let dayNum = 0;
+  TRIP.stations.forEach(s => {
+    s.days.forEach(d => {
+      dayNum++;
+      const star = d.star ? '<span class="star-mark">★</span>' : '';
+      html += `
+        <tr ${d.star ? 'style="background: var(--bg-tint);"' : ''}>
+          <td class="col-id">${dayNum}</td>
+          <td><strong>${d.date}</strong><br><span style="color: var(--text-soft); font-size: 11px;">${d.week}</span></td>
+          <td><span class="station-pill" style="background: ${s.color};">${s.id}</span> <span style="margin-left: 4px;">${escapeHtml(d.city || s.name)}</span></td>
+          <td>${star}${escapeHtml(d.am)}</td>
+          <td style="color: var(--text-mid);">${escapeHtml(d.pm)}</td>
+          <td style="font-size: 11px; color: var(--text-soft); white-space: nowrap;">${escapeHtml(d.lodging)}</td>
+        </tr>`;
+    });
+  });
+  tbody.innerHTML = html;
+}
+
+function renderFestivals() {
+  const container = document.getElementById('festivals-list');
+  if (container.dataset.rendered) return;
+  container.dataset.rendered = '1';
+  let html = '';
+  TRIP.festivals.forEach(f => {
+    const starred = (f.name || '').includes('★');
+    html += `
+      <div class="festival-card${starred ? ' starred' : ''}">
+        <div class="fest-date">${escapeHtml(f.date)}</div>
+        <div>
+          <div class="fest-name">${escapeHtml(f.name)}</div>
+          <div class="fest-place">📍 ${escapeHtml(f.place)} · ${escapeHtml(f.link)}</div>
+          <div class="fest-desc">${escapeHtml(f.desc)}</div>
+        </div>
+        <div class="fest-cost">${f.cost > 0 ? '$' + f.cost : '免费'}</div>
+      </div>`;
+  });
+  container.innerHTML = html;
+}
+
+function urgencyClass(u) {
+  if (u.includes('🔴')) return 'red';
+  if (u.includes('🟠')) return 'orange';
+  if (u.includes('🟡')) return 'yellow';
+  if (u.includes('🟢')) return 'green';
+  return 'gray';
+}
+
+function renderBookings() {
+  const tbody = document.getElementById('bookings-tbody');
+  if (tbody.dataset.rendered) return;
+  tbody.dataset.rendered = '1';
+  let html = '';
+  let total = 0;
+  TRIP.bookings.forEach(b => {
+    total += b.cost;
+    const uClass = urgencyClass(b.urgency);
+    const uText = b.urgency.replace(/[🔴🟠🟡🟢]/g, '').trim() || '一般';
+    html += `
+      <tr>
+        <td style="white-space: nowrap; font-weight: 500;">${escapeHtml(b.deadline)}</td>
+        <td><span class="urgency ${uClass}">${escapeHtml(uText)}</span></td>
+        <td>${escapeHtml(b.item)}</td>
+        <td style="font-size: 11px; color: var(--text-soft);">${escapeHtml(b.link)}</td>
+        <td class="num">${b.cost > 0 ? '$' + b.cost.toLocaleString() : '—'}</td>
+      </tr>`;
+  });
+  html += `
+    <tr style="background: var(--bg-soft); font-weight: 600;">
+      <td colspan="4">预估总计</td>
+      <td class="num">$${total.toLocaleString()}</td>
+    </tr>`;
+  tbody.innerHTML = html;
+}
+
+function renderBudget() {
+  const tbody = document.getElementById('budget-tbody');
+  if (tbody.dataset.rendered) return;
+  tbody.dataset.rendered = '1';
+  let html = '';
+  let tAug = 0, tSep = 0, tOct = 0;
+  TRIP.budget.forEach(b => {
+    tAug += b.aug; tSep += b.sep; tOct += b.oct;
+    const total = b.aug + b.sep + b.oct;
+    html += `
+      <tr>
+        <td style="font-weight: 500;">${escapeHtml(b.category)}</td>
+        <td class="num">$${b.aug.toLocaleString()}</td>
+        <td class="num">$${b.sep.toLocaleString()}</td>
+        <td class="num">$${b.oct.toLocaleString()}</td>
+        <td class="num"><strong>$${total.toLocaleString()}</strong></td>
+        <td style="font-size: 11px; color: var(--text-soft);">${escapeHtml(b.note)}</td>
+      </tr>`;
+  });
+  tbody.innerHTML = html;
+  
+  const tfoot = document.getElementById('budget-tfoot');
+  const total = tAug + tSep + tOct;
+  tfoot.innerHTML = `
+    <tr>
+      <td>总计 TOTAL</td>
+      <td class="num">$${tAug.toLocaleString()}</td>
+      <td class="num">$${tSep.toLocaleString()}</td>
+      <td class="num">$${tOct.toLocaleString()}</td>
+      <td class="num">$${total.toLocaleString()}</td>
+      <td style="font-size: 11px; color: var(--text-soft);">两人合计 · 平均 $${Math.round(total/91)}/天 · $${Math.round(total/91/2)}/人/天</td>
+    </tr>`;
+}
+
+function renderPacking() {
+  const container = document.getElementById('packing-groups');
+  if (container.dataset.rendered) return;
+  container.dataset.rendered = '1';
+  const grouped = {};
+  TRIP.packing.forEach(p => {
+    if (!grouped[p.category]) grouped[p.category] = [];
+    grouped[p.category].push(p);
+  });
+  let savedState = {};
+  try { savedState = JSON.parse(localStorage.getItem('packing_state') || '{}'); } catch (e) {}
+  let html = '';
+  Object.keys(grouped).forEach(cat => {
+    html += `<div class="packing-cat"><h3>${escapeHtml(cat)}</h3>`;
+    grouped[cat].forEach((p, idx) => {
+      const key = cat + '||' + p.item;
+      const checked = savedState[key];
+      html += `
+        <div class="packing-item${checked ? ' checked' : ''}" data-key="${escapeHtml(key)}">
+          <div class="packing-check${checked ? ' checked' : ''}"></div>
+          <div class="packing-item-text">
+            <div class="packing-item-name">${escapeHtml(p.item)}</div>
+            ${p.note ? `<div class="packing-item-note">${escapeHtml(p.note)}</div>` : ''}
+          </div>
+        </div>`;
+    });
+    html += `</div>`;
+  });
+  container.innerHTML = html;
+  
+  container.querySelectorAll('.packing-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const check = item.querySelector('.packing-check');
+      const key = item.dataset.key;
+      check.classList.toggle('checked');
+      item.classList.toggle('checked');
+      let state = {};
+      try { state = JSON.parse(localStorage.getItem('packing_state') || '{}'); } catch (e) {}
+      if (check.classList.contains('checked')) state[key] = true;
+      else delete state[key];
+      try { localStorage.setItem('packing_state', JSON.stringify(state)); } catch (e) {}
+    });
+  });
+}
+
+renderMap();
+selectCity(1);
+
+(function setupZoomPan() {
+  const viewport = document.getElementById('map-viewport');
+  const svg = document.getElementById('map-svg');
+  
+  let scale = 1;
+  let tx = 0, ty = 0;
+  const MIN = 0.5, MAX = 4;
+  
+  function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+  
+  function apply(animate = false) {
+    if (animate) {
+      svg.style.transition = 'transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)';
+    } else {
+      svg.style.transition = 'none';
+    }
+    svg.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+  }
+  
+  function clampPan() {
+    const rect = viewport.getBoundingClientRect();
+    const scaledW = rect.width * scale;
+    const scaledH = rect.height * scale;
+    if (scaledW <= rect.width) {
+      tx = (rect.width - scaledW) / 2;
+    } else {
+      const minTx = rect.width - scaledW;
+      tx = clamp(tx, minTx, 0);
+    }
+    if (scaledH <= rect.height) {
+      ty = (rect.height - scaledH) / 2;
+    } else {
+      const minTy = rect.height - scaledH;
+      ty = clamp(ty, minTy, 0);
+    }
+  }
+  
+  function zoomAt(factor, cx, cy) {
+    const newScale = clamp(scale * factor, MIN, MAX);
+    if (newScale === scale) return;
+    const rect = viewport.getBoundingClientRect();
+    const px = cx - rect.left;
+    const py = cy - rect.top;
+    tx = px - (px - tx) * (newScale / scale);
+    ty = py - (py - ty) * (newScale / scale);
+    scale = newScale;
+    clampPan();
+    apply(true);
+  }
+  
+  function zoomCenter(factor) {
+    const rect = viewport.getBoundingClientRect();
+    zoomAt(factor, rect.left + rect.width / 2, rect.top + rect.height / 2);
+  }
+  
+  function resetView() {
+    scale = 1;
+    tx = 0;
+    ty = 0;
+    clampPan();
+    apply(true);
+  }
+  
+  viewport.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const factor = e.deltaY < 0 ? 1.15 : 1/1.15;
+    zoomAt(factor, e.clientX, e.clientY);
+  }, { passive: false });
+  
+  let isDragging = false;
+  let dragStartX = 0, dragStartY = 0;
+  let dragOrigTx = 0, dragOrigTy = 0;
+  let didDrag = false;
+  
+  viewport.addEventListener('pointerdown', (e) => {
+    didDrag = false;
+    if (e.target.closest('.city-node')) return;
+    isDragging = true;
+    dragStartX = e.clientX;
+    dragStartY = e.clientY;
+    dragOrigTx = tx;
+    dragOrigTy = ty;
+    viewport.classList.add('dragging');
+    viewport.setPointerCapture(e.pointerId);
+  });
+  
+  viewport.addEventListener('pointermove', (e) => {
+    if (!isDragging) return;
+    const dx = e.clientX - dragStartX;
+    const dy = e.clientY - dragStartY;
+    if (Math.abs(dx) + Math.abs(dy) > 4) didDrag = true;
+    tx = dragOrigTx + dx;
+    ty = dragOrigTy + dy;
+    clampPan();
+    apply(false);
+  });
+  
+  function endDrag(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    viewport.classList.remove('dragging');
+    try { viewport.releasePointerCapture(e.pointerId); } catch (err) {}
+  }
+  viewport.addEventListener('pointerup', endDrag);
+  viewport.addEventListener('pointercancel', endDrag);
+  
+  document.querySelectorAll('.city-node').forEach(node => {
+    node.addEventListener('click', (e) => {
+      if (didDrag) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+      }
+    }, true);
+  });
+  
+  viewport.addEventListener('dblclick', (e) => {
+    if (e.target.closest('.city-node')) return;
+    zoomAt(1.6, e.clientX, e.clientY);
+  });
+  
+  let lastTouchDist = 0;
+  viewport.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 2) {
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      lastTouchDist = Math.sqrt(dx*dx + dy*dy);
+    }
+  }, { passive: true });
+  viewport.addEventListener('touchmove', (e) => {
+    if (e.touches.length === 2) {
+      e.preventDefault();
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (lastTouchDist > 0) {
+        const factor = dist / lastTouchDist;
+        const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+        zoomAt(factor, cx, cy);
+      }
+      lastTouchDist = dist;
+    }
+  }, { passive: false });
+  
+  window.addEventListener('keydown', (e) => {
+    if (document.querySelector('#view-map.active') === null) return;
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === '+' || e.key === '=') { e.preventDefault(); zoomCenter(1.3); }
+    else if (e.key === '-' || e.key === '_') { e.preventDefault(); zoomCenter(1/1.3); }
+    else if (e.key === '0') { e.preventDefault(); resetView(); }
+  });
+  
+  window.addEventListener('resize', () => {
+    clampPan();
+    apply(false);
+  });
+  
+  apply(false);
+})();
+</script>
+</body>
+</html>
