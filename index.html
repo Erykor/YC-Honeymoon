@@ -431,10 +431,103 @@
       margin: 0 -16px;
       background: var(--bg-card);
       border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.12s;
+    }
+
+    .day-row:hover {
+      background: var(--bg-soft);
     }
 
     .day-row:last-child {
       border-bottom: none;
+    }
+
+    .back-detail {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 14px;
+      padding: 6px 10px 6px 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 12px;
+      color: var(--text-mid);
+      font-family: inherit;
+      transition: background 0.12s, color 0.12s, border-color 0.12s;
+    }
+
+    .back-detail:hover {
+      background: var(--bg-soft);
+      color: var(--text);
+      border-color: var(--border-strong);
+    }
+
+    .day-detail-section {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .day-detail-section:last-child {
+      border-bottom: none;
+    }
+
+    .day-detail-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-soft);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .day-detail-text {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text);
+    }
+
+    .day-detail-title {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 0 0 4px;
+    }
+
+    .day-detail-title .day-detail-week {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-soft);
+      margin-left: 8px;
+    }
+
+    .day-notes-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .note-item {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 4px 0;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--text);
+    }
+
+    .note-icon {
+      text-align: center;
+      font-size: 13px;
+      margin-top: 1px;
+    }
+
+    .note-item.warn .note-text {
+      color: var(--red-text);
     }
 
     .day-date-box {
@@ -1190,6 +1283,495 @@
     const STATIONS_BY_ID = {};
     TRIP.stations.forEach(s => { STATIONS_BY_ID[s.id] = s; });
 
+    const DAY_NOTES = {
+      1: [
+        {type:'transport', text:'AMS 转机比赫尔辛基快 2h, 但都需要至少 90min+ 中转缓冲'},
+        {type:'time', text:'落地后撑到当地 21:00 再睡, 倒时差最快'},
+        {type:'transport', text:'Airlink 100 巴士 £4.5 单程, 终点 Waverley 火车站, 24h 运营'},
+        {type:'tip', text:'New Town 酒店靠近 St Andrew Sq 步行 10min 到 Royal Mile'}
+      ],
+      2: [
+        {type:'book', text:'Edinburgh Castle £22 必须提前 1 个月网订, 8 月旺季现场卖光'},
+        {type:'time', text:'13:00 城堡 One O\'Clock Gun 鸣炮, 12:45 占位拍视频'},
+        {type:'eat', text:'Royal Mile 北段 Whiski 传统苏格兰菜性价比高 £20-30/人'},
+        {type:'tip', text:'Royal Mile 街头表演 11:00-14:00 最密集, 别错过'}
+      ],
+      3: [
+        {type:'gear', text:'防风外套必带, Arthur\'s Seat 山顶降温 5-10℃ 风大'},
+        {type:'time', text:'8:00 出发避开 11:00 后的徒步人潮 + 旅游团'},
+        {type:'tip', text:'Dean Village 网红打卡, 早 9 点前最安静且光线柔和'},
+        {type:'book', text:'Stand Comedy Club 21:00 场 £18 提前 1 天网订, 入场需提前 30min'}
+      ],
+      4: [
+        {type:'book', text:'Traverse Theatre 2 月起售热门场, Fringe 开幕日当天常售罄'},
+        {type:'time', text:'George Square 户外 11:00 开始, 建议 11:30 前到不错'},
+        {type:'tip', text:'Underbelly day pass £30 当天买更灵活, 可跨多场地'},
+        {type:'warn', text:'凌晨 cabaret 常超时, 别订 21:30 紧接的下一场'}
+      ],
+      5: [
+        {type:'time', text:'Stockbridge Market 仅周日 (8/9) 开, 这天周六去 Edinburgh Farmers Market'},
+        {type:'eat', text:'Stockbridge 区 The Pantry 早午餐性价比高, 提前 10:00 到避免排队'},
+        {type:'tip', text:'Fringe 周六场次最多但票紧, 用 Underbelly day pass 灵活切'},
+        {type:'warn', text:'Grassmarket 周六凌晨吵闹, 打车 £8 回酒店比走路安全'}
+      ],
+      6: [
+        {type:'transport', text:'Rabbie\'s 7:30 准点发车, 6:50 到 Royal Mile 上车点办手续'},
+        {type:'gear', text:'防水夹克 + 围巾, 高地天气 1 小时变 3 次'},
+        {type:'tip', text:'Urquhart Castle 废墟角度拍 Loch Ness 最经典'},
+        {type:'eat', text:'12:00 Fort Augustus 1h 用餐, 别在车上吃避免晕车'}
+      ],
+      7: [
+        {type:'book', text:'Wizz/Ryanair 严格 1 件 carry-on, 超重罚 £55/件'},
+        {type:'time', text:'Edinburgh Airport 至少提前 90min, 安检常拥堵'},
+        {type:'transport', text:'落地 Budapest 用 100E Airport Express €2.2 直达 Deák Ferenc 广场'},
+        {type:'tip', text:'Pest 5/7 区步行可达 Sziget 摆渡点'}
+      ],
+      8: [
+        {type:'book', text:'Sziget 5-Day Pass €330 早鸟必须 5/13 前订, 之后涨价 20%'},
+        {type:'time', text:'14:00 开岛, 16:00 前进可避开拥堵'},
+        {type:'gear', text:'防水袋 + 便携椅 + 雨衣 (8 月午后阵雨常见)'},
+        {type:'warn', text:'14:00 前太阳大, 不要在 open 区域长时间待'}
+      ],
+      9: [
+        {type:'time', text:'中午 12:00 才起床, 14:00 再进岛, 节省体力'},
+        {type:'eat', text:'岛内餐 €12-18/份, 自带零食 + 水可省一半'},
+        {type:'tip', text:'Art Zone 13-15:00 有装置艺术家现场创作可互动'},
+        {type:'warn', text:'凌晨返程排 1h, 02:00 前出岛最稳'}
+      ],
+      10: [
+        {type:'book', text:'Széchenyi 温泉提前网订 €25, 现场 €30'},
+        {type:'time', text:'10:00 入场, 14:00 前出, 避开 16:00 后高峰'},
+        {type:'eat', text:'城市公园旁 Gundel 老牌餐厅 (晚游船前可去, 需正装)'},
+        {type:'tip', text:'Legenda 多瑙河晚餐游船 19:00 班次景色最好'}
+      ],
+      11: [
+        {type:'time', text:'Main stage headliner 通常 22:30 上台, 22:00 前占位'},
+        {type:'tip', text:'Wristband 提供更换券, 周五新券可换 €15 食物'},
+        {type:'gear', text:'夜晚降到 16℃, 带件薄外套'}
+      ],
+      12: [
+        {type:'book', text:'圣斯蒂芬大教堂 €5, 14:00 后人少光线柔'},
+        {type:'time', text:'周六 main stage 最大牌, 19:00 进岛占好位'},
+        {type:'warn', text:'Sziget 周六 04:00 后地铁停, 打车 €15 回市区'}
+      ],
+      13: [
+        {type:'book', text:'SAS 经哥本哈根托运严格 23kg, 超重 €60/kg'},
+        {type:'time', text:'KEF 落地 1h 海关排队, 17:00 出关算正常'},
+        {type:'transport', text:'KEF 取车 50min 自驾到 Reykjavík, 加油站 N1/Olis'},
+        {type:'tip', text:'Bonus 超市性价比最高 (粉红小猪招牌)'}
+      ],
+      14: [
+        {type:'eat', text:'Bæjarins Beztu 街头热狗 €4, 加 mustard + crispy onion 最正宗'},
+        {type:'tip', text:'Hallgrímskirkja 塔顶看城市全景 £8 升降梯, 5min 排队'},
+        {type:'warn', text:'Reykjanes 半岛地热路段路面有冰, 慢速驾驶'}
+      ],
+      15: [
+        {type:'book', text:'冰岛马 tölt 体验 €90/人, 提前 1 周邮件订'},
+        {type:'time', text:'Geysir 间歇泉每 6-10min 喷一次, 不必长等'},
+        {type:'eat', text:'Friðheimar 番茄汤 €15 + 自助番茄罗勒酱'},
+        {type:'gear', text:'防水鞋 (Gullfoss 瀑布水雾很大), 雨衣'}
+      ],
+      16: [
+        {type:'tip', text:'Seljalandsfoss 走到瀑布后面 5min, 一定淋湿'},
+        {type:'warn', text:'DC-3 飞机残骸往返 1h 沙地, 风沙大注意手机'},
+        {type:'eat', text:'Vík 镇 Suður-Vík 餐厅羊肉汤 €18 暖身'},
+        {type:'gear', text:'冲锋裤 + 防水靴, 不只是上身夹克'}
+      ],
+      17: [
+        {type:'book', text:'Sólheimajökull 冰川 tour €100/人, 提前 1 周订'},
+        {type:'gear', text:'保暖手套 + 帽子 (集合点提供冰爪/头盔)'},
+        {type:'warn', text:'冰川 crevasse 深裂缝严格跟向导, 不要独自探索'},
+        {type:'time', text:'tour 8:30 集合, 3.5h, 包午餐'}
+      ],
+      18: [
+        {type:'time', text:'8:00 前到 Jökulsárlón 才能避开旅游大巴'},
+        {type:'book', text:'Zodiac 快艇 €120/人, 7:00 网订即可'},
+        {type:'warn', text:'东峡湾国道 1 段 4h 蜿蜒, 晕车人备药'},
+        {type:'tip', text:'Diamond Beach 黑沙 + 冰块倒影最佳光是中午 12-13:00'}
+      ],
+      19: [
+        {type:'tip', text:'Seyðisfjörður 彩虹街最美时段 11:00-13:00 阳光直射'},
+        {type:'eat', text:'Mývatn 出来后 Vogafjós 农场餐厅奶制品早餐'},
+        {type:'time', text:'Mývatn Nature Baths €35 比 Blue Lagoon 便宜一半'},
+        {type:'warn', text:'东峡湾 → Mývatn 5h 公路, 加满油 (无服务区)'}
+      ],
+      20: [
+        {type:'gear', text:'Hverir 硫磺地味重, 别穿白色, 头巾防味'},
+        {type:'tip', text:'Goðafoss 两岸都看, 北岸停车场免费'},
+        {type:'warn', text:'Krafla 火山口路面有融雪, 限速 30km/h'}
+      ],
+      21: [
+        {type:'time', text:'Akureyri 漫步 1.5h 够, 城市不大'},
+        {type:'transport', text:'Akureyri → Stykkishólmur 4h 自驾, 中途 Hvammstangi 加油'},
+        {type:'eat', text:'Akureyri 港口 Bryggjan 海鲜浓汤 €18'}
+      ],
+      22: [
+        {type:'time', text:'Kirkjufell 教堂山日落 21:00 最美 (8 月)'},
+        {type:'tip', text:'Djúpalónssandur 黑滩有传统渔民举重石可试'},
+        {type:'warn', text:'Snæfellsjökull 火山顶 4WD 强制, 普通车上不去'}
+      ],
+      23: [
+        {type:'time', text:'KEF 还车提前 1h, 油加满 (Olis 加油站机场对面)'},
+        {type:'book', text:'Icelandair 行李托运 1 件 23kg 免费, 超重 ISK 4500/kg'},
+        {type:'tip', text:'KEF 候机楼免税店 Bonus 杂货比市区便宜'}
+      ],
+      24: [
+        {type:'book', text:'Swiss Travel Pass 8 天 CHF 419/人, 出发前 sbb.ch 网订'},
+        {type:'transport', text:'Zurich → Interlaken Ost 火车 2h, 经 Bern'},
+        {type:'tip', text:'Lauterbrunnen 比 Interlaken 镇便宜 30% + 安静'}
+      ],
+      25: [
+        {type:'time', text:'Trümmelbach 9:00-17:00 开放, 13:00 后人多'},
+        {type:'gear', text:'冰洞内 4℃, 短袖会冷, 备薄外套'},
+        {type:'eat', text:'Hotel Oberland 餐厅 raclette 烤奶酪 CHF 22'}
+      ],
+      26: [
+        {type:'book', text:'Jungfraujoch CHF 95 (Swiss Travel Pass 5 折 ~CHF 48)'},
+        {type:'time', text:'7:30 第一班车上山, 9:00 前到顶避旅团'},
+        {type:'gear', text:'3,571m 海拔, 备 Diamox 防高反 + 太阳镜'},
+        {type:'warn', text:'冰宫地面滑, 慢走, 不要倒退拍照'}
+      ],
+      27: [
+        {type:'book', text:'Piz Gloria 旋转餐厅午餐 CHF 50 (007 主题菜)'},
+        {type:'tip', text:'Northface Trail 看 Eiger 北壁全景, 6km 平缓'},
+        {type:'time', text:'10:00 前上 Schilthorn 避免午后云遮峰'}
+      ],
+      28: [
+        {type:'book', text:'Skywings 双人滑翔伞 CHF 200/人 20min, 提前 1 周订'},
+        {type:'time', text:'10:00 / 14:00 班次, 风稳定时段'},
+        {type:'warn', text:'心脏病或高血压不建议参加'},
+        {type:'tip', text:'Höhematte 草坪也是着陆点, 14:00 看着陆很精彩'}
+      ],
+      29: [
+        {type:'time', text:'Bachalpsee 徒步 6km 2h, 中午前完成避免雷雨'},
+        {type:'book', text:'First Flyer 钢索 CHF 31, 现场买票'},
+        {type:'gear', text:'登山杖 + 防水鞋 (高山湖周边湿滑)'}
+      ],
+      30: [
+        {type:'book', text:'alpkäserei 半日 CHF 80/人, 提前邮件订'},
+        {type:'time', text:'06:30-09:00 跟挤奶, 09:00-12:00 做奶酪, 12:00 共午餐'},
+        {type:'gear', text:'防滑橡胶靴 (圈舍湿滑, 农场会提供)'},
+        {type:'tip', text:'9 月初有些村办 Alpabzug 赶牛下山节, 问 hotel front desk'}
+      ],
+      31: [
+        {type:'book', text:'Swiss/Vueling €100/人, 23kg 托运 €40 加价'},
+        {type:'tip', text:'Barcelona Eixample 区步行 5min 到 Sagrada'},
+        {type:'warn', text:'Zurich → Interlaken 早班车 6:30, Lauterbrunnen 5:50 出门'}
+      ],
+      32: [
+        {type:'book', text:'Sagrada Família + 塔顶 €40 提前 1 月订, 现场不卖'},
+        {type:'time', text:'9:30 入场避旅团; Passion 塔比 Nativity 塔视野好'},
+        {type:'eat', text:'El Born 区 Cal Pep 站立 tapas €30, 排队 30min'},
+        {type:'tip', text:'Park Güell 选 9-11 入场, 拍照人少光线好'}
+      ],
+      33: [
+        {type:'book', text:'Casa Batlló €35 + Casa Milà €28 可叠加买'},
+        {type:'eat', text:'Picasso Museum 旁 Brunch & Cake 西班牙土豆饼必点'},
+        {type:'book', text:'Flamenco Tablao Cordobés 21:00 场 €52 含 1 杯酒'}
+      ],
+      34: [
+        {type:'transport', text:'Tibidabo 公交 196 路 + 缆车 €11.4 来回'},
+        {type:'eat', text:'Barceloneta 海鲜午餐 La Mar Salada paella €28/人'},
+        {type:'warn', text:'Camp Nou 改造中, 临时主场 Estadi Olímpic, 票需提前 1 周订'}
+      ],
+      35: [
+        {type:'transport', text:'R5 火车 Plaça Espanya 出发 1h 到 Aeri'},
+        {type:'time', text:'07:36 第一班车避旅团 (10:00 大批到)'},
+        {type:'tip', text:'Sant Jeroni 山顶 3h 来回, 视野 360°'}
+      ],
+      36: [
+        {type:'transport', text:'Girona R11 火车 1.5h, 单程 €13'},
+        {type:'tip', text:'Girona 老城犹太区 + 大教堂 (《权游》Braavos 取景)'},
+        {type:'eat', text:'Boira Restaurante 老城最佳河景'}
+      ],
+      37: [
+        {type:'book', text:'Vueling 经济 €120/人, 1 件随身免费'},
+        {type:'time', text:'Dubrovnik 黄昏城墙散步 18:00-20:00 不晒'},
+        {type:'tip', text:'Dubrovnik 机场到老城打车 €30, GoOpti shuttle €10'}
+      ],
+      38: [
+        {type:'book', text:'城墙 8:00 入场 (€35) 避免日晒'},
+        {type:'eat', text:'Buža Bar 悬崖酒吧傍晚 Aperol €5, 排队 30min'},
+        {type:'tip', text:'Lokrum 岛船 €27 含上岛, 11:00 班次回程游客少'},
+        {type:'warn', text:'城墙单向 2h, 中途出口少, 备水 + 帽子'}
+      ],
+      39: [
+        {type:'transport', text:'Jadrolinija 渡轮 Dubrovnik → Split 4.5h €40 比自驾好'},
+        {type:'tip', text:'戴克里先宫殿内住宿独特但晚上吵, 选靠西门'},
+        {type:'eat', text:'Riva 海滨晚餐 Konoba Fetivi 海鲜性价比'}
+      ],
+      40: [
+        {type:'book', text:'家庭船海钓 + peka €80/人 (split-fishing-trips.com)'},
+        {type:'time', text:'9:00 出海 4-5h, 包午餐 (peka 是覆盖石板烤章鱼)'},
+        {type:'gear', text:'防晒帽 + SPF 50 防晒霜, 海上紫外线强'},
+        {type:'tip', text:'Trogir 顺路 30min 看, 不停留过夜'}
+      ],
+      41: [
+        {type:'book', text:'Krka €30, 周日比周六人少 30%'},
+        {type:'gear', text:'泳衣 + 拖鞋 + 速干毛巾'},
+        {type:'tip', text:'Skradinski Buk 9 月水温 22℃ 舒适, 早 9-11 点人最少'}
+      ],
+      42: [
+        {type:'transport', text:'Split → Plitvice 自驾 3h, 高速 + 国道'},
+        {type:'time', text:'15:00 后 B 票 €15 比早场 €40 便宜一半'},
+        {type:'tip', text:'住 Mukinje 村 walking distance 比 Plitvice 旅馆便宜 40%'}
+      ],
+      43: [
+        {type:'time', text:'7:30 第一班入园, K 线 8h 全走避开 10:00 后旅团'},
+        {type:'gear', text:'防水鞋 + 防滑底, 栈道常喷雾'},
+        {type:'eat', text:'园内餐饮贵且差, 自带三明治'},
+        {type:'warn', text:'K 线 18km 体能消耗大, 心脏不好选 H 线短段'}
+      ],
+      44: [
+        {type:'transport', text:'Plitvice → Zagreb 机场 2h, Volotea/Croatia Air 飞 Venice 1h'},
+        {type:'tip', text:'Venice 取车直接到 Val Gardena 2.5h, 走 A22 高速'},
+        {type:'warn', text:'意大利高速无 vignette, Auronzo 等局部收费道现金'}
+      ],
+      45: [
+        {type:'book', text:'Seceda 缆车 €40 现场买票, 8:30 开'},
+        {type:'gear', text:'高山 2,500m, 早晚 5℃, 中午 15℃'},
+        {type:'tip', text:'Adolf Munkel Weg 观 Odle 北壁最佳角度'},
+        {type:'warn', text:'下午雷雨 (9 月山区常), 14:00 前下山'}
+      ],
+      46: [
+        {type:'transport', text:'9:00-17:00 私车禁止上山, 用缆车'},
+        {type:'eat', text:'Rifugio Sanon 烤肠 + polenta €18, 中午前到避免排队'},
+        {type:'gear', text:'登山杖必备, 牧场起伏不平'}
+      ],
+      47: [
+        {type:'book', text:'Rifugio Locatelli 6 月初订 €70/人含晚餐, 周末爆满'},
+        {type:'gear', text:'山屋自备 silk liner + 头灯 + 充电宝'},
+        {type:'warn', text:'山屋共享卫浴 + 多人间, 不接信用卡 (现金)'},
+        {type:'tip', text:'晚 19:00 集体晚餐, 22:00 熄灯, 7:00 早餐'}
+      ],
+      48: [
+        {type:'time', text:'6:30 日出三峰金色, 6:00 起床占位'},
+        {type:'book', text:'Lago di Braies 停车提前 1 月订 braies.eu €30'},
+        {type:'tip', text:'9:00 前到 Braies 才能拍水面平静无风'},
+        {type:'warn', text:'山屋下山后已大累, 下午务必午睡恢复'}
+      ],
+      49: [
+        {type:'transport', text:'Ortisei → Cinque Torri 自驾 1h, Falzarego 山口取缆车'},
+        {type:'eat', text:'Rifugio Scoiattoli 山顶餐厅 polenta + venison'},
+        {type:'tip', text:'WWI 战壕保留完整, 走 1h 历史步道'}
+      ],
+      50: [
+        {type:'transport', text:'EC Bolzano → München Hbf 火车 4h €60'},
+        {type:'time', text:'Theresienwiese 9/22 是 Oktoberfest 前一天, 帐篷设置可去感受'},
+        {type:'tip', text:'Munich Hbf 站 left luggage 锁柜 €6/天'}
+      ],
+      51: [
+        {type:'book', text:'Schottenhamel 帐篷下午档 15:00-19:00 €100/人, 提前订'},
+        {type:'time', text:'12:00 市长开桶 (O\'zapft is!) 在 Schottenhamel, 可去围观'},
+        {type:'gear', text:'Dirndl/Lederhosen 提前购置, C&A €80-150'},
+        {type:'warn', text:'1L 啤酒 = 3 杯, 配半烤鸡, 别空腹喝'}
+      ],
+      52: [
+        {type:'tip', text:'Residenz 慕尼黑王宫 €9, 至少留 2h'},
+        {type:'eat', text:'Viktualienmarkt 中午 Bavarian Bratwurst stand 性价比高'},
+        {type:'time', text:'BMW Welt 周三对外免费, Olympic Park 黄昏好看'}
+      ],
+      53: [
+        {type:'book', text:'Neuschwanstein €23 提前 1 周网订, 现场常无票'},
+        {type:'time', text:'8:00 出发, 城堡入场 11:00, 上午时段票最好'},
+        {type:'tip', text:'Marienbrücke 桥拍城堡, 风大手机别掉'},
+        {type:'warn', text:'10 月 Marienbrücke 关闭维修, 9 月最后窗口'}
+      ],
+      54: [
+        {type:'book', text:'ÖBB Sparschiene 早订半价 €15-30'},
+        {type:'eat', text:'Stiegl Brauwelt 17:00 后表演 + 自助 €75'},
+        {type:'tip', text:'Mozart 故居小心被骗 (旁边复制店收同样价格)'}
+      ],
+      55: [
+        {type:'book', text:'Salzwelten 盐矿 €38 选木滑道版 (含 2 个滑道)'},
+        {type:'gear', text:'盐矿内 10℃, 工作服提供'},
+        {type:'warn', text:'Hallstatt 12:00-14:00 旅游团高峰, 中午找咖啡馆躲'},
+        {type:'tip', text:'住 Gosau/Obertraun 比镇上便宜 50% + 安静'}
+      ],
+      56: [
+        {type:'book', text:'Königssee 电动船 €23 提前 1 周 (8:30 第一班最美)'},
+        {type:'tip', text:'St. Bartholomä 教堂码头有回声测试 (船员吹号回响 7 次)'},
+        {type:'warn', text:'Ice Chapel 9 月底已结冰, 滑底鞋必备'}
+      ],
+      57: [
+        {type:'book', text:'Schafberg 齿轮山火车 €43, 9 月底最后运营月'},
+        {type:'time', text:'10:00 班次上山 11:30 山顶 (Wolfgangsee 全景)'},
+        {type:'tip', text:'St. Wolfgang 白马旅馆 Weisses Rössl 历史餐厅午餐'}
+      ],
+      58: [
+        {type:'book', text:'ÖBB+Trenitalia 联程 8h €130/人 (sb-railway.eu 联订)'},
+        {type:'time', text:'8:00 出发, 16:00 到 Florence, 沿途多洛米蒂南坡景色'},
+        {type:'tip', text:'Bolzano 站停 25min 可下车买 panino 当午餐'}
+      ],
+      59: [
+        {type:'book', text:'Uffizi €25 提前 1 月订, 9:00 第一批入场'},
+        {type:'time', text:'2h 走完 1F 文艺复兴; 3h+ 才能全看'},
+        {type:'eat', text:'Trattoria Mario 仅中午营业 12:30-15:00, 11:30 排队'},
+        {type:'tip', text:'Ponte Vecchio 黄昏看夕阳, 不要中午'}
+      ],
+      60: [
+        {type:'book', text:'Accademia €16 + Duomo 登顶 €30 提前订'},
+        {type:'time', text:'Duomo 463 阶, 9:30 上去不晒'},
+        {type:'gear', text:'平底鞋, 阶梯陡 + 狭窄'}
+      ],
+      61: [
+        {type:'book', text:'Wine to Wine 周末通票 €20, Panzano 主广场领'},
+        {type:'transport', text:'佛罗伦萨 → Panzano 自驾 1h, 不要喝完开车'},
+        {type:'warn', text:'酒驾血酒精 0.05% (1 杯), 警察查严'}
+      ],
+      62: [
+        {type:'tip', text:'Greve in Chianti 周日早集市 (奶酪/橄榄油)'},
+        {type:'eat', text:'Montefioralle 古村午餐 Antica Macelleria Cecchini 牛排经典'}
+      ],
+      63: [
+        {type:'book', text:'Castello di Verrazzano 酒庄 €35 品鉴 + €70 午餐, 提前订'},
+        {type:'tip', text:'agriturismo 选带泳池 + 早餐, 不带早餐就住镇上'}
+      ],
+      64: [
+        {type:'book', text:'San Miniato 白松露猎搜 €150/人 提前 2 周'},
+        {type:'tip', text:'olive harvest 10 月头到 11 月中, 早订赶上 frantoio 现榨'},
+        {type:'gear', text:'白松露猎搜走林地, 长袖长裤防蚊'},
+        {type:'warn', text:'松露价格 €350/100g+, 现场买货比拍卖便宜'}
+      ],
+      65: [
+        {type:'book', text:'Torre del Mangia 登顶 €10 (88m 阶梯陡)'},
+        {type:'eat', text:'Osteria Le Logge 14:00 后预约才有位'},
+        {type:'time', text:'Piazza del Campo 不能停车, 老城外停 €15/天'}
+      ],
+      66: [
+        {type:'tip', text:'Pienza 周二早市集 (pecorino 奶酪+truffles)'},
+        {type:'eat', text:'Montalcino Enoteca Osticcio Brunello 7 杯品鉴 €25'},
+        {type:'warn', text:'Val d\'Orcia 山路弯多, 别开太快, 限速 50'}
+      ],
+      67: [
+        {type:'book', text:'Cinque Terre Card €18.5 含 5 村火车 + 步道'},
+        {type:'time', text:'8:00 La Spezia 火车出发, 9:30 到 Monterosso'},
+        {type:'eat', text:'Monterosso 海滩 Belvedere acciughe 凤尾鱼 €12'},
+        {type:'warn', text:'Vernazza → Manarola 海岸步道关闭, 走山道 1h'}
+      ],
+      68: [
+        {type:'book', text:'参与式酿酒工作坊 €120/人, 农庄主家庭式'},
+        {type:'time', text:'10:00-15:00 包午餐 + 装瓶带走'},
+        {type:'tip', text:'晚上农庄主家庭晚餐 19:30 起, 别错过'}
+      ],
+      69: [
+        {type:'transport', text:'Tuscany → Alba 自驾 3.5h, 经热那亚或米兰'},
+        {type:'tip', text:'米兰路线途中 Eataly 旗舰可停 30min 采购'}
+      ],
+      70: [
+        {type:'tip', text:'Cortile della Maddalena 松露市场工作日开市, 周末爆满'},
+        {type:'eat', text:'La Morra Trattoria del Bivio agnolotti del plin'},
+        {type:'time', text:'Cappella del Barolo 彩色教堂 1h 内看完'}
+      ],
+      71: [
+        {type:'book', text:'Marchesi di Barolo 酒庄 €25 提前 1 周'},
+        {type:'eat', text:'La Morra Bovio 餐厅 Brunello 配 tajarin'},
+        {type:'warn', text:'Pio Cesare/Ceretto 顶级酒庄严格预约, 不接 walk-in'}
+      ],
+      72: [
+        {type:'time', text:'Fiera del Marrone 街头市集 10-19:00'},
+        {type:'eat', text:'栗子炖肉 cinghiale al castagne + 烤栗子 €5/份'},
+        {type:'gear', text:'10 月山区 12-18℃, 中层羽绒'}
+      ],
+      73: [
+        {type:'tip', text:'Bra 是 Slow Food 总部, Pollenzo 美食大学可访客'},
+        {type:'book', text:'Castello di Roddi 城堡午餐 €40, 周三关门'},
+        {type:'eat', text:'Bra Boccondivino 是 Slow Food 创始餐厅 1986 年开业'}
+      ],
+      74: [
+        {type:'time', text:'Asti Spumante 酒庄午餐 12:00 起, 提前预约'},
+        {type:'tip', text:'Moncalvo 山顶村庄是 Monferrato 区视野最佳'},
+        {type:'warn', text:'Asti 周一闭店多, 周五 OK'}
+      ],
+      75: [
+        {type:'book', text:'World Truffle Market €18, 9:00 进避免排队'},
+        {type:'tip', text:'5g 试吃 €18, 100g 起 €350, 现场鉴定'},
+        {type:'book', text:'Cooking class with truffle €130/人 (午餐含)'}
+      ],
+      76: [
+        {type:'transport', text:'Torino 机场 TAP 经里斯本 €130/人'},
+        {type:'time', text:'最后逛松露市场 8:00-11:00, 12:00 启程 Torino 1h'}
+      ],
+      77: [
+        {type:'transport', text:'28 路电车经典线 (上 Praça Martim Moniz 终 Campo Ourique)'},
+        {type:'book', text:'Clube de Fado €40 含晚餐 21:00 演出, 提前 3 天'},
+        {type:'eat', text:'Alfama 老城 Mesa de Frades 古宅小餐厅'},
+        {type:'warn', text:'28 路高峰有扒手, 看好包'}
+      ],
+      78: [
+        {type:'book', text:'Mosteiro dos Jerónimos €18, 9:30 第一批避旅团'},
+        {type:'eat', text:'Pastéis de Belém 1837 老店, 招牌蛋挞 €1.4/个'},
+        {type:'tip', text:'LX Factory 周日早集市 (11-19)'}
+      ],
+      79: [
+        {type:'book', text:'Pena Palace €15 + Quinta da Regaleira €15'},
+        {type:'time', text:'8:00 前到 Pena, 9:00 后旅团爆满'},
+        {type:'transport', text:'Lisbon → Sintra 火车 40min €2.3, Rossio 站发车'},
+        {type:'tip', text:'Cabo da Roca 欧亚最西端有证书可领 €11'}
+      ],
+      80: [
+        {type:'book', text:'Pastéis de Nata 烘焙课 €40/人 (Lisbon Cooking Academy)'},
+        {type:'time', text:'10:00 课 2h, 自己擀千层 + 烤 6 个带走'},
+        {type:'book', text:'Tagus 河 sunset 帆船 €45/人, 18:00 班次秋季最美'}
+      ],
+      81: [
+        {type:'transport', text:'Lisbon → Nazaré 巴士 2h €15 (FlixBus)'},
+        {type:'tip', text:'Sítio 悬崖老城 100m 海拔, 与海滩 Praia 有 funicular'},
+        {type:'eat', text:'Mar à Vista 餐厅海鲜 + 葡国白葡萄酒 €25/餐'}
+      ],
+      82: [
+        {type:'time', text:'nazarewaves.com 1 周浪报, 早 8:00 更新'},
+        {type:'tip', text:'圣米格尔灯塔 (Forte de São Miguel) 观浪最佳点'},
+        {type:'eat', text:'大浪博物馆 €2 看 Garrett McNamara 冲浪传奇'}
+      ],
+      83: [
+        {type:'book', text:'Baleal 冲浪课 €40/2h 含板+潜水服, 周末通常排满'},
+        {type:'transport', text:'Nazaré → Baleal 自驾 30min, 沿海公路风景'},
+        {type:'gear', text:'潜水服由学校提供, 自备速干内衣'}
+      ],
+      84: [
+        {type:'time', text:'Óbidos 9:00 进城前停车 (城内禁车)'},
+        {type:'eat', text:'樱桃酒 ginja 倒巧克力杯里 €1.5, 老城传统'},
+        {type:'transport', text:'Nazaré → Porto 自驾 2h, A8 高速'}
+      ],
+      85: [
+        {type:'book', text:'Livraria Lello €8 提前网订 (现场没票卖)'},
+        {type:'time', text:'9:30 开门第一批进, 否则排队 1h'},
+        {type:'tip', text:'São Bento 火车站瓷砖大厅 11:00 顶光最佳'},
+        {type:'warn', text:'Clérigos 塔 240 阶, 老人/膝盖差不建议'}
+      ],
+      86: [
+        {type:'book', text:'Douro Valley day tour €75/人 (Viator/GetYourGuide)'},
+        {type:'time', text:'8:00 集合, 19:00 返, 含船游 1h + 2 quinta + 午餐'},
+        {type:'tip', text:'最美季节 9-10 月红叶, 葡萄收成已完景色巅峰'}
+      ],
+      87: [
+        {type:'tip', text:'Foz do Douro 入海口傍晚日落很美, 走 1km 海岸步道'},
+        {type:'eat', text:'Comur 罐头店百年沙丁鱼罐头, 按生日年份卖 €5-10'},
+        {type:'eat', text:'Café Majestic Belle Époque 装修是 J.K. Rowling 写哈利波特的灵感地'}
+      ],
+      88: [
+        {type:'book', text:'Taylor\'s + Graham\'s 提前 1 周订, 各 €25 含品酒'},
+        {type:'tip', text:'缆车 Gaia 双层桥 €6 来回 (绝佳河景)'},
+        {type:'eat', text:'Cantinho do Avillez 米其林推荐, 主厨 José Avillez'}
+      ],
+      89: [
+        {type:'warn', text:'Bolhão 市场 11/1 全圣节关门, 今天必买伴手礼'},
+        {type:'eat', text:'Café Majestic 早餐 (经典 Belle Époque 室内)'},
+        {type:'book', text:'Fado 演出 €40 含晚餐 Casa da Mariquinhas 老牌'}
+      ],
+      90: [
+        {type:'warn', text:'葡萄牙 Dia de Todos os Santos 多数景点/市场关门'},
+        {type:'tip', text:'Ribeira 河边咖啡 + Sé do Porto 教堂上午常开'},
+        {type:'eat', text:'Ribeira 河边 Adega São Nicolau 葡国传统菜'}
+      ],
+      91: [
+        {type:'time', text:'Porto 机场 OPO 至少提前 2.5h, 经法兰克福转 14h'},
+        {type:'tip', text:'机场免税最后采购 Vinho Verde + 罐头 + 蛋挞 (3 小时保鲜)'},
+        {type:'warn', text:'托运行李用尼龙塑料布包裹 (机场行李分拣常蹭)'}
+      ]
+    };
+
     const ROUTE_LINES = [
       { from: 1, to: 2, mode: 'flight', label: '8/10 ✈ 3h', lpos: { x: 810, y: 350, r: -8 } },
       { from: 2, to: 3, mode: 'flight', label: '8/16 ✈ 3.5h', lpos: { x: 660, y: 320, r: 0 } },
@@ -1367,10 +1949,10 @@
       empty.style.display = 'none';
 
       let daysHtml = '';
-      s.days.forEach(d => {
+      s.days.forEach((d, idx) => {
         const star = d.star ? '<span class="star-mark">★</span>' : '';
         daysHtml += `
-      <div class="day-row">
+      <div class="day-row" onclick="selectDay(${cityId}, ${idx})">
         <div class="day-date-box">
           <div class="day-date-num">${d.date}</div>
           <div class="day-week">${d.week}</div>
@@ -1421,6 +2003,66 @@
       document.querySelectorAll('.city-node').forEach(n => n.classList.remove('active'));
       document.getElementById('detail-content').innerHTML = '';
       document.getElementById('detail-empty').style.display = '';
+    }
+
+    const NOTE_ICONS = {
+      book: '📌', time: '🕐', transport: '🚇', eat: '🍽️',
+      tip: '💡', warn: '⚠️', gear: '🎒'
+    };
+
+    function renderNotes(dayNum) {
+      const notes = DAY_NOTES[dayNum];
+      if (!notes || !notes.length) return '';
+      const items = notes.map(n => `
+        <div class="note-item ${n.type === 'warn' ? 'warn' : ''}">
+          <span class="note-icon">${NOTE_ICONS[n.type] || '·'}</span>
+          <span class="note-text">${escapeHtml(n.text)}</span>
+        </div>`).join('');
+      return `
+      <div class="day-detail-section">
+        <div class="day-detail-label">注意事项</div>
+        <div class="day-notes-list">${items}</div>
+      </div>`;
+    }
+
+    function selectDay(cityId, dayIdx) {
+      const s = STATIONS_BY_ID[cityId];
+      if (!s) return;
+      const d = s.days[dayIdx];
+      if (!d) return;
+
+      const star = d.star ? '<span class="star-mark">★</span>' : '';
+      const content = document.getElementById('detail-content');
+      content.innerHTML = `
+    <div class="detail-header">
+      <button class="close-detail" aria-label="关闭" onclick="clearSelection()">✕</button>
+      <button class="back-detail" onclick="selectCity(${cityId})">← 返回 ${escapeHtml(s.nameZh)} 全程</button>
+      <div class="detail-header-top">
+        <div class="detail-num" style="background: ${s.bg}; color: ${s.color};">${s.id}</div>
+        <div class="detail-title-block">
+          <h2 class="day-detail-title">${d.date}<span class="day-detail-week">${d.week}</span></h2>
+          <div class="detail-country">${escapeHtml(s.nameZh)} · ${escapeHtml(d.city)}</div>
+        </div>
+      </div>
+    </div>
+    <div class="detail-body" style="padding: 0 24px;">
+      <div class="day-detail-section">
+        <div class="day-detail-label">上午</div>
+        <div class="day-detail-text">${star}${escapeHtml(d.am)}</div>
+      </div>
+      ${d.pm ? `
+      <div class="day-detail-section">
+        <div class="day-detail-label">下午 / 晚上</div>
+        <div class="day-detail-text">${escapeHtml(d.pm)}</div>
+      </div>` : ''}
+      ${d.lodging ? `
+      <div class="day-detail-section">
+        <div class="day-detail-label">住宿</div>
+        <div class="day-detail-text">🏨 ${escapeHtml(d.lodging)}</div>
+      </div>` : ''}
+      ${renderNotes(d.day)}
+    </div>
+  `;
     }
 
     function escapeHtml(s) {
@@ -1627,11 +2269,14 @@
       let scale = 1;
       let tx = 0, ty = 0;
       const MIN = 0.5, MAX = 4;
+      let activeTouches = 0;
 
       function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
 
       function apply(animate = false) {
-        if (animate) {
+        if (animate === 'smooth') {
+          svg.style.transition = 'transform 0.08s linear';
+        } else if (animate) {
           svg.style.transition = 'transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)';
         } else {
           svg.style.transition = 'none';
@@ -1657,7 +2302,7 @@
         }
       }
 
-      function zoomAt(factor, cx, cy) {
+      function zoomAt(factor, cx, cy, animate = true) {
         const newScale = clamp(scale * factor, MIN, MAX);
         if (newScale === scale) return;
         const rect = viewport.getBoundingClientRect();
@@ -1667,7 +2312,7 @@
         ty = py - (py - ty) * (newScale / scale);
         scale = newScale;
         clampPan();
-        apply(true);
+        apply(animate);
       }
 
       function zoomCenter(factor) {
@@ -1686,7 +2331,7 @@
       viewport.addEventListener('wheel', (e) => {
         e.preventDefault();
         const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
-        zoomAt(factor, e.clientX, e.clientY);
+        zoomAt(factor, e.clientX, e.clientY, 'smooth');
       }, { passive: false });
 
       let isDragging = false;
@@ -1697,17 +2342,18 @@
       viewport.addEventListener('pointerdown', (e) => {
         didDrag = false;
         if (e.target.closest('.city-node')) return;
+        if (activeTouches >= 2) return;
         isDragging = true;
         dragStartX = e.clientX;
         dragStartY = e.clientY;
         dragOrigTx = tx;
         dragOrigTy = ty;
         viewport.classList.add('dragging');
-        viewport.setPointerCapture(e.pointerId);
+        try { viewport.setPointerCapture(e.pointerId); } catch (err) { }
       });
 
       viewport.addEventListener('pointermove', (e) => {
-        if (!isDragging) return;
+        if (!isDragging || activeTouches >= 2) return;
         const dx = e.clientX - dragStartX;
         const dy = e.clientY - dragStartY;
         if (Math.abs(dx) + Math.abs(dy) > 4) didDrag = true;
@@ -1741,28 +2387,56 @@
       });
 
       let lastTouchDist = 0;
+      let lastTouchCx = 0, lastTouchCy = 0;
+
       viewport.addEventListener('touchstart', (e) => {
-        if (e.touches.length === 2) {
+        activeTouches = e.touches.length;
+        if (e.touches.length >= 2) {
+          isDragging = false;
+          viewport.classList.remove('dragging');
           const dx = e.touches[0].clientX - e.touches[1].clientX;
           const dy = e.touches[0].clientY - e.touches[1].clientY;
           lastTouchDist = Math.sqrt(dx * dx + dy * dy);
+          lastTouchCx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+          lastTouchCy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
         }
       }, { passive: true });
+
       viewport.addEventListener('touchmove', (e) => {
-        if (e.touches.length === 2) {
+        if (e.touches.length >= 2) {
           e.preventDefault();
           const dx = e.touches[0].clientX - e.touches[1].clientX;
           const dy = e.touches[0].clientY - e.touches[1].clientY;
           const dist = Math.sqrt(dx * dx + dy * dy);
+          const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+          const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
           if (lastTouchDist > 0) {
-            const factor = dist / lastTouchDist;
-            const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-            const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
-            zoomAt(factor, cx, cy);
+            tx += cx - lastTouchCx;
+            ty += cy - lastTouchCy;
+            const newScale = clamp(scale * (dist / lastTouchDist), MIN, MAX);
+            if (newScale !== scale) {
+              const rect = viewport.getBoundingClientRect();
+              const px = cx - rect.left;
+              const py = cy - rect.top;
+              tx = px - (px - tx) * (newScale / scale);
+              ty = py - (py - ty) * (newScale / scale);
+              scale = newScale;
+            }
+            clampPan();
+            apply('smooth');
           }
           lastTouchDist = dist;
+          lastTouchCx = cx;
+          lastTouchCy = cy;
         }
       }, { passive: false });
+
+      function endTouch(e) {
+        activeTouches = e.touches.length;
+        if (e.touches.length < 2) lastTouchDist = 0;
+      }
+      viewport.addEventListener('touchend', endTouch);
+      viewport.addEventListener('touchcancel', endTouch);
 
       window.addEventListener('keydown', (e) => {
         if (document.querySelector('#view-map.active') === null) return;
