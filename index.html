@@ -789,21 +789,29 @@ main {
             <marker id="arr-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
           </defs>
           <g id="europe-terrain" fill="#F0ECDC" stroke="#DDD7BD" stroke-width="2" stroke-linejoin="round" pointer-events="none">
-            <!-- Iceland -->
-            <path d="M 135 348 C 128 320, 175 312, 222 320 C 270 330, 298 358, 292 398 C 285 432, 240 442, 192 434 C 145 425, 122 395, 135 348 Z"/>
-            <!-- British Isles (UK rough outline) -->
-            <path d="M 470 250 C 502 238, 548 250, 565 285 C 578 322, 575 365, 560 400 C 540 425, 502 432, 478 418 C 455 400, 444 370, 448 328 C 452 292, 458 266, 470 250 Z M 425 305 C 418 295, 405 300, 405 318 C 408 335, 420 345, 432 340 C 438 330, 435 315, 425 305 Z"/>
-            <!-- Iberian Peninsula -->
-            <path d="M 145 875 C 122 890, 105 925, 122 980 C 140 1040, 178 1090, 230 1115 C 295 1138, 372 1132, 442 1108 C 518 1082, 595 1046, 632 988 C 652 945, 638 902, 600 878 C 540 855, 458 850, 378 854 C 288 858, 195 866, 145 875 Z"/>
-            <!-- Continental Europe (France/Germany/Austria/Hungary/Balkans) -->
-            <path d="M 580 870 C 558 800, 548 720, 558 640 C 565 580, 558 510, 590 478 C 640 458, 720 455, 800 455 C 880 455, 945 425, 1020 405 C 1085 388, 1175 380, 1245 405 C 1315 432, 1385 475, 1428 528 C 1475 590, 1490 660, 1478 720 C 1462 785, 1420 840, 1360 880 C 1330 900, 1300 905, 1265 905 C 1230 905, 1200 895, 1170 888 C 1135 880, 1100 875, 1065 872 C 1030 870, 995 868, 962 868 C 920 865, 880 865, 840 868 C 790 870, 730 870, 680 870 C 640 870, 605 870, 580 870 Z"/>
-            <!-- Italian Peninsula (boot extending south) -->
-            <path d="M 850 855 C 855 880, 865 905, 880 932 C 900 962, 925 990, 955 1018 C 990 1048, 1028 1080, 1062 1090 C 1085 1095, 1085 1078, 1070 1062 C 1055 1045, 1035 1028, 1015 1010 C 1042 1010, 1065 1018, 1078 1015 C 1085 1010, 1075 998, 1052 990 C 1028 982, 1000 982, 980 975 C 962 955, 945 932, 930 905 C 918 882, 905 862, 885 855 C 870 850, 858 850, 850 855 Z"/>
+            <!-- Iceland: distinctive Westfjords claw on NW, Reykjanes peninsula SW -->
+            <path d="M 105 392 L 118 380 L 125 365 L 138 352 L 132 338 L 148 332 L 142 322 L 130 318 L 122 305 L 142 305 L 158 312 L 152 298 L 168 298 L 175 312 L 192 305 L 200 318 L 222 312 L 245 315 L 268 322 L 285 335 L 295 352 L 295 372 L 290 392 L 280 412 L 262 425 L 235 432 L 205 432 L 175 432 L 150 425 L 130 415 L 115 402 L 105 392 Z"/>
+            <!-- Great Britain: tapered Scotland → Lowlands waist → wider England, Wales bulge W, Cornwall protrusion SW -->
+            <path d="M 510 248 L 530 245 L 545 254 L 552 270 L 555 290 L 555 312 L 552 332 L 555 352 L 558 375 L 558 395 L 552 412 L 540 425 L 520 432 L 498 432 L 478 425 L 462 418 L 448 412 L 432 405 L 418 398 L 408 388 L 415 382 L 432 386 L 448 392 L 462 395 L 472 388 L 468 378 L 458 370 L 448 362 L 460 358 L 472 360 L 480 350 L 482 332 L 478 312 L 470 295 L 462 282 L 465 268 L 478 258 L 495 252 L 510 248 Z"/>
+            <!-- Ireland: tilted oval west of Britain -->
+            <path d="M 405 308 L 420 304 L 438 312 L 445 328 L 442 348 L 430 360 L 410 362 L 395 352 L 388 335 L 395 318 L 405 308 Z"/>
+            <!-- Iberian Peninsula: squarish with Pyrenees NE corner -->
+            <path d="M 145 870 L 175 855 L 232 848 L 308 848 L 388 852 L 470 860 L 545 872 L 600 882 L 622 905 L 630 935 L 628 970 L 620 1002 L 608 1032 L 590 1062 L 562 1088 L 528 1106 L 488 1118 L 442 1125 L 395 1125 L 348 1118 L 302 1108 L 258 1092 L 220 1070 L 192 1042 L 172 1010 L 158 975 L 148 938 L 142 902 L 142 880 L 145 870 Z"/>
+            <!-- Continental Europe: France hexagon + Brittany W + N coast + east bulge to Hungary + Balkan SE coast -->
+            <path d="M 585 870 L 572 800 L 562 720 L 560 645 L 568 575 L 582 518 L 605 488 L 638 472 L 678 470 L 712 480 L 692 490 L 668 498 L 685 508 L 718 508 L 758 500 L 802 485 L 855 470 L 912 455 L 970 440 L 1028 425 L 1085 415 L 1148 410 L 1208 412 L 1262 422 L 1310 442 L 1355 470 L 1395 502 L 1430 540 L 1460 585 L 1480 630 L 1490 678 L 1488 725 L 1472 770 L 1442 810 L 1402 842 L 1360 868 L 1318 882 L 1278 888 L 1242 882 L 1212 872 L 1180 868 L 1145 868 L 1108 868 L 1072 870 L 1035 870 L 998 870 L 962 870 L 925 870 L 888 870 L 850 870 L 812 870 L 775 870 L 738 870 L 700 870 L 660 870 L 620 870 L 595 870 L 585 870 Z"/>
+            <!-- Italy: iconic boot — fat Po Valley top, distinct heel SE, toe SW, instep notch -->
+            <path d="M 848 815 L 880 805 L 925 808 L 970 815 L 1010 825 L 1028 848 L 1040 875 L 1042 905 L 1035 935 L 1025 965 L 1020 995 L 1028 1022 L 1048 1050 L 1075 1075 L 1108 1090 L 1128 1082 L 1118 1068 L 1098 1058 L 1075 1058 L 1058 1065 L 1042 1075 L 1028 1085 L 1012 1090 L 998 1088 L 985 1080 L 975 1065 L 970 1050 L 965 1032 L 958 1015 L 945 988 L 928 958 L 912 922 L 900 885 L 888 852 L 875 828 L 858 818 L 848 815 Z"/>
+            <!-- Sicily: triangular island below Italy toe -->
+            <path d="M 985 1110 L 1015 1105 L 1042 1108 L 1055 1118 L 1042 1128 L 1015 1130 L 990 1125 L 980 1118 L 985 1110 Z"/>
+            <!-- Sardinia: vertical oval west of Italy -->
+            <path d="M 850 968 L 842 988 L 842 1012 L 850 1028 L 862 1028 L 866 1010 L 866 988 L 858 970 L 850 968 Z"/>
           </g>
-          <text x="200" y="295" fill="#A8A496" font-size="13" opacity="0.7" text-anchor="middle">冰岛</text>
+          <text x="200" y="298" fill="#A8A496" font-size="13" opacity="0.7" text-anchor="middle">冰岛</text>
           <text x="510" y="240" fill="#A8A496" font-size="13" opacity="0.7" text-anchor="middle">英国</text>
-          <text x="380" y="1180" fill="#A8A496" font-size="13" opacity="0.65" text-anchor="middle">伊比利亚半岛</text>
-          <text x="1100" y="350" fill="#A8A496" font-size="13" opacity="0.55" text-anchor="middle">欧洲大陆</text>
+          <text x="418" y="298" fill="#A8A496" font-size="12" opacity="0.6" text-anchor="middle">爱尔兰</text>
+          <text x="380" y="1175" fill="#A8A496" font-size="13" opacity="0.65" text-anchor="middle">伊比利亚半岛</text>
+          <text x="1100" y="370" fill="#A8A496" font-size="13" opacity="0.55" text-anchor="middle">欧洲大陆</text>
+          <text x="1075" y="1098" fill="#A8A496" font-size="12" opacity="0.6" text-anchor="middle">意大利</text>
           <g id="route-lines"></g>
           <g id="route-labels"></g>
           <line x1="340" y1="880" x2="1540" y2="1200" stroke="#888780" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.45"/>
