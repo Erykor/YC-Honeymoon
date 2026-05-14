@@ -911,6 +911,144 @@
       border-top: 2px solid var(--border-strong);
     }
 
+    .intensity-card {
+      padding: 16px 20px 12px;
+    }
+
+    .intensity-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .intensity-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .intensity-sub {
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-top: 2px;
+    }
+
+    .intensity-legend {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--text-mid);
+      white-space: nowrap;
+    }
+
+    .intensity-legend .lg-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .intensity-chart-wrap {
+      position: relative;
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    #intensity-chart {
+      width: 100%;
+      min-width: 720px;
+      height: 260px;
+      display: block;
+      overflow: visible;
+    }
+
+    #intensity-chart .grid-line {
+      stroke: var(--border);
+      stroke-width: 1;
+    }
+
+    #intensity-chart .axis-label {
+      fill: var(--text-soft);
+      font-size: 10px;
+      font-family: inherit;
+    }
+
+    #intensity-chart .station-band {
+      opacity: 0.35;
+    }
+
+    #intensity-chart .station-label {
+      fill: var(--text-mid);
+      font-size: 9px;
+      font-family: inherit;
+      font-weight: 500;
+    }
+
+    #intensity-chart .intensity-line {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 1.5;
+      stroke-linejoin: round;
+    }
+
+    #intensity-chart .intensity-pt {
+      cursor: pointer;
+      transition: r 0.12s;
+    }
+
+    #intensity-chart .intensity-pt:hover {
+      r: 6;
+      stroke: var(--text);
+      stroke-width: 1.5;
+    }
+
+    .intensity-tooltip {
+      position: absolute;
+      pointer-events: none;
+      background: var(--bg-card);
+      border: 1px solid var(--border-strong);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 12px;
+      color: var(--text);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transition: opacity 0.12s;
+      max-width: 240px;
+      z-index: 10;
+      line-height: 1.45;
+    }
+
+    .intensity-tooltip.active {
+      opacity: 1;
+    }
+
+    .intensity-tooltip .tt-head {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .intensity-tooltip .tt-meta {
+      color: var(--text-soft);
+      font-size: 11px;
+    }
+
+    .intensity-tooltip .tt-score {
+      display: inline-block;
+      padding: 1px 7px;
+      border-radius: 10px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 11px;
+      margin-left: 6px;
+    }
+
     .urgency {
       display: inline-block;
       padding: 2px 8px;
@@ -1669,6 +1807,24 @@
 
     <section class="view" id="view-daily">
       <h2 class="section-title">91 天完整行程</h2>
+      <div class="data-card intensity-card">
+        <div class="intensity-header">
+          <div>
+            <div class="intensity-title">每日体力强度曲线 (Physical Intensity)</div>
+            <div class="intensity-sub">1 = 全休 / 倒时差 · 2 = 慢逛 · 3 = 普通游览 · 4 = 高强度徒步或长转场 · 5 = 节日全爆发 / 极限日</div>
+          </div>
+          <div class="intensity-legend">
+            <span class="lg-dot" style="background:#3FBE94"></span>1-2
+            <span class="lg-dot" style="background:#E0A24A"></span>3
+            <span class="lg-dot" style="background:#EE7B53"></span>4
+            <span class="lg-dot" style="background:#D14444"></span>5
+          </div>
+        </div>
+        <div class="intensity-chart-wrap">
+          <svg id="intensity-chart" viewBox="0 0 1100 260" preserveAspectRatio="xMidYMid meet"></svg>
+          <div class="intensity-tooltip" id="intensity-tooltip"></div>
+        </div>
+      </div>
       <div class="data-card">
         <table class="data-table">
           <thead>
@@ -1757,14 +1913,14 @@
       {"day":12,"date":"8/15","week":"周六","city":"布达佩斯","am":"★ SZIGET DAY 4 高峰。圣斯蒂芬大教堂 + Liszt Ferenc 广场","pm":"18:00 Sziget 周六主舞台大牌","lodging":"Budapest","station_id":2,"star":true},
       {"day":13,"date":"8/16","week":"周日","city":"转场日 (布达佩斯→克罗地亚)","am":"✈ Budapest → Dubrovnik (Vueling 或 Croatia Airlines 经 VIE/ZAG 中转, 4-5h, €130/人)。短途, Sziget 散场后体力可承受","pm":"傍晚抵 Dubrovnik 老城。入住 €140 + 老城首夜散步","lodging":"Dubrovnik 老城 €140","station_id":2,"star":false}
     ]},
-    {"id":3,"name":"Croatia","nameZh":"克罗地亚","fullName":"克罗地亚 Croatia","country":"🇭🇷 克罗地亚","dates":"8/16 - 8/23","nights":7,"activities":"Dubrovnik 城墙 · Split 海钓+peka · Krka 游泳 · Plitvice 十六湖","color":"#085041","bg":"#E1F5EE","stroke":"#0F6E56","x":1280,"y":870,"labelPos":"right","festival":"★ Dubrovnik 城墙 + Plitvice + 海钓","tips":"<strong>不租车：</strong> Dubrovnik→Split 走 Jadrolinija 渡轮 (4.5h €40/人, 海岸风景比开车好); Split→Plitvice / Plitvice→Zagreb 走 FlixBus / Arriva 长途巴士 €15-25/人; Krka 走 day tour 含船 €60/人, 省下租车 + 跨境费 + 停车。<strong>必订：</strong> Dubrovnik 老城住宿 8 月旺季现订; Plitvice 入园 7:30 早场票; Split 海钓家庭船半日 €80/人 提前 1 周邮件订。","days":[
+    {"id":3,"name":"Croatia","nameZh":"克罗地亚","fullName":"克罗地亚 Croatia","country":"🇭🇷 克罗地亚","dates":"8/16 - 8/23","nights":7,"activities":"Dubrovnik 城墙 · Split 海钓+peka · Krka 游泳 · Plitvice 十六湖","color":"#085041","bg":"#E1F5EE","stroke":"#0F6E56","x":1280,"y":870,"labelPos":"right","festival":"★ Dubrovnik 城墙 + Plitvice + 海钓","tips":"<strong>不租车：</strong> Dubrovnik→Split 走 Jadrolinija 渡轮 (4.5h €40/人, 海岸风景比开车好); Split→Plitvice / Plitvice→Zagreb 走 FlixBus / Arriva 长途巴士 €15-25/人; Krka 走 day tour 含船 €60/人, 省下租车 + 跨境费 + 停车。<strong>必订：</strong> Dubrovnik 老城住宿 8 月旺季现订; Plitvice 入园 7:30 早场票; Split 海钓家庭船半日 €80/人 提前 1 周邮件订。<strong>D19 当晚转 Zagreb：</strong> 拆原 D20 五段连环转场 (巴士+飞+巴士+火车+巴士) 为 D19 出园后巴士到 Zagreb 过夜 + D20 仅 Zagreb→Venice→Ortisei, 任一段误点的连锁风险减半。","days":[
       {"day":14,"date":"8/17","week":"周一","city":"Dubrovnik","am":"★ 8:00 城墙环走 (避热)","pm":"Lokrum 岛 €27 来回船(铁王座+孔雀)。晚 Buža Bar 悬崖酒吧日落","lodging":"Dubrovnik","station_id":3,"star":true},
       {"day":15,"date":"8/18","week":"周二","city":"→Split (渡轮)","am":"7:00 Jadrolinija Dubrovnik → Split 高速渡轮 4.5h €40/人, 海岸日间风景片","pm":"12:00 落地, 步行入住戴克里先宫殿内 €100。Riva 海滨晚餐","lodging":"Split €100","station_id":3,"star":false},
       {"day":16,"date":"8/19","week":"周三","city":"Split+海钓","am":"戴克里先宫殿地下室 + 大教堂登顶","pm":"★ Split 周边家庭船半日海钓 + 船上做 fish peka €80/人 (Trogir 可顺路绕看)","lodging":"Split","station_id":3,"star":true},
       {"day":17,"date":"8/20","week":"周四","city":"Krka day tour","am":"★ Krka 国家公园 day tour €60/人 (含 Split 接送 + 入园 + 船游 + 自由游泳 6h)","pm":"15:00 抵 Skradinski Buk 大瀑布池游泳 + 木栈道","lodging":"Split","station_id":3,"star":true},
       {"day":18,"date":"8/21","week":"周五","city":"→Plitvice (巴士)","am":"7:30 FlixBus / Arriva Split → Plitvice 4h €20/人 (直达, 巴士站就在公园门口)","pm":"15:00 后入园 €15(B 票)。走 H 线短段熟悉","lodging":"Mukinje 村 €80","station_id":3,"star":false},
-      {"day":19,"date":"8/22","week":"周六","city":"Plitvice","am":"★ 7:30 入园。走 K 线全程 8h, 18km","pm":"船渡 P3→P1 + 缆车","lodging":"Mukinje","station_id":3,"star":true},
-      {"day":20,"date":"8/23","week":"周日","city":"转场","am":"Plitvice → Zagreb 巴士 2h €15/人 → ✈ Venice (Volotea/Croatia Air, 1h, €120/人)","pm":"Venice Marco Polo → ATVO 巴士 → Mestre → Italo 到 Bolzano 2.5h → SAD 巴士 350 到 Ortisei 1h (合计 €40/人)。住 Ortisei €120","lodging":"Ortisei €120","station_id":3,"star":false}
+      {"day":19,"date":"8/22","week":"周六","city":"Plitvice → Zagreb","am":"★ 7:30 入园。走 K 线全程 8h, 18km","pm":"船渡 P3→P1 + 缆车。17:30 出园 → FlixBus / Arriva Plitvice → Zagreb 2.5h €15/人。21:00 入住 Zagreb 老城 (拆原 D20 巴士段, 转场风险减半)","lodging":"Zagreb 老城 €70","station_id":3,"star":true},
+      {"day":20,"date":"8/23","week":"周日","city":"转场 (Zagreb→多洛米蒂)","am":"Zagreb 老城早餐 + Ban Jelačić 广场短逛。10:30 出发机场 → ✈ Zagreb → Venice (Croatia Air 直飞 1h, €120/人)","pm":"Venice Marco Polo → ATVO 巴士 → Mestre → Italo 到 Bolzano 2.5h → SAD 巴士 350 到 Ortisei 1h (合计 €40/人)。住 Ortisei €120","lodging":"Ortisei €120","station_id":3,"star":false}
     ]},
     {"id":4,"name":"Val Gardena","nameZh":"多洛米蒂","fullName":"多洛米蒂 Val Gardena","country":"🇮🇹 意大利","dates":"8/23 - 8/31","nights":8,"activities":"Seceda · Alpe di Siusi · Tre Cime 大环线 · Lago di Braies · ★ 蜜月 Spa 日","color":"#27500A","bg":"#EAF3DE","stroke":"#3B6D11","x":1080,"y":740,"labelPos":"right","festival":"★ Tre Cime 大环线 + 多洛米蒂高山日","tips":"<strong>取消山屋夜：</strong> Rifugio Locatelli 5 月才订基本无位 + 共宿条件硬 + 高山过夜降低后续行程安全余量。改 Tre Cime 大环线纯日游 (10km, 4h, 不过夜)。<strong>每日天气：</strong> 出发前 48h 查 meteo.provincia.bz.it, 雷暴/暴雨当日改为缓冲日。<strong>装备：</strong> 中高帮防水徒步鞋必备 (磨合好), 不再需要 silk liner / 山屋装备。","days":[
       {"day":21,"date":"8/24","week":"周一","city":"Val di Funes 适应日 (取车)","am":"Ortisei Hertz 9:00 取 5 日小车 8/24-8/28 €280 (Day 26 SPA 日省车不用, Day 28 还在 Innsbruck)","pm":"Val di Funes 山谷 → Santa Maddalena 教堂 (多洛米蒂经典明信片机位, 自驾 40min)","lodging":"Ortisei","station_id":4,"star":false},
@@ -1780,7 +1936,7 @@
       {"day":29,"date":"9/1","week":"周一","city":"Lauterbrunnen","am":"Trümmelbach Falls 山体内瀑布 CHF 14","pm":"村庄漫步看 72 条瀑布 + 早休调节高反","lodging":"Lauterbrunnen","station_id":5,"star":false},
       {"day":30,"date":"9/2","week":"周二","city":"少女峰","am":"★ 7:30 Jungfraujoch \"Top of Europe\" CHF 95。冰宫 + Sphinx 3,571m","pm":"下午 Männlichen→Kleine Scheidegg 全景徒步 (4.5km, 2h)","lodging":"Lauterbrunnen","station_id":5,"star":true,"weatherBackup":"云顶 >3000m 不去; 与 Day 33 (9/5) 奶酪坊或 Day 31 Schilthorn 互换"},
       {"day":31,"date":"9/3","week":"周三","city":"Schilthorn","am":"★ 缆车上 Schilthorn 007 Piz Gloria 旋转餐厅 (2,970m)","pm":"Northface Trail 6km 环线 (Mürren)","lodging":"Lauterbrunnen","station_id":5,"star":true},
-      {"day":32,"date":"9/4","week":"周四","city":"Interlaken","am":"★ 双人滑翔伞 CHF 200/人 20min (Skywings/Paragliding Interlaken)。⚠️ 风/雨天会取消, 备用顺延到 Day 29 早上, 或改 Harder Kulm 观景台","pm":"Interlaken 镇 + Höhematte 草坪野餐","lodging":"Lauterbrunnen","station_id":5,"star":true,"weatherBackup":"风>30km/h 或低云 → 取消; 备用日 Day 33 早上; 全部取消则改 Höhematte 草坪野餐 + Harder Kulm 缆车观景"},
+      {"day":32,"date":"9/4","week":"周四","city":"Interlaken","am":"★ 双人滑翔伞 CHF 200/人 20min (Skywings/Paragliding Interlaken)。⚠️ 风/雨天会取消, 备用顺延到 Day 33 早上, 或改 Harder Kulm 观景台","pm":"Interlaken 镇 + Höhematte 草坪野餐","lodging":"Lauterbrunnen","station_id":5,"star":true,"weatherBackup":"风>30km/h 或低云 → 取消; 备用日 Day 33 早上 (Grindelwald 行程顺延半日); 全部取消则改 Höhematte 草坪野餐 + Harder Kulm 缆车观景"},
       {"day":33,"date":"9/5","week":"周五","city":"Grindelwald","am":"Grindelwald → First 缆车 2,168m。First Cliff Walk 悬空步道","pm":"★ Bachalpsee 徒步 6km 2h + First Flyer 钢索","lodging":"Lauterbrunnen","station_id":5,"star":true},
       {"day":34,"date":"9/6","week":"周六","city":"高山牧场","am":"★ Justistal/Engstligenalp 山地奶酪坊半日: 跟 senn 挤奶 + 大铜锅做 alpkäse (~CHF 80/人)","pm":"中午吃当天奶酪 fondue。黄昏回 Lauterbrunnen 收拾","lodging":"Lauterbrunnen","station_id":5,"star":true},
       {"day":35,"date":"9/7","week":"周日","city":"★ 蜜月专属 Thunersee 包船 + 米其林","am":"Lauterbrunnen → Beatushöhlen 钟乳石洞 1.5h, 11:00 入洞","pm":"★ Thunersee 包船日落 2h CHF 350 + Hotel Victoria Jungfrau 米其林晚餐 CHF 180/人","lodging":"Victoria Jungfrau Grand Hotel 升级 1 晚 CHF 600","station_id":5,"star":true,"weatherBackup":"包船受风/雨影响; 取消则升级 Victoria Jungfrau 下午茶 + 室内 spa 套餐 CHF 200/2人"},
@@ -1848,12 +2004,12 @@
       {"day":83,"date":"10/25","week":"周日","city":"Gaia 酒窖","am":"★ Vila Nova de Gaia 酒窖参观 (Taylor's + Graham's 选 2)","pm":"缆车 Gaia 双层桥 + Cantinho do Avillez 米其林晚餐","lodging":"Porto","station_id":12,"star":true},
       {"day":84,"date":"10/26","week":"周一","city":"转场 (波尔图→阿尔巴)","am":"Ribeira 河边早餐 + 退房","pm":"✈ Porto → Milan Malpensa (TAP/Ryanair 直飞 2.5h, €120/人) → Malpensa Express → Milano Centrale → Italo 列车到 Asti 1h, 再 SFM4 区域线 30min 到 Alba (€30/人)。入住 La Morra agriturismo 双人间 €120","lodging":"La Morra €120","station_id":12,"star":false}
     ]},
-    {"id":13,"name":"Alba","nameZh":"阿尔巴","fullName":"阿尔巴 Alba","country":"🇮🇹 意大利","dates":"10/26 - 11/2","nights":7,"activities":"白松露节第 96 届 · Barolo / Barbaresco 酒庄 · Cuneo 栗子节","color":"#712B13","bg":"#993C1D","stroke":"#993C1D","x":700,"y":800,"labelPos":"down","festival":"★★ Alba 白松露节高峰周末","tips":"<strong>精简租车：</strong> Alba 取 Hertz 4 日小车 10/28-10/31 €160 (周二还车, 11/1 起白松露周末用免费摆渡 + 出租车避免酒驾)。<strong>必订：</strong> Truffle World Market 10/31 + 11/1 周末门票; cooking class with truffle €130/人 提前 2 周邮件订; La Morra agriturismo 7 晚提前 3 个月订, 双人间 €120-140/晚 (旺季有限)。","days":[
+    {"id":13,"name":"Alba","nameZh":"阿尔巴","fullName":"阿尔巴 Alba","country":"🇮🇹 意大利","dates":"10/26 - 11/2","nights":7,"activities":"白松露节第 96 届 · Barolo / Barbaresco 酒庄 · Cuneo 栗子节","color":"#712B13","bg":"#993C1D","stroke":"#993C1D","x":700,"y":800,"labelPos":"down","festival":"★★ Alba 白松露节高峰周末","tips":"<strong>精简租车：</strong> Alba 取 Hertz 4 日小车 10/28-10/30 €160 (周五还车, 10/31 起白松露周末用免费摆渡 + 出租车避免酒驾)。<strong>必订：</strong> Truffle World Market 10/31 + 11/1 周末门票; cooking class with truffle €130/人 周五场 (D88) 提前 2 周邮件订, 让周六 (D89) 完全留给市场; La Morra agriturismo 7 晚提前 3 个月订, 双人间 €120-140/晚 (旺季有限)。","days":[
       {"day":85,"date":"10/27","week":"周二","city":"Alba 老城","am":"Cortile della Maddalena 松露市场(工作日小开市), 步行 Alba 老城 + 主教座堂","pm":"Italo + SFM4 火车回 La Morra 站 (15min) + 班车回 agriturismo","lodging":"La Morra €120","station_id":13,"star":false},
-      {"day":86,"date":"10/28","week":"周三","city":"Barolo (取车)","am":"Alba Hertz 9:00 取 4 日小车 €160 → ★ Barolo 葡萄酒博物馆 WiMu €15 + Marchesi di Barolo 酒庄 €25","pm":"La Morra Bovio 餐厅 + Pio Cesare/Ceretto 第二轮 (一人开车不喝, 轮换)","lodging":"La Morra","station_id":13,"star":true},
+      {"day":86,"date":"10/28","week":"周三","city":"Barolo (取车)","am":"Alba Hertz 9:00 取 3 日小车 10/28-10/30 €120 → ★ Barolo 葡萄酒博物馆 WiMu €15 + Marchesi di Barolo 酒庄 €25","pm":"La Morra Bovio 餐厅 + Pio Cesare/Ceretto 第二轮 (一人开车不喝, 轮换)","lodging":"La Morra","station_id":13,"star":true},
       {"day":87,"date":"10/29","week":"周四","city":"Bra+Slow Food","am":"自驾 Bra 城 30min Slow Food 起源 + Eataly 旗舰原型","pm":"Castello di Roddi 城堡午餐","lodging":"La Morra","station_id":13,"star":false},
-      {"day":88,"date":"10/30","week":"周五","city":"Asti","am":"自驾 Asti 1h: 老城 + Asti Spumante 起泡酒酒庄","pm":"Moncalvo 山顶村庄, 傍晚还车 Alba Hertz","lodging":"La Morra","station_id":13,"star":false},
-      {"day":89,"date":"10/31","week":"周六","city":"松露市场高峰 Sat","am":"★★ 9:00 World Truffle Market 周六入场 (10 月底正值松露真正高峰)。Alba 节日期间免费 navetta 摆渡覆盖城内 + La Morra/Barolo 周末班次","pm":"★ Cooking class with truffle €130/人 (午餐含)。傍晚 navetta 回 La Morra","lodging":"La Morra","station_id":13,"star":true},
+      {"day":88,"date":"10/30","week":"周五","city":"Cooking class with truffle + Moncalvo","am":"★ Cooking class with truffle €130/人 (午餐含, Alba 老城工坊): 手擀 tajarin + 鸡蛋蛋黄 fonduta + 现场刨白松露 + Barolo zabaione (移自原 D89, 让周六全天专注市场)","pm":"自驾 Moncalvo 山顶村庄 1h 看朗格丘日落, 傍晚还车 Alba Hertz","lodging":"La Morra","station_id":13,"star":true},
+      {"day":89,"date":"10/31","week":"周六","city":"松露市场高峰 Sat","am":"★★ 9:00 World Truffle Market 周六入场 (10 月底正值松露真正高峰)。慢逛 + 现买现谈, Alba 节日期间免费 navetta 覆盖城内 + La Morra/Barolo 周末班次","pm":"Truffle 短份午餐 (Osteria dell'Arco 或市场内小摊) + Cortile della Maddalena 拍卖区围观。傍晚 navetta 回 La Morra","lodging":"La Morra","station_id":13,"star":true},
       {"day":90,"date":"11/1","week":"周日","city":"松露 Sun + La Morra","am":"★ 上午继续 World Truffle Market 周日 (周末高峰最后一天, 价格谈判更友好) + 整桌 Bagna Càuda 蘸酱传统午餐","pm":"navetta 回 La Morra 葡萄园观景 + Cappella del Barolo 彩色教堂。提早收行李, 17:00 Italo 转 Malpensa Express 到机场宿 €60 (避免 11/2 当天 1.5h 长途+赶飞机)","lodging":"Malpensa 机场酒店 €60","station_id":13,"star":true},
       {"day":91,"date":"11/2","week":"周一","city":"返航","am":"机场酒店步行到 T1 / T2, 早班机 ✈ Milan Malpensa → Beijing/Shanghai (国航 / 海航 / 土耳其航空 14h, 直飞或一程中转)","pm":"—","lodging":"—","station_id":13,"star":false}
     ]}
@@ -2473,6 +2629,7 @@
     }
 
     function renderDaily() {
+      renderIntensityChart();
       const tbody = document.getElementById('daily-tbody');
       if (tbody.dataset.rendered) return;
       tbody.dataset.rendered = '1';
@@ -2494,6 +2651,135 @@
         });
       });
       tbody.innerHTML = html;
+    }
+
+    // Physical intensity score per day (1-5), aligned to the 91-day plan.
+    // Scoring rubric in the chart header: 1 全休, 2 慢逛, 3 普通游览,
+    // 4 高强度徒步或长转场, 5 节日全爆发 / 极限日.
+    const INTENSITY = [
+      2,3,3,4,4,4,3,  // D1-7  Edinburgh + transfer
+      4,4,2,4,5,3,    // D8-13 Sziget + Dubrovnik arrival
+      3,3,3,4,3,5,4,  // D14-20 Croatia + transfer to Dolomites
+      2,4,4,5,3,1,3,4,// D21-28 Dolomites + transfer
+      2,4,4,3,4,3,2,3,// D29-36 Switzerland + transfer
+      4,3,3,4,4,4,2,3,// D37-44 Barcelona/Costa Brava + transfer
+      2,3,5,4,3,3,    // D45-50 Munich + transfer
+      3,4,3,4,4,4,    // D51-56 Salzburg + transfer
+      1,2,3,3,3,3,3,4,// D57-64 Florence + Chianti
+      3,3,5,3,3,      // D65-69 Tuscany cont. + transfer
+      2,3,4,2,3,2,    // D70-75 Lisbon + transfer
+      2,3,4,          // D76-78 Nazaré + transfer
+      3,4,2,3,3,4,    // D79-84 Porto + transfer
+      2,3,2,3,4,3,4   // D85-91 Alba + return
+    ];
+
+    function intensityColor(v) {
+      if (v <= 2) return '#3FBE94';
+      if (v === 3) return '#E0A24A';
+      if (v === 4) return '#EE7B53';
+      return '#D14444';
+    }
+
+    function renderIntensityChart() {
+      const svg = document.getElementById('intensity-chart');
+      if (!svg || svg.dataset.rendered) return;
+      svg.dataset.rendered = '1';
+
+      // Flatten days with station context (preserves array index = day - 1).
+      const days = [];
+      TRIP.stations.forEach(s => s.days.forEach(d => days.push({ d, s })));
+      const N = days.length;
+
+      const W = 1100, H = 260;
+      const padL = 30, padR = 14, padT = 16, padB = 30;
+      const plotW = W - padL - padR;
+      const plotH = H - padT - padB;
+      const xOf = i => padL + (N === 1 ? plotW / 2 : (i * plotW) / (N - 1));
+      const yOf = v => padT + plotH - ((v - 1) / 4) * plotH;
+
+      let svgNS = 'http://www.w3.org/2000/svg';
+      let frag = '';
+
+      // Station background bands (alternating) + station labels.
+      let dayCursor = 0;
+      TRIP.stations.forEach((s, idx) => {
+        const start = dayCursor;
+        const end = dayCursor + s.days.length - 1;
+        dayCursor += s.days.length;
+        const x0 = start === 0 ? padL : (xOf(start - 1) + xOf(start)) / 2;
+        const x1 = end === N - 1 ? padL + plotW : (xOf(end) + xOf(end + 1)) / 2;
+        if (idx % 2 === 0) {
+          frag += `<rect class="station-band" x="${x0}" y="${padT}" width="${x1 - x0}" height="${plotH}" fill="var(--bg-soft)"/>`;
+        }
+        const cx = (x0 + x1) / 2;
+        // Only label if band wide enough.
+        if (x1 - x0 > 30) {
+          frag += `<text class="station-label" x="${cx}" y="${padT + 10}" text-anchor="middle">${escapeHtml(s.nameZh || s.name)}</text>`;
+        }
+      });
+
+      // Y gridlines + labels (1..5).
+      for (let v = 1; v <= 5; v++) {
+        const y = yOf(v);
+        frag += `<line class="grid-line" x1="${padL}" y1="${y}" x2="${padL + plotW}" y2="${y}"/>`;
+        frag += `<text class="axis-label" x="${padL - 6}" y="${y + 3}" text-anchor="end">${v}</text>`;
+      }
+
+      // X-axis tick labels: show date every 7 days + first/last.
+      for (let i = 0; i < N; i++) {
+        if (i === 0 || i === N - 1 || (i + 1) % 7 === 0) {
+          const x = xOf(i);
+          frag += `<text class="axis-label" x="${x}" y="${H - padB + 12}" text-anchor="middle">D${i + 1}</text>`;
+          frag += `<text class="axis-label" x="${x}" y="${H - padB + 24}" text-anchor="middle">${escapeHtml(days[i].d.date)}</text>`;
+        }
+      }
+
+      // Line path.
+      let path = '';
+      for (let i = 0; i < N; i++) {
+        const v = INTENSITY[i] || 3;
+        path += (i === 0 ? 'M' : 'L') + xOf(i).toFixed(2) + ',' + yOf(v).toFixed(2) + ' ';
+      }
+      frag += `<path class="intensity-line" d="${path}"/>`;
+
+      // Data points.
+      for (let i = 0; i < N; i++) {
+        const v = INTENSITY[i] || 3;
+        const cx = xOf(i), cy = yOf(v);
+        const star = days[i].d.star ? '1' : '0';
+        frag += `<circle class="intensity-pt" data-i="${i}" data-v="${v}" data-star="${star}" cx="${cx.toFixed(2)}" cy="${cy.toFixed(2)}" r="3.5" fill="${intensityColor(v)}" stroke="var(--bg-card)" stroke-width="1"/>`;
+      }
+
+      svg.innerHTML = frag;
+
+      // Tooltip handlers.
+      const tip = document.getElementById('intensity-tooltip');
+      const wrap = svg.parentElement;
+      svg.querySelectorAll('.intensity-pt').forEach(pt => {
+        pt.addEventListener('mouseenter', e => {
+          const i = +pt.dataset.i;
+          const v = +pt.dataset.v;
+          const star = pt.dataset.star === '1';
+          const { d, s } = days[i];
+          tip.innerHTML = `
+            <div class="tt-head">${star ? '★ ' : ''}Day ${i + 1} · ${escapeHtml(d.date)} ${escapeHtml(d.week)}<span class="tt-score" style="background:${intensityColor(v)}">强度 ${v}</span></div>
+            <div class="tt-meta">${escapeHtml(s.nameZh || s.name)} · ${escapeHtml(d.city || s.name)}</div>
+            <div style="margin-top:4px;">${escapeHtml(d.am)}</div>`;
+          tip.classList.add('active');
+          // Position tooltip relative to the chart wrap, using SVG-to-screen coords.
+          const ptRect = pt.getBoundingClientRect();
+          const wrapRect = wrap.getBoundingClientRect();
+          const tipW = 240;
+          let left = ptRect.left - wrapRect.left + 10;
+          if (left + tipW > wrapRect.width) left = ptRect.left - wrapRect.left - tipW - 10;
+          if (left < 0) left = 0;
+          let top = ptRect.top - wrapRect.top - 8;
+          if (top < 0) top = ptRect.bottom - wrapRect.top + 8;
+          tip.style.left = left + 'px';
+          tip.style.top = top + 'px';
+        });
+        pt.addEventListener('mouseleave', () => tip.classList.remove('active'));
+      });
     }
 
     function renderFestivals() {
