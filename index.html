@@ -2736,7 +2736,9 @@
       TRIP.stations.forEach(s => s.days.forEach(d => days.push({ d, s })));
       const N = days.length;
 
-      const W = 1100, H = 260;
+      const H = 260;
+      const W = Math.max(svg.clientWidth || 1100, 720);
+      svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
       const padL = 30, padR = 14, padT = 16, padB = 30;
       const plotW = W - padL - padR;
       const plotH = H - padT - padB;
