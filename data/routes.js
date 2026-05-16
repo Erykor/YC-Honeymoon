@@ -1,5 +1,5 @@
 // 站间连线 (地图视图绘制路线), from/to 用 string station ID
-// mode: flight|train|car|ferry; lpos 是标签在 SVG 上的覆盖位置 (可为 null).
+// mode: flight|train|drive; lpos 是标签在 SVG 上的覆盖位置 (可为 null).
 window.ROUTE_LINES = [
   {
     "from": "connemara",
@@ -114,7 +114,7 @@ window.ROUTE_LINES = [
   {
     "from": "gravel-tuscany",
     "to": "tuscany",
-    "mode": "car",
+    "mode": "drive",
     "label": "10/3 🚗 Montalcino→Chianti 1h",
     "lpos": {
       "x": 880,
