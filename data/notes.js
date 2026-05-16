@@ -297,116 +297,6 @@ window.DAY_NOTES = {
       "text": "老城内住宿 €140 偏贵但省去通勤; 城墙票傍晚黄昏入场光线最佳"
     }
   ],
-  "croatia.d1": [
-    {
-      "type": "book",
-      "text": "城墙 8:00 入场 (€35) 避免日晒"
-    },
-    {
-      "type": "eat",
-      "text": "Buža Bar 悬崖酒吧傍晚 Aperol €5, 排队 30min"
-    },
-    {
-      "type": "tip",
-      "text": "Lokrum 岛船 €27 含上岛, 11:00 班次回程游客少"
-    },
-    {
-      "type": "warn",
-      "text": "城墙单向 2h, 中途出口少, 备水 + 帽子"
-    }
-  ],
-  "croatia.d2": [
-    {
-      "type": "transport",
-      "text": "Jadrolinija 高速渡轮 Dubrovnik → Split 7:00-11:30 €40/人 (TP Line 直达, 海岸日景比开车好; 提前 1 周网订)"
-    },
-    {
-      "type": "tip",
-      "text": "宫殿外北墙青旅 / Airbnb 双人间 €80-100/晚, 比宫殿内便宜一半且安静"
-    },
-    {
-      "type": "eat",
-      "text": "Riva 海滨晚餐 Konoba Fetivi 海鲜性价比, 主菜 €15-20"
-    }
-  ],
-  "croatia.d3": [
-    {
-      "type": "book",
-      "text": "家庭船海钓 + peka €80/人 (split-fishing-trips.com)"
-    },
-    {
-      "type": "time",
-      "text": "9:00 出海 4-5h, 包午餐 (peka 是覆盖石板烤章鱼)"
-    },
-    {
-      "type": "gear",
-      "text": "防晒帽 + SPF 50 防晒霜, 海上紫外线强"
-    },
-    {
-      "type": "tip",
-      "text": "Trogir 顺路 30min 看, 不停留过夜"
-    }
-  ],
-  "croatia.d4": [
-    {
-      "type": "book",
-      "text": "Krka €30, 周日比周六人少 30%"
-    },
-    {
-      "type": "gear",
-      "text": "泳衣 + 拖鞋 + 速干毛巾"
-    },
-    {
-      "type": "tip",
-      "text": "Skradinski Buk 9 月水温 22℃ 舒适, 早 9-11 点人最少"
-    }
-  ],
-  "croatia.d5": [
-    {
-      "type": "transport",
-      "text": "FlixBus / Arriva Split → Plitvice 直达 4h €20/人, 公园门口下车 (不租车)"
-    },
-    {
-      "type": "time",
-      "text": "15:00 后 B 票 €15 比早场 €40 便宜一半"
-    },
-    {
-      "type": "tip",
-      "text": "住 Mukinje 村 walking distance 双人间 €60-80, 比 Plitvice 镇便宜 40%"
-    }
-  ],
-  "croatia.d6": [
-    {
-      "type": "time",
-      "text": "7:30 第一班入园, K 线 8h 全走避开 10:00 后旅团"
-    },
-    {
-      "type": "gear",
-      "text": "防水鞋 + 防滑底, 栈道常喷雾"
-    },
-    {
-      "type": "eat",
-      "text": "园内餐饮贵且差, 自带三明治"
-    },
-    {
-      "type": "warn",
-      "text": "K 线 18km 体能消耗大, 心脏不好选 H 线短段"
-    }
-  ],
-  "croatia.d7": [
-    {
-      "type": "transport",
-      "text": "Plitvice → Zagreb 机场 2h, Volotea/Croatia Air 飞 Venice 1h"
-    },
-    {
-      "type": "tip",
-      "text": "Venice 取车直接到 Val Gardena 2.5h, 走 A22 高速"
-    },
-    {
-      "type": "warn",
-      "text": "意大利高速无 vignette, Auronzo 等局部收费道现金"
-    }
-  ],
   "dolomites.d1": [
     {
       "type": "transport",
@@ -500,7 +390,7 @@ window.DAY_NOTES = {
   "dolomites.d6": [
     {
       "type": "book",
-      "text": "★ Adler Spa Resort Balance Ortisei 私汤+双人按摩 €280/2人, 提前 2 周邮件订"
+      "text": "Ortisei 当地 4★ Spa 酒店 (Hotel Gardena Grödnerhof 或 Hotel Hell) 标准房 €200/晚 + 私汤+双人按摩 €180/2人, 提前 2 周邮件订"
     },
     {
       "type": "time",
@@ -508,7 +398,7 @@ window.DAY_NOTES = {
     },
     {
       "type": "eat",
-      "text": "Tubladel 米其林推荐 Ladin 山地料理 €70/人 (Selva di Val Gardena)"
+      "text": "Cascade Ortisei 当地 Ladin 山地料理 €60/人 (非米其林, 性价比好, 食材本地)"
     },
     {
       "type": "tip",
@@ -518,7 +408,7 @@ window.DAY_NOTES = {
   "dolomites.d7": [
     {
       "type": "weather",
-      "text": "★ 主缓冲: 若 8/27 Tre Cime 完成 → 8/30 走 Cinque Torri WWI 步道; 若 8/27 推迟 → 8/30 顶上 Tre Cime 日游; 若两天均坏 → Bolzano 室内 Ötzi 博物馆 + Adler 桑拿"
+      "text": "★ 主缓冲: 若 8/27 Tre Cime 完成 → 8/30 走 Cinque Torri WWI 步道; 若 8/27 推迟 → 8/30 顶上 Tre Cime 日游; 若两天均坏 → Bolzano 室内 Ötzi 博物馆 + 当地 Spa 桑拿"
     },
     {
       "type": "transport",
@@ -561,184 +451,180 @@ window.DAY_NOTES = {
       "text": "8 月底/9 月初高山路况好, 但 Brenner 关口节假日易堵, 早 7:00 出发"
     }
   ],
-  "croatia-islands.d1": [
-    {
-      "type": "transport",
-      "text": "Ortisei → Innsbruck 还车 1.5h + ✈ INN→SPU 经 VIE 1 转 3h, Croatia Air/Austrian €130/人; 备 ✈ VCE→SPU 直飞 1h €100"
-    },
-    {
-      "type": "book",
-      "text": "Adventure Hvar / Adriatic Kayak Tours 双人 kayak 5 日 charter €600-800/人含装备+向导+4 晚 B&B+全餐, 提前 2 月邮件订"
-    },
-    {
-      "type": "tip",
-      "text": "Split→Hvar Jadrolinija catamaran 1h €15/人 末班 17:30, 别赶不上; Hvar 老港 5 min 步行老城"
-    }
-  ],
-  "croatia-islands.d2": [
-    {
-      "type": "weather",
-      "text": "海风 jugo>25kn 跨 Pakleni 段不开 → 改 Pakleni 浅水短段 12km, 减距离 (同等品质)"
-    },
-    {
-      "type": "tip",
-      "text": "Pakleni 群岛 Sv. Klement + Marinkovac 是 Hvar 之外的世外桃源, Palmizana 海滩透明翡翠水 9 月仍 23°C"
-    },
-    {
-      "type": "eat",
-      "text": "Lucullus 海鲜晚餐 (Hvar 老城广场旁, 老牌 1922): scampi + oktopus salad + Plavac Mali 红葡萄酒"
-    }
-  ],
-  "croatia-islands.d3": [
-    {
-      "type": "warn",
-      "text": "★ Hvar 东岸 25km 较长, 早 8:30 起出避开下午起风 + 中途 Pokojni Dol 海湾必停补水"
-    },
-    {
-      "type": "tip",
-      "text": "Sv. Nedjelja 渔家村 (Hvar 东南端) 葡萄园爬到悬崖边, 红葡萄酒 Zlatan Plenković 庄园仅 80 居民, 隐秘绝佳"
-    },
-    {
-      "type": "eat",
-      "text": "octopus peka 覆石板烤章鱼 (Adriatic 经典渔家菜) 3h slow-cook, Sv. Nedjelja 渔家 €25/人"
-    }
-  ],
-  "croatia-islands.d4": [
-    {
-      "type": "book",
-      "text": "Šćedro 岛 Mostir 港只有 1 家 konoba (30 居民), 营方含住宿 + 营火晚餐"
-    },
-    {
-      "type": "tip",
-      "text": "★ Šćedro 是 Hvar 南面小荒岛, 14 世纪 Dominican 修道院遗址 + 中世纪渔夫故事; 无光污染夜空银河 10 月可见"
-    },
-    {
-      "type": "warn",
-      "text": "Šćedro→Hvar 跨海 15km, 4h kayak; 早 7:30 出风更稳; 营方判断风/浪取消改 Hvar 围岛"
-    }
-  ],
-  "croatia-islands.d5": [
-    {
-      "type": "transport",
-      "text": "Hvar→Split catamaran 1h €15/人 + ✈ SPU→PMO 经 VIE 1 转 4h €180/人 17:00 班次; 总 8h door-to-door"
-    },
-    {
-      "type": "warn",
-      "text": "Marsala kite camp 提前通知 23:00 晚到; 床上简餐早睡为次日 Lo Stagnone 风筝 D1"
-    }
-  ],
   "lo-stagnone.d1": [
     {
-      "type": "weather",
-      "text": "Schilthorn 旋转餐厅看 Eiger 北壁需晴空。若云遮 → 改 Trümmelbach 室内瀑布 + Aareschlucht 峡谷; 与 D38 (9/4 Jungfrau) 互换灵活"
+      "type": "transport",
+      "text": "前一晚 ({{day:kalymnos.d8}}) Kalymnos→Athens→Palermo 已抵 Marsala (KGS→ATH→PMO 5h + 学校接驳 1.5h)"
     },
     {
       "type": "book",
-      "text": "Piz Gloria 旋转餐厅午餐 CHF 50 (007 主题菜)"
+      "text": "ProKite Alby Rondina (世界冠军 Alby 自家校) 或 PKS Marsala / Flow Kite School 14-day deep package €1,200-1,400/人含 IKO L1-3 cert + 设备 + 救援船 + 国际保险, 提前 2 月邮件订"
+    },
+    {
+      "type": "gear",
+      "text": "防晒服 UV50+ 长袖 + 反光镜风筝墨镜 + 护脚胶鞋自带; 学校提供 kite/board/harness/PFD"
     },
     {
       "type": "tip",
-      "text": "Northface Trail 看 Eiger 北壁全景, 6km 平缓"
-    },
-    {
-      "type": "time",
-      "text": "10:00 前上 Schilthorn 避免午后云遮峰"
+      "text": "Lo Stagnone 浅滩 1km 内水深至腰, Sangiovese-thermal-wind 15-25kt 平稳; 9 月稳风季 + 暑期人散开"
     }
   ],
   "lo-stagnone.d2": [
     {
-      "type": "weather",
-      "text": "★ 蜜月日重要性高: BLS 船风>40km/h 取消, 出发前 6h 查询。若取消 → Beatushöhlen 全天 + Victoria Jungfrau 米其林午餐+下午茶 (CHF 80/人) 保留蜜月仪式感"
-    },
-    {
-      "type": "book",
-      "text": "★ Thunersee 包船日落 2h CHF 350 (BLS 公司或 Faulensee 私营帆船)"
-    },
-    {
-      "type": "book",
-      "text": "Hotel Victoria Jungfrau Grand 米其林晚餐 CHF 180/人 (西装+连衣裙正装)"
-    },
-    {
       "type": "tip",
-      "text": "Beatushöhlen 钟乳石洞 11:00 进 1h, 出来湖畔 Restaurant Beatus 午餐"
+      "text": "body drag = 无板用风筝拖体过水, 学习风筝在 power zone / neutral zone 之间切换"
     },
     {
-      "type": "warn",
-      "text": "Lauterbrunnen → Beatushöhlen 火车+船 1.5h 单程, 早 8:00 出发"
+      "type": "weather",
+      "text": "9 月 Lo Stagnone 风太弱 (<8kn) 概率 < 10%; 若起不来风, 改下午老城慢逛 + 浅滩陆地控制复盘"
     }
   ],
   "lo-stagnone.d3": [
     {
-      "type": "book",
-      "text": "Swiss/Vueling €100/人, 23kg 托运 €40 加价"
-    },
-    {
       "type": "tip",
-      "text": "Barcelona Eixample 区步行 5min 到 Sagrada"
+      "text": "water start 第一次站板是 IKO Level 2 关键关; 反复跌入水→调整身姿→重启风筝→起板, 3-5m 站起即成功"
     },
     {
       "type": "warn",
-      "text": "Zurich → Interlaken 早班车 6:30, Lauterbrunnen 5:50 出门"
+      "text": "第一次 water start 容易腰部肌肉酸痛, 课后 30min 拉伸 + 海边按摩"
     }
   ],
   "lo-stagnone.d4": [
     {
       "type": "book",
-      "text": "Sagrada Família + 塔顶 €40 提前 1 月订, 现场不卖"
+      "text": "★ Cantine Florio 1833 历史马尔萨拉酒庄 4 种品鉴 €25/人 (Marsala 城内); Maria Grammatico Erice 杏仁糖 (修女传统配方) 现场买"
     },
     {
-      "type": "time",
-      "text": "9:30 入场避旅团; Passion 塔比 Nativity 塔视野好"
-    },
-    {
-      "type": "eat",
-      "text": "El Born 区 Cal Pep 站立 tapas €30, 排队 30min"
+      "type": "transport",
+      "text": "学校班车或拼车 Marsala→Erice 山下 30min + 缆车 €9 上山 (海拔 750m)"
     },
     {
       "type": "tip",
-      "text": "Park Güell 选 9-11 入场, 拍照人少光线好"
+      "text": "Erice 山顶云雾天美得超现实 (中世纪石板路+教堂); Monte San Giuliano 餐厅 busiate alla trapanese 是 Trapani 招牌"
     }
   ],
   "lo-stagnone.d5": [
     {
-      "type": "book",
-      "text": "Casa Batlló €35 + Casa Milà €28 可叠加买"
+      "type": "tip",
+      "text": "第 4 课起进入 IKO Level 2 入口 — 5-20m 短距 ride 第一次, 关键是稳住风筝在 11/1 点位置不窜"
     },
     {
       "type": "eat",
-      "text": "Picasso Museum 旁 Brunch & Cake 西班牙土豆饼必点"
-    },
-    {
-      "type": "book",
-      "text": "Flamenco Tablao Cordobés 21:00 场 €52 含 1 杯酒"
+      "text": "Cantina Siciliana cous cous trapanese (西西里 Trapani 北非影响, 用鱼汤煮粗麦)"
     }
   ],
   "lo-stagnone.d6": [
     {
-      "type": "transport",
-      "text": "Tibidabo 公交 196 路 + 缆车 €11.4 来回"
+      "type": "tip",
+      "text": "50-100m 独立短距 + 转向 transition 基础 (停板转向: 板停 + 风筝换边 + 重启)"
     },
     {
       "type": "eat",
-      "text": "Barceloneta 海鲜午餐 La Mar Salada paella €28/人"
-    },
-    {
-      "type": "warn",
-      "text": "Camp Nou 改造中, 临时主场 Estadi Olímpic, 票需提前 1 周订"
+      "text": "Marsala 老城 Piazza Loggia 主广场 aperitivo 6 点起人聚, Marsala doc 加冰一杯 €5"
     }
   ],
   "lo-stagnone.d7": [
     {
-      "type": "transport",
-      "text": "R5 火车 Plaça Espanya 出发 1h 到 Aeri"
+      "type": "tip",
+      "text": "★ jibe transition = 不停板转向 (高级动作); upwind ride 顶风骑能逆风骑回起点是 IKO Level 3 关键能力"
     },
     {
-      "type": "time",
-      "text": "07:36 第一班车避旅团 (10:00 大批到)"
+      "type": "eat",
+      "text": "Trapani Ristorante Pocho 海鲜晚餐看 Egadi 日落, 招牌生鱼鞘 + 红虾 carpaccio €40/人"
+    }
+  ],
+  "lo-stagnone.d8": [
+    {
+      "type": "book",
+      "text": "★ Cantine Pellegrino 1880 马尔萨拉酒庄 €20/人 (家族 6 代经营, garage cellar 现代化, 对比 Florio 古旧两种风格)"
+    },
+    {
+      "type": "transport",
+      "text": "Mothia/Mozia 岛渡船 5min €6 (Saline Ettore e Infersa 浅滩码头) ; 退潮时甚至能徒涉过去"
     },
     {
       "type": "tip",
-      "text": "Sant Jeroni 山顶 3h 来回, 视野 360°"
+      "text": "★ Mothia 是 Whitaker 家族 19 世纪购岛建博物馆, Phoenician 古城遗址 8 世纪 BC + Mozia 御者大理石青年像 (希腊化时期罕见杰作)"
+    }
+  ],
+  "lo-stagnone.d9": [
+    {
+      "type": "warn",
+      "text": "★ IKO Level 3 cert 评估日: 能 ride upwind 回起点 + jibe transition + 自救 = independent rider 毕业。前一晚早睡, 早餐高热量"
+    },
+    {
+      "type": "weather",
+      "text": "无风评估推到 {{day:lo-stagnone.d10}}/{{day:lo-stagnone.d11}}; 改 Trapani 盐田 Saline di Trapani 木风车 + Salina della Laguna 红粉日落"
+    }
+  ],
+  "lo-stagnone.d10": [
+    {
+      "type": "book",
+      "text": "★ Lo Stagnone sunset catamaran 双人私人 1.5h €80/2人 (marsalaboatours.it 或学校代订, 提前 1 周)"
+    },
+    {
+      "type": "weather",
+      "text": "风/浪过大 catamaran 取消 → 改 Saline Ettore e Infersa 盐田博物馆 + 木风车导览 €5"
+    },
+    {
+      "type": "tip",
+      "text": "船长讲解 Phoenician 盐贸易史 (公元前 8 世纪 Mothia 始) + 木风车 + Mothia 岛环行"
+    }
+  ],
+  "lo-stagnone.d11": [
+    {
+      "type": "book",
+      "text": "★ foilboard 水翼板 intro session 加项 €120/2人 1 日体验 (装备日租, 板下挂 65cm 水翼起飞后离水 50cm 滑行)"
+    },
+    {
+      "type": "warn",
+      "text": "foil 入门危险性: 风>20kn 不建议; 落水时 foil 锋利, 必穿 impact vest + 护腿"
+    },
+    {
+      "type": "tip",
+      "text": "foilboard 与普通板动作系完全不同 (蹬板换重心 vs 转身配风筝), 第一天专攻 body drag with foil 是必要"
+    }
+  ],
+  "lo-stagnone.d12": [
+    {
+      "type": "transport",
+      "text": "Trapani 港 → Favignana 渡船 30min €12 (Liberty Lines 旺季半小时 1 班, 末班 18:30)"
+    },
+    {
+      "type": "book",
+      "text": "Favignana 港边租自行车 €10/天 (现场租, 不需预约); 25km² 蝴蝶形岛适合环岛"
+    },
+    {
+      "type": "tip",
+      "text": "★ Cala Rossa 红湾古采石场遗迹 + 翡翠水, 西西里最美海湾之一; Cala Azzurra 蓝湾午餐 + 海蚀洞泳; Bue Marino 古采石场"
+    }
+  ],
+  "lo-stagnone.d13": [
+    {
+      "type": "tip",
+      "text": "★ downwinder = 顺风长距旅行 (从 A 起飞沿海岸顺风骑到 B), 救援船跟随; IKO Level 3 后第一次真实距离旅行, 15km 3-4h"
+    },
+    {
+      "type": "warn",
+      "text": "downwinder 装备要 GPS + 哨子 + 防水手机袋; 学校提供救援船但必须保持视距"
+    },
+    {
+      "type": "eat",
+      "text": "La Pescheria di Trapani 海鲜午餐 (Trapani 老港旁市场内餐厅, 渔民现拿现做)"
+    }
+  ],
+  "lo-stagnone.d14": [
+    {
+      "type": "tip",
+      "text": "★ kiteloop = 风筝在空中绕环 360° 同时 rider 在板上保持骑姿, 高级 IKO 课目; 1 对 1 指导更安全"
+    },
+    {
+      "type": "book",
+      "text": "★ Lo Stagnone 14 日完赛证书 (含 IKO Level 3 + foilboard intro + downwinder + kiteloop intro 等模块)"
+    },
+    {
+      "type": "tip",
+      "text": "Salina della Laguna 红粉日落是西西里最 iconic 镜头 (9 月盐分高峰: 盐山 + 木风车 + 红粉水 + 金色光); 17:30 抵盐田最美"
     }
   ],
   "malta.d1": [
@@ -772,25 +658,25 @@ window.DAY_NOTES = {
   "malta.d3": [
     {
       "type": "warn",
-      "text": "★ No-fly 18h 间隔规则: 最后潜要在 9/16 完成, 9/17 仅做浅潜 ≤18m 或不潜; 17:00 飞 BCN 需 9/16 18:00 前完成最后潜"
-    },
-    {
-      "type": "book",
-      "text": "MLA→BCN Ryanair 直飞 2h €80/人 17:00 班次 (推荐, 比 ferry+train 节省半日); 或 18:00 末班 Virtu Ferries Valletta→Pozzallo + 自驾 BCN ✈ 次日"
+      "text": "★ No-fly 24h 间隔规则: d3 上午潜后 d3 整日不飞; 次日 (grasse.d1) 13:00 飞 NCE 需 d3 上午 8:30 潜结束 23h+ 间隔"
     },
     {
       "type": "tip",
       "text": "Reqqa Reef 50m+ 大壁 + P29 巡逻艇 35m 是 Gozo Deep Adventure dive 双高潮; 收尾后颁 PADI Adventure dive log 章"
+    },
+    {
+      "type": "eat",
+      "text": "Marsalforn ar Rikkardu 海鲜晚餐: spaghetti rizzi 海胆面 + 烤章鱼; 看 Dwejra Bay 日落 (Azure Window 旧址 2017 塌, 仍是 Gozo 最美海岬)"
     }
   ],
   "grasse.d1": [
     {
-      "type": "transport",
-      "text": "MLA→NCE Air Malta 直飞 2h €120/人 (季节性, 提前 1 月订); 备 MLA→ZRH→NCE 3h €150"
+      "type": "book",
+      "text": "★★ Galimard 'Studio des Fragrances' 半日 €55/人 (Route de Pégomas, Grasse), 提前 2 周邮件订 galimard.com; 配方留 30 年终身可补单"
     },
     {
       "type": "book",
-      "text": "Hotel Carlton Cannes 4★ €180/晚 2 晚 (蜜月升级 Cote d'Azur 海景); 备用 Grasse 老城 B&B €100/晚"
+      "text": "Hotel Carlton Cannes 4★ €180/晚 2 晚 (Côte d'Azur 海景); 备用 Grasse 老城 B&B €100/晚"
     },
     {
       "type": "tip",
@@ -800,35 +686,35 @@ window.DAY_NOTES = {
   "grasse.d2": [
     {
       "type": "book",
-      "text": "★★ Galimard 'Studio des Fragrances' 半日 €55/人 (Route de Pégomas, Grasse), 提前 2 周邮件订 galimard.com; 配方留 30 年终身可补单"
-    },
-    {
-      "type": "weather",
-      "text": "茉莉田 9 月底接近季尾, 茉莉花 8 月开得最盛; 玫瑰仍盛开。Domaine de Manon 户外 tour, 大雨 → 改室内 Fragonard"
-    },
-    {
-      "type": "tip",
-      "text": "Domaine de Manon: Chanel No.5 grower 1909 起为 Chanel 提供 Grasse jasmine, 私人庄园 tour €30/人 (提前 1 周订)"
-    }
-  ],
-  "grasse.d3": [
-    {
-      "type": "book",
-      "text": "★★ Molinard 'Création de Parfum' 全日大师班 €120/人 (Boulevard Victor Hugo), 提前 2 周邮件; 装精装瓶 + 印你名 label + 终身可补单"
-    },
-    {
-      "type": "transport",
-      "text": "NCE→VIE Austrian/Lufthansa 直飞 1h45 €130/人 17:30 班次, 抵 VIE 20:30 + CAT 16min Stephansdom"
+      "text": "★★ Molinard 'Création de Parfum' 全日大师班 €120/人 (Boulevard Victor Hugo, 1849 创立 Coco Chanel 个人 perfumer), 提前 2 周邮件; 装精装瓶 + 印你名 label + 终身可补单"
     },
     {
       "type": "tip",
       "text": "Molinard 课程总长 6h (理论 2h + 嗅闻 1h + 调配 2h + 装瓶 1h), 比 Galimard 深入 3x"
+    },
+    {
+      "type": "tip",
+      "text": "Maison Fragonard 1782 创立, Saracen-built 老厂; Antibes 老城海滨晚餐 1h 自驾"
+    }
+  ],
+  "grasse.d3": [
+    {
+      "type": "transport",
+      "text": "★ Grasse → Alba 自驾 5h €60 油 + 通行 (A8 沿 Côte d'Azur → Ventimiglia → A10 沿 Liguria 海岸 → Genoa → A26 北上 → Asti → Alba); Hertz Nice 取车 / Alba 还车, droppage €80 含在 5 日租 €280 内"
+    },
+    {
+      "type": "eat",
+      "text": "中途 Ventimiglia / Sanremo 海岸午餐 (Liguria 海鲜 + 焦糖洋葱 farinata)"
+    },
+    {
+      "type": "tip",
+      "text": "Grasse → Alba 法意边境自驾顺路 (沿地中海岸 + 法意 A 字高速); 替代飞行 NCE→TRN/MXP 1h, 但少 1 段航班 + 看海岸景"
     }
   ],
   "kalymnos.d1": [
     {
-      "type": "transport",
-      "text": "FLR → ATH 直飞 2h €130/人 (Aegean/Sky Express); ATH → KGS 50min €80/人; KGS → Pothia ferry 1h €10/人; 总转场 8h 提前 1 月订 Aegean 联程更便宜"
+      "type": "book",
+      "text": "Kalymnos Climbing School 7 日 lead transition course €980/2人 (含 rope 60m + 安全带 + 头盔 + quickdraws + 教练 + 国际保险, 提前 2 月邮件订)"
     },
     {
       "type": "book",
@@ -907,8 +793,8 @@ window.DAY_NOTES = {
   ],
   "kalymnos.d7": [
     {
-      "type": "time",
-      "text": "★ 9:30 自由攀日 (camp 装备含, 不强制上课): 你俩独立选 sector 重攀 2-3 条 5b-6a 路线 (无教练随同, 验证独立能力)"
+      "type": "tip",
+      "text": "★ 9:30 自由攀小日 (camp 装备 day pass €30): 上 Skalia 短 3a/4a 暖身 2h, 或完全休骑 (7 日攀岩后体能需缓冲)"
     },
     {
       "type": "transport",
@@ -922,7 +808,7 @@ window.DAY_NOTES = {
   "kalymnos.d8": [
     {
       "type": "transport",
-      "text": "6:00 退房 + 学校班车 Masouri → Pothia 30min; 7:30 ferry Pothia → Kos 1h €10/人; 9:00 抵 KGS 机场; 11:00 ✈ KGS → ATH 50min €80; ATH → OPO Aegean+TAP 经 LIS 中转 4.5h 或直飞季节性 4h €250/人; 总转场 12h"
+      "text": "6:00 退房 + 学校班车 Masouri → Pothia 30min; 7:30 ferry Pothia → Kos 1h €10/人; 9:00 抵 KGS 机场; 11:00 ✈ KGS → ATH 50min €80; 13:30 ATH → PMO Palermo Aegean/ITA 直飞 2h €150/人; 16:30 抵 PMO + 学校接驳 Marsala 1.5h"
     },
     {
       "type": "warn",
@@ -940,7 +826,7 @@ window.DAY_NOTES = {
     },
     {
       "type": "transport",
-      "text": "营方含 Murter 基地接驳; Split → Murter 1h drive 营方车; Day 1 训练日 15km 平水, 不冲不累"
+      "text": "前一晚 ({{day:dolomites.d9}}) 已抵 Murter (Dolomites→VCE→SPU 飞 + 营方接驳 1h); Day 1 训练日 15km 平水, 不冲不累"
     },
     {
       "type": "gear",
@@ -1006,7 +892,7 @@ window.DAY_NOTES = {
   "kornati.d6": [
     {
       "type": "transport",
-      "text": "营方含 Dugi Otok 南岸 → Zadar 港接驳船 4h; 12:00 抵 Zadar; Ryanair Zadar ZAD → Milan MXP 直飞 1.5h €100/人 17:30 班次"
+      "text": "营方含 Dugi Otok 南岸 → Zadar 港接驳船 4h; 12:00 抵 Zadar; 15:30 ✈ Croatia Air/Aegean ZAD → Athens ATH 经 VIE/ZAG 4h + ATH→KGS 50min 末班 21:30; 总 8h 抵 Kalymnos"
     },
     {
       "type": "tip",
@@ -1019,16 +905,16 @@ window.DAY_NOTES = {
   ],
   "truffle-hunt.d1": [
     {
+      "type": "transport",
+      "text": "前一晚 ({{day:grasse.d3}}) Grasse→Nice→Alba 自驾 5h 沿 Côte d'Azur+Liguria+Piemonte 已抵 La Morra 农庄"
+    },
+    {
       "type": "tip",
       "text": "Cortile della Maddalena 松露市场工作日开市, 周末爆满"
     },
     {
       "type": "eat",
       "text": "La Morra Trattoria del Bivio agnolotti del plin"
-    },
-    {
-      "type": "time",
-      "text": "Cappella del Barolo 彩色教堂 1h 内看完"
     }
   ],
   "truffle-hunt.d2": [
@@ -1148,7 +1034,7 @@ window.DAY_NOTES = {
   "vienna.d1": [
     {
       "type": "transport",
-      "text": "BCN El Prat → ✈ VIE Lufthansa/Austrian 2.5h €150/人 经 MUC 1 转; 直飞 Iberia 季节性 9 月仍运营"
+      "text": "Budapest Keleti → Vienna Hauptbahnhof ÖBB RailJet 直达 2h25min €40/人 (Sziget 散场后无缝衔接, 不飞行), 08:00 班次抵 11:00; 备 EuroNight 卧铺 €60/人"
     },
     {
       "type": "book",
@@ -1175,8 +1061,8 @@ window.DAY_NOTES = {
   ],
   "vienna.d3": [
     {
-      "type": "book",
-      "text": "Steirereck 米其林二星晚餐 €180/人 (Stadtpark, 提前 2 月订)"
+      "type": "eat",
+      "text": "Beim Czaak 1926 经典维也纳 Wirtshaus €40/人 (Schwedenplatz 附近, Wiener Schnitzel + Kalbsbeuschel 维也纳家常, 提前 3 天订)"
     },
     {
       "type": "tip",
@@ -1190,11 +1076,11 @@ window.DAY_NOTES = {
   "vienna.d4": [
     {
       "type": "book",
-      "text": "🌟 蜜月夜: Wiener Staatsoper Vienna Philharmonic 演出 €175/人 1 等池座 (提前 6 月起售 wiener-staatsoper.at, 周末场需正装 male: smoking 或 dark suit + tie; female: cocktail dress)"
+      "text": "Wiener Konzerthaus 古典音乐会 €60-100/人 B 区池座 (konzerthaus.at, 提前 1 月购票); 维也纳交响乐团 / Wiener KammerOrchester 等帝国级体验"
     },
     {
       "type": "tip",
-      "text": "Schönbrunn 城堡舞会模拟选修 €150/2人 (Hofball dress code 试穿 + 你俩与教练在皇家舞厅跳一组 Wiener Walzer, 蜜月仪式感)"
+      "text": "Schönbrunn 城堡舞会模拟选修 €150/2人 (Hofball dress code 试穿 + 你俩与教练在皇家舞厅跳一组 Wiener Walzer, 仪式感保留)"
     },
     {
       "type": "eat",
@@ -1230,15 +1116,15 @@ window.DAY_NOTES = {
   "vienna.d6": [
     {
       "type": "transport",
-      "text": "Austrian/Lufthansa VIE → Florence FLR 直飞 1.5h €130/人 经 MUC 1 转; 或 ÖBB 火车 8h €80/人备用 (经 Innsbruck 转 Verona 转 Florence)"
+      "text": "ÖBB RailJet Wien Westbahnhof → Innsbruck 直达 4h25min €60/人 (Alps 横穿景观线, 经 Salzburg + Tirol); 备 ÖBB Nightjet 卧铺 €100/人"
     },
     {
       "type": "book",
-      "text": "Florence Santo Spirito 区双人 €90/晚, 步行到 Pitti / Boboli / Ponte Vecchio"
+      "text": "Innsbruck Hertz 取 9 日小车 8/23-9/1 €280 (自驾 Brenner 关口到 Ortisei 1.5h); 9/1 还车 Venice VCE (跨境 €50 droppage fee)"
     },
     {
       "type": "tip",
-      "text": "当晚不安排活动, 9 日 Vienna 后 + 飞行后疲累, Mercato Centrale 二楼 food court 简餐早睡"
+      "text": "Ortisei 第一晚 €120 双人, welcome dinner 当地 Ladin 料理; 早睡为次日 Val di Funes"
     }
   ],
   "tuscany.d1": [
@@ -1390,7 +1276,7 @@ window.DAY_NOTES = {
   "tuscany.d10": [
     {
       "type": "transport",
-      "text": "SITA Castellina → Florence Peretola 1.5h €8 → ✈ FLR → Athens ATH (Aegean/Sky Express 直飞 2h €130/人) → ATH → Kos KGS (Aegean 直飞 50min €80/人) → ferry Kos→Pothia 1h €10/人; 总转场 8h"
+      "text": "SITA Castellina → Florence Peretola 1.5h €8 → 11:00 抵 FLR → ✈ Air France/ITA Airways FLR → Nice NCE 直飞 1.5h €130/人 (季节性, 备 FLR→PSA 火车 + PSA→NCE TER 火车 6h) → 14:30 抵 NCE + Hertz 取车 + Nice→Grasse 30min"
     },
     {
       "type": "book",
@@ -1412,24 +1298,14 @@ window.DAY_NOTES = {
     },
     {
       "type": "tip",
-      "text": "Castellina in Chianti 是 Strade Bianche 北段起点, agriturismo 多 (Tenuta di Lilliano / Castello di Fonterutoli)"
-    }
-  ],
-  "gravel-tuscany.d2": [
-    {
-      "type": "tip",
       "text": "★ 60km Chianti loop 中度起伏 +800m, 经 Castello di Brolio (1860 Barone Ricasoli 城堡发明 Chianti 公式)"
     },
     {
       "type": "weather",
       "text": "暴雨 gravel 路滑泥泞, 改 indoor cantina tour Antinori + Verrazzano (车队接驳免费)"
-    },
-    {
-      "type": "eat",
-      "text": "Castello di Brolio 葡萄园午餐含 Chianti Classico 红葡萄酒品鉴"
     }
   ],
-  "gravel-tuscany.d3": [
+  "gravel-tuscany.d2": [
     {
       "type": "tip",
       "text": "★★ Strade Bianche 真正核心 70km, 经 Pievasciata + Vagliagli + Murlo (白色石灰岩 gravel + 柏树大道); +1,100m 爬升"
@@ -1443,7 +1319,7 @@ window.DAY_NOTES = {
       "text": "Trattoria Papei 老牌 Sienese 晚餐: Pici cacio e pepe + Bistecca alla Senese"
     }
   ],
-  "gravel-tuscany.d4": [
+  "gravel-tuscany.d3": [
     {
       "type": "tip",
       "text": "★★ Crete Senesi 黏土丘陵 65km loop, 经 Monte Oliveto Maggiore 1313 本笃会修道院 (Sienese gothic frescoes)"
@@ -1457,7 +1333,7 @@ window.DAY_NOTES = {
       "text": "Osteria Le Logge 米其林推荐 Siena 老城晚餐 (提前 1 周订)"
     }
   ],
-  "gravel-tuscany.d5": [
+  "gravel-tuscany.d4": [
     {
       "type": "book",
       "text": "★ Uffizi Gallery €25 提前订 (9:00 第一批入场, 文艺复兴 1F 2-3h); 完美 gravel 中场休骑日"
@@ -1471,10 +1347,10 @@ window.DAY_NOTES = {
       "text": "Florence Santo Spirito 区 €90 (步行到 Boboli / Pitti / Ponte Vecchio); Piazzale Michelangelo 日落 Arno + 穹顶 + 老桥全景"
     }
   ],
-  "gravel-tuscany.d6": [
+  "gravel-tuscany.d5": [
     {
       "type": "book",
-      "text": "🌟 La Bottega del Buon Caffè 米其林一星晚餐 €120/人 (Arno 河畔, 提前 2 周订, 蜜月 anchor)"
+      "text": "Buca Lapi (1880 创立, Antinori 宫殿地下室) 经典 Bistecca alla Fiorentina €60/人 1.2kg T-bone 切尔比纳牛, 老柴火炭烤, 提前 3 天订"
     },
     {
       "type": "eat",
@@ -1485,7 +1361,7 @@ window.DAY_NOTES = {
       "text": "San Miniato al Monte 罗马式教堂 (Florence 最古老) + Mercato Sant'Ambrogio 当地市场; gravel 后腿沉慢日"
     }
   ],
-  "gravel-tuscany.d7": [
+  "gravel-tuscany.d6": [
     {
       "type": "tip",
       "text": "★★ 80km 最长 Florence → Pienza, +1,400m 爬升; 经 Greve → Panzano → Castelnuovo Berardenga 经典 Tuscany 全景"
@@ -1497,6 +1373,20 @@ window.DAY_NOTES = {
     {
       "type": "eat",
       "text": "La Terrazza del Chiostro pecorino + truffle 晚餐 (Pienza 是 pecorino di Pienza 原产地)"
+    }
+  ],
+  "gravel-tuscany.d7": [
+    {
+      "type": "tip",
+      "text": "★★ 65km Pienza → Montalcino, 经 Sant'Antimo 1118 罗马式修道院 (gregorian chant 早晨弥撒) + San Quirico d'Orcia + Val d'Orcia UNESCO 景观 + Bagno Vignoni 中世纪温泉广场"
+    },
+    {
+      "type": "book",
+      "text": "Castello Banfi 或 Casanova di Neri 酒庄午餐 + Brunello di Montalcino Sangiovese Grosso 品鉴 €60/人 (Italy 顶级 DOCG)"
+    },
+    {
+      "type": "transport",
+      "text": "Montalcino → Castellina Chianti agriturismo 车队接驳 1h drive (Tuscany Vendemmia 基地, 同日抵)"
     }
   ]
 };

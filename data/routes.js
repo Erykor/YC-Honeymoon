@@ -7,152 +7,130 @@ window.ROUTE_LINES = [
     "mode": "flight",
     "label": "8/6 ✈ SNN→EDI 1h",
     "lpos": {
-      "x": 460,
-      "y": 310,
-      "r": -12
+      "x": 446,
+      "y": 239,
+      "r": -17
     }
   },
   {
     "from": "edinburgh",
     "to": "budapest",
     "mode": "flight",
-    "label": "8/10 ✈ 3h",
+    "label": "8/9 ✈ EDI→BUD 3h",
     "lpos": {
-      "x": 810,
-      "y": 350,
-      "r": -8
+      "x": 923,
+      "y": 326,
+      "r": 16
     }
   },
   {
     "from": "budapest",
-    "to": "croatia",
-    "mode": "flight",
-    "label": "8/17 ✈ 4-5h",
+    "to": "vienna",
+    "mode": "train",
+    "label": "8/17 🚆 BUD→VIE 2.5h",
     "lpos": {
-      "x": 1210,
-      "y": 660,
-      "r": 60
+      "x": 1207,
+      "y": 439,
+      "r": -9
     }
   },
   {
-    "from": "croatia",
+    "from": "vienna",
     "to": "dolomites",
-    "mode": "flight",
-    "label": "8/24 ✈→自驾",
+    "mode": "train",
+    "label": "8/23 🚆 VIE→INN 4.5h",
     "lpos": {
-      "x": 1190,
-      "y": 815,
-      "r": 22
+      "x": 1004,
+      "y": 613,
+      "r": -52
     }
   },
   {
     "from": "dolomites",
-    "to": "croatia-islands",
+    "to": "kornati",
     "mode": "flight",
-    "label": "9/3 ✈ INN→SPU 经 VIE 3h",
+    "label": "9/1 ✈ VCE→SPU 1h",
     "lpos": {
-      "x": 1130,
-      "y": 850,
-      "r": 22
+      "x": 1028,
+      "y": 728,
+      "r": 7
     }
   },
   {
-    "from": "croatia-islands",
+    "from": "kornati",
+    "to": "kalymnos",
+    "mode": "flight",
+    "label": "9/7 ✈ ZAD→ATH→KGS 6h",
+    "lpos": {
+      "x": 1242,
+      "y": 806,
+      "r": 11
+    }
+  },
+  {
+    "from": "kalymnos",
     "to": "lo-stagnone",
     "mode": "flight",
-    "label": "9/7 ✈ SPU→PMO 经 VIE 4h",
+    "label": "9/15 ✈ KGS→ATH→PMO 5h",
     "lpos": {
-      "x": 1080,
-      "y": 990,
-      "r": -28
+      "x": 1205,
+      "y": 1014,
+      "r": -31
     }
   },
   {
     "from": "lo-stagnone",
     "to": "malta",
     "mode": "train",
-    "label": "9/15 ⛴ TPS→Malta 1.5h",
+    "label": "9/29 ⛴ TPS→Malta 1.5h",
     "lpos": {
-      "x": 950,
-      "y": 1110,
-      "r": -5
+      "x": 963,
+      "y": 1202,
+      "r": 48
     }
   },
   {
     "from": "malta",
-    "to": "grasse",
-    "mode": "flight",
-    "label": "9/18 ✈ MLA→NCE 2h",
-    "lpos": {
-      "x": 760,
-      "y": 1030,
-      "r": -25
-    }
-  },
-  {
-    "from": "grasse",
-    "to": "vienna",
-    "mode": "flight",
-    "label": "9/20 ✈ NCE→VIE 1h45",
-    "lpos": {
-      "x": 780,
-      "y": 720,
-      "r": -55
-    }
-  },
-  {
-    "from": "vienna",
     "to": "gravel-tuscany",
     "mode": "flight",
-    "label": "9/26 ✈ VIE→FLR 1.5h",
+    "label": "10/3 ✈ MLA→FLR 3h",
     "lpos": {
-      "x": 980,
-      "y": 680,
-      "r": 80
+      "x": 1074,
+      "y": 1023,
+      "r": 69
     }
   },
   {
     "from": "gravel-tuscany",
     "to": "tuscany",
     "mode": "drive",
-    "label": "10/3 🚗 Montalcino→Chianti 1h",
+    "label": "10/9 🚗 Montalcino→Chianti 1h",
     "lpos": {
       "x": 880,
-      "y": 850,
-      "r": 5
+      "y": 977,
+      "r": 30
     }
   },
   {
     "from": "tuscany",
-    "to": "kalymnos",
+    "to": "grasse",
     "mode": "flight",
-    "label": "10/14 ✈ FLR→ATH→KGS 6h",
+    "label": "10/19 ✈ FLR→NCE 1.5h",
     "lpos": {
-      "x": 1090,
-      "y": 800,
-      "r": -8
+      "x": 785,
+      "y": 951,
+      "r": 11
     }
   },
   {
-    "from": "kalymnos",
-    "to": "kornati",
-    "mode": "flight",
-    "label": "10/21 ✈ KGS→ATH→SPU 6h",
-    "lpos": {
-      "x": 1270,
-      "y": 790,
-      "r": 78
-    }
-  },
-  {
-    "from": "kornati",
+    "from": "grasse",
     "to": "truffle-hunt",
-    "mode": "flight",
-    "label": "10/27 ✈ ZAD→MXP 1.5h",
+    "mode": "drive",
+    "label": "10/22 🚗 Nice→Alba 5h (法意边境)",
     "lpos": {
-      "x": 990,
-      "y": 810,
-      "r": -15
+      "x": 761,
+      "y": 760,
+      "r": -14
     }
   }
 ];
