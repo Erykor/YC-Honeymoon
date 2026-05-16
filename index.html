@@ -1672,13 +1672,13 @@
     <div class="header-top">
       <div class="header-titles">
         <h1>Y♡C · 2026 欧洲蜜月</h1>
-        <p>2026/8/4 北京/上海 → 2026/11/4 米兰返航 · 13 站 · 5 大重头 + 11 个加分活动</p>
+        <p>2026/7/29 北京/上海 → 2026/11/4 米兰返航 · 15 站 · 10 大重头 + 15 个加分活动</p>
       </div>
       <div class="header-stats">
-        <div class="stat"><strong>93</strong>天</div>
-        <div class="stat"><strong>13</strong>站</div>
-        <div class="stat"><strong>22</strong>大节日/活动</div>
-        <div class="stat"><strong>$32,000</strong>总预算</div>
+        <div class="stat"><strong>99</strong>天</div>
+        <div class="stat"><strong>15</strong>站</div>
+        <div class="stat"><strong>34</strong>大节日/活动</div>
+        <div class="stat"><strong>$44,880</strong>总预算</div>
       </div>
     </div>
     <nav class="tabs" role="tablist">
@@ -1778,12 +1778,12 @@
         </div>
         <div class="summary-card">
           <div class="label">城市/地区</div>
-          <div class="value">13</div>
+          <div class="value">15</div>
           <div class="sub">站</div>
         </div>
         <div class="summary-card">
           <div class="label">两人总预算</div>
-          <div class="value">$32,000</div>
+          <div class="value">$44,880</div>
           <div class="sub">含国际机票</div>
         </div>
         <div class="summary-card">
@@ -1802,12 +1802,12 @@
           <div class="sub">个</div>
         </div>
       </div>
-      <h2 class="section-title">13 站快速导航 (点击进入)</h2>
+      <h2 class="section-title">15 站快速导航 (点击进入)</h2>
       <div class="station-card-grid" id="overview-cards"></div>
     </section>
 
     <section class="view" id="view-daily">
-      <h2 class="section-title">93 天完整行程</h2>
+      <h2 class="section-title">99 天完整行程</h2>
       <div class="data-card intensity-card">
         <div class="intensity-header">
           <div>
@@ -1867,7 +1867,7 @@
     </section>
 
     <section class="view" id="view-budget">
-      <h2 class="section-title">93 天预算明细 (4 个月)</h2>
+      <h2 class="section-title">99 天预算明细 (4 个月)</h2>
       <div class="data-card">
         <table class="data-table total-row">
           <thead>
@@ -1902,6 +1902,8 @@
   <script src="data/packing.js"></script>
   <script src="data/notes.js"></script>
   <script src="data/routes.js"></script>
+  <script src="data/expand.js"></script>
+  <script>window.expandTrip();</script>
   <script>
     const TRIP = {
       stations: window.STATIONS,
@@ -1914,7 +1916,8 @@
     const STATIONS_BY_ID = {};
     TRIP.stations.forEach(s => { STATIONS_BY_ID[s.id] = s; });
 
-    const DAY_NOTES = window.DAY_NOTES;
+    // NOTES_BY_DAY 由 expand.js 从 DAY_NOTES (键: 'stationId.dayId') 映射到全局 day#
+    const DAY_NOTES = window.NOTES_BY_DAY;
 
     const ROUTE_LINES = window.ROUTE_LINES;
 
@@ -2064,7 +2067,7 @@
         num.setAttribute('text-anchor', 'middle');
         num.setAttribute('dominant-baseline', 'central');
         num.setAttribute('pointer-events', 'none');
-        num.textContent = s.id;
+        num.textContent = s.numericId;
         g.appendChild(num);
 
         const labelOffsets = {
@@ -2126,7 +2129,7 @@
 
     function selectCity(cityId) {
       document.querySelectorAll('.city-node').forEach(n => {
-        n.classList.toggle('active', parseInt(n.dataset.city) === cityId);
+        n.classList.toggle('active', n.dataset.city === cityId);
       });
 
       const s = STATIONS_BY_ID[cityId];
@@ -2140,7 +2143,7 @@
       s.days.forEach((d, idx) => {
         const star = d.star ? '<span class="star-mark">★</span>' : '';
         daysHtml += `
-      <div class="day-row" onclick="selectDay(${cityId}, ${idx})">
+      <div class="day-row" onclick="selectDay('${cityId}', ${idx})">
         <div class="day-date-box">
           <div class="day-date-num">${d.date}</div>
           <div class="day-week">${d.week}</div>
@@ -2157,7 +2160,7 @@
     <div class="detail-header">
       <button class="close-detail" aria-label="关闭" onclick="clearSelection()">✕</button>
       <div class="detail-header-top">
-        <div class="detail-num" style="${stationVars(s)}">${s.id}</div>
+        <div class="detail-num" style="${stationVars(s)}">${s.numericId}</div>
         <div class="detail-title-block">
           <h2 class="detail-title">${s.nameZh}</h2>
           <div class="detail-country">${s.country} · ${s.name}</div>
@@ -2232,9 +2235,9 @@
       content.innerHTML = `
     <div class="detail-header">
       <button class="close-detail" aria-label="关闭" onclick="clearSelection()">✕</button>
-      <button class="back-detail" onclick="selectCity(${cityId})">← 返回 ${escapeHtml(s.nameZh)} 全程</button>
+      <button class="back-detail" onclick="selectCity('${cityId}')">← 返回 ${escapeHtml(s.nameZh)} 全程</button>
       <div class="detail-header-top">
-        <div class="detail-num" style="${stationVars(s)}">${s.id}</div>
+        <div class="detail-num" style="${stationVars(s)}">${s.numericId}</div>
         <div class="detail-title-block">
           <h2 class="day-detail-title">${d.date}<span class="day-detail-week">${d.week}</span></h2>
           <div class="detail-country">${escapeHtml(s.nameZh)} · ${escapeHtml(d.city)}</div>
@@ -2274,9 +2277,9 @@
       let html = '';
       TRIP.stations.forEach(s => {
         html += `
-      <div class="station-card" onclick="goToMap(${s.id})">
+      <div class="station-card" onclick="goToMap('${s.id}')">
         <div class="station-card-top">
-          <div class="station-card-num" style="${stationVars(s)}">${s.id}</div>
+          <div class="station-card-num" style="${stationVars(s)}">${s.numericId}</div>
           <div>
             <div class="station-card-name">${s.nameZh}</div>
             <div style="font-size: 11px; color: var(--text-soft);">${s.country} · ${s.name}</div>
@@ -2312,7 +2315,7 @@
         <tr ${d.star ? 'style="background: var(--bg-tint);"' : ''}>
           <td class="col-id">${dayNum}</td>
           <td><strong>${d.date}</strong><br><span style="color: var(--text-soft); font-size: 11px;">${d.week}</span></td>
-          <td><span class="station-pill" style="${stationVars(s)}">${s.id}</span> <span style="margin-left: 4px;">${escapeHtml(d.city || s.name)}</span></td>
+          <td><span class="station-pill" style="${stationVars(s)}">${s.numericId}</span> <span style="margin-left: 4px;">${escapeHtml(d.city || s.name)}</span></td>
           <td>${star}${escapeHtml(d.am)}</td>
           <td style="color: var(--text-mid);">${escapeHtml(d.pm)}</td>
           <td style="font-size: 11px; color: var(--text-soft); white-space: nowrap;">${escapeHtml(d.lodging)}</td>
@@ -2322,51 +2325,8 @@
       tbody.innerHTML = html;
     }
 
-    // Physical intensity score per day (1-5), aligned to the 93-day plan.
-    // Scoring rubric in the chart header: 1 全休, 2 慢逛, 3 普通游览,
-    // 4 高强度徒步或长转场, 5 节日全爆发 / 极限日.
-            const INTENSITY = [
-      // D1-D7 Edinburgh (D6 = ★★ Glencoe 私人徒步)
-      2,3,3,4,4,4,3,
-      // D8-D12 Sziget
-      4,4,2,4,5,
-      // D13 ★ 完全休息日 Budapest
-      1,
-      // D14-D20 Croatia (D15 + sea kayak 日落)
-      3,4,3,3,4,3,5,
-      // D21-D28 Dolomites (D28 = ★★ Via Ferrata Lagazuoi 5/5)
-      4,2,4,4,5,3,1,5,
-      // D29 ★ 完全休息日 Ortisei
-      1,
-      // D30-D37 Switzerland (D32 = ★★ Canyoning 5/5)
-      4,2,5,4,3,4,3,2,
-      // D38-D45 Barcelona / Costa Brava
-      3,4,3,3,4,4,4,2,
-      // D46-D52 Munich (D50 = ★★ Neuschwanstein + Tegelberg 滑翔伞 5/5)
-      3,5,3,2,5,3,3,
-      // D53-D58 Salzburg (D55 = ★★ Königssee kayak 4/5, D56 = 峡谷+Bluntautal)
-      3,4,4,4,4,4,
-      // D59-D66 Florence + ★★ Vendemmia 4 日 + Chianti
-      3,2,3,4,4,3,3,4,
-      // D67-D71 Tuscany cont. (D69 = ★★ Cinque Terre 5 村全程 5/5)
-      3,3,5,3,3,
-      // D72-D76 Lisbon (D74 = Cabo da Roca 悬崖日出 + Sintra)
-      2,3,4,2,3,
-      // D77 Nazaré arrival
-      2,
-      // D78 Nazaré surf class + 灯塔晨
-      4,
-      // D79 Óbidos + Porto
-      4,
-      // D80-D84 Porto (D81 = ★★ Quinta Bomfim Lagar 4, D84 = Gaia + Port Blending)
-      3,4,2,3,3,
-      // D85 transfer Porto→Alba
-      4,
-      // D86-D92 Alba (D87 = ★★ Truffle hunt pre-dawn + Barolo, D91 = Bra+Cappella)
-      2,4,3,4,3,3,3,
-      // D93 返航
-      4
-    ];
+    // INTENSITY 由 expand.js 从 stations.days[].intensity 聚合, 不再手维护数组
+    const INTENSITY = window.INTENSITY;
 
     function intensityColor(v) {
       if (v <= 2) return '#3FBE94';
@@ -2618,7 +2578,7 @@
     }
 
     renderMap();
-    selectCity(1);
+    selectCity(TRIP.stations[0].id);
 
     (function setupZoomPan() {
       const viewport = document.getElementById('map-viewport');
