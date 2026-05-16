@@ -1,0 +1,26 @@
+// 节日 / 重点体验清单。
+window.FESTIVALS = [
+    {"date":"8/7-8/31","name":"Edinburgh Festival Fringe","place":"爱丁堡","desc":"全球最大艺术节, 3,500+ 演出","link":"edfringe.com","cost":200},
+    {"date":"8/7 周五","name":"Royal Edinburgh Military Tattoo (可选)","place":"爱丁堡城堡前","desc":"军乐节露天演出","link":"edintattoo.co.uk","cost":220},
+    {"date":"8/11-8/15","name":"★ Sziget Festival","place":"布达佩斯多瑙河岛","desc":"欧洲最大音乐节之一, 5 日通票","link":"szigetfestival.com","cost":660},
+    {"date":"8/28","name":"★★ Tre Cime di Lavaredo 大环线日游","place":"多洛米蒂","desc":"10km 4h 大环线, Locatelli 平台午餐, 不过夜","link":"—","cost":50},
+    {"date":"8/31","name":"★★ Via Ferrata Lagazuoi-Tofana","place":"Cortina d'Ampezzo","desc":"WWI 隧道铁索路线, 含向导 + 装备, 你俩绳子绑同一根 (D28)","link":"dolomitiguides.com","cost":240},
+    {"date":"9/4","name":"★★ Canyoning Saxetbach","place":"瑞士 Interlaken","desc":"峡谷下降 4h, 8 次跳水+石板速降+瀑布速降, 湿衣保暖无需厚衣 (D32)","link":"outdoor-interlaken.ch","cost":260},
+    {"date":"9/6","name":"Interlaken 滑翔伞","place":"瑞士","desc":"Skywings / Paragliding Interlaken","link":"skywings.ch","cost":400},
+    {"date":"9/22","name":"★★ Tegelberg 双人滑翔伞","place":"Bavarian Alps","desc":"起飞点新天鹅堡背面山顶, 落地 Hohenschwangau 草坪, 9 月底飞行季末班月 (D50)","link":"skytrek.de","cost":340},
+    {"date":"9/19-10/4","name":"★★ Munich Oktoberfest 第 191 届 (walk-in)","place":"慕尼黑 Theresienwiese","desc":"全球最大啤酒节; 不订帐篷桌位, 走 walk-in 路线 (D47 9/19 Sat 开幕)","link":"oktoberfest.de","cost":80},
+    {"date":"10/3","name":"★ Tuscan 烹饪课全日","place":"Florence 中央市场","desc":"买菜 + 手擀 pasta + Bistecca alla Fiorentina + tiramisù (D61 周六场, 课后 SITA 进 Chianti)","link":"cookinginflorence.it","cost":240},
+    {"date":"10/4-10/6 + 10/12","name":"★★ Chianti Vendemmia 沉浸 4 日","place":"Castellina/Greve 农庄","desc":"D62/63 葡萄园采收 + D64 lagar 脚踩 (你们专属小桶 1 年陈化, 2027 秋寄 6 瓶到中国) + D70 blending 装瓶 (Y♡C 2026.10.12 蜜月标签)","link":"agriturismo.it","cost":500},
+    {"date":"10/7","name":"Antinori nel Chianti Classico 酒庄","place":"Bargino, Chianti","desc":"建筑级酒庄 + 酒窖 + 品鉴 (D65 取车日 + Verrazzano 双酒庄日)","link":"antinorichianticlassico.it","cost":80},
+    {"date":"10/8","name":"★★ Olive Harvest 全日","place":"Chianti 农庄","desc":"采橄榄 + frantoio 现榨新油 + 油 tasting + bruschetta 工作坊","link":"agriturismo.it","cost":120},
+    {"date":"10/10-12/6","name":"★★ Alba 白松露节第 96 届","place":"皮埃蒙特阿尔巴","desc":"本程访问期 10/28-11/4 正撞真正高峰周末 (D89 Sat + D90 Sun)","link":"fieradeltartufo.org","cost":36},
+    {"date":"10/20","name":"★ Nazaré 大浪季 + Baleal 冲浪课","place":"葡萄牙海岸","desc":"本程 Nazaré 早窗 + Peniche 初级冲浪课 €40/2h","link":"nazarewaves.com","cost":80},
+    {"date":"10/23","name":"★★ Quinta do Bomfim Harvest & Lagar Day","place":"Pinhão, 杜罗河谷","desc":"葡萄园采摘晚熟品种 + 传统石槽 lagar 脚踩 + 私人午餐 + 4 种 port 品鉴 + 装瓶贴 your-own 标签 (D81)","link":"symington.com","cost":300},
+    {"date":"10/26","name":"★★ Graham's Port Blender's Workshop","place":"Vila Nova de Gaia","desc":"调配你俩自己的一瓶 port, 贴 Y♡C 2026.10.26 标签带回家蜜月纪念 (D84)","link":"grahams-port.com","cost":150},
+    {"date":"10/29","name":"★★ Truffle Hunting with Trifolau + Lagotto","place":"Roddi 森林, Alba","desc":"5:30 pre-dawn 森林挖松露, 你俩亲手挖到的带去 D88 cooking class 用 (D87)","link":"通过 La Morra agriturismo","cost":120},
+    {"date":"10/30","name":"★ Truffle Cooking Class","place":"Alba 老城工坊","desc":"手擀 tajarin + 鸡蛋蛋黄 fonduta + 现场刨白松露 + Barolo zabaione (D88 Fri 周五场, 让周末专注市场)","link":"—","cost":260},
+    {"date":"10/31-11/1","name":"★★ Alba White Truffle World Market 高峰周末","place":"Cortile della Maddalena","desc":"10 月底白松露真正高峰; D89 Sat + D90 Sun 两天: 拍卖+品尝+现买现谈","link":"fieradeltartufo.org","cost":160},
+    {"date":"11/1","name":"Bagna Càuda 蘸酱节 (大区性)","place":"皮埃蒙特各镇","desc":"皮埃蒙特冬季开篇传统蘸菜节, 配巴罗洛 / 巴贝拉葡酒","link":"—","cost":30},
+    {"date":"11/3","name":"★ Milan 末日缓冲","place":"米兰","desc":"D92 La Morra → Milano Centrale: Duomo 登顶 + Galleria + Navigli 运河 + 最后一支 gelato → 傍晚 Malpensa 机场酒店","link":"—","cost":50},
+    {"date":"11/4","name":"Milan Malpensa → 返航","place":"意大利","desc":"D93 机场酒店步行到 T1/T2, 早班机回中国 (避免当天 1.5h 长途+赶飞机)","link":"skyscanner","cost":0}
+];

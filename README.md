@@ -323,6 +323,22 @@ Sagrada Família 塔顶,Casa Batlló 龙脊瓦面,Park Güell 马赛克长椅。
 - **预算**: → "预算明细" tab,4 月分列 + 备注
 - **装备**: → "装备清单" tab,33 项打勾本地保存
 
+### 改行程 (改数据 ≠ 改 HTML)
+
+数据和渲染已经分离。`index.html` 只负责样式和渲染,所有行程内容在 [`data/`](data/) 目录里:
+
+| 文件 | 改这里 |
+|---|---|
+| [`data/stations.js`](data/stations.js)   | 13 站 + 93 天 AM/PM/住宿 (改得最多) |
+| [`data/notes.js`](data/notes.js)         | 每日 tips (按 day 编号 1-93) |
+| [`data/bookings.js`](data/bookings.js)   | 预订清单 + 截止日期 |
+| [`data/budget.js`](data/budget.js)       | 预算分类 + 各站合计 |
+| [`data/festivals.js`](data/festivals.js) | 节日 / 重点体验 |
+| [`data/packing.js`](data/packing.js)     | 装备清单 |
+| [`data/routes.js`](data/routes.js)       | 地图站间连线 |
+
+每个文件都是 `window.XXX = [...]` 的纯 JS 全局赋值,GitHub Pages 直接静态部署,本地双击 `index.html` 也能跑 (不依赖 fetch / CORS)。
+
 ---
 
 ## 十、最后
