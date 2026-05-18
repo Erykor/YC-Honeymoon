@@ -1,4 +1,4 @@
-// 节日 / 重点体验清单。D-编号已统一更新为 94 天 v3 顺序 (Kalymnos 7, Grasse 12, Truffle 13)。
+// 节日 / 重点体验清单。D-编号已统一更新为 94 天 v4 顺序 (Lo Stagnone 8, Morocco 9, Malta 10, Tuscany 11, Grasse 12, Truffle 13)。
 window.FESTIVALS = [
     {"date":"7/30-8/4","name":"★★ Willie Leahy's Connemara Trail 6 日","place":"爱尔兰 Connemara 大西洋海岸","desc":"金标准海岸骑乘: 6 日点对点 (D2-D7), 沙滩奔驰 + Killary fjord 渡乘 + 野马区","link":"connemaratrails.com","cost":3600},
     {"date":"8/5","name":"★ Cliffs of Moher 悬崖步道","place":"爱尔兰西海岸","desc":"莫赫断崖 8km 全程徒步 (D8, 骑乘后恢复日)","link":"cliffsofmoher.ie","cost":20},
@@ -16,12 +16,12 @@ window.FESTIVALS = [
     {"date":"9/13","name":"★ 蜜月 Vathy fjord 私人小艇","place":"Kalymnos","desc":"1.5h fjord 巡游 + Harry's Paradise 主厨海鲜套餐 (D47)","link":"通过 Kalymnos Climbing School","cost":60},
     {"date":"9/16-9/29","name":"★★ Lo Stagnone 风筝冲浪 14 日 deep camp","place":"西西里 Marsala","desc":"D50-D63 全球最佳学风筝点 IKO L1-3 cert + foilboard intro + downwinder + kiteloop 进阶; 10 个骑乘日 + 3 休骑日 (Erice/Mothia+Pellegrino/Favignana) + 1 sunset catamaran","link":"prokite-albyrondina.com","cost":2800},
     {"date":"9/25","name":"★ sunset catamaran Lo Stagnone","place":"西西里 Marsala","desc":"私人 1.5h Lo Stagnone 浅滩巡航 (D59, IKO Level 3 毕业次日)","link":"marsalaboatours.it","cost":80},
-    {"date":"9/30-10/2","name":"★★ Malta/Gozo 3 日 PADI Advanced 潜水","place":"马耳他/戈佐","desc":"地中海顶级潜水: D64 转场 + D65 Gozo Blue Hole + Inland Sea + Karwela MV 沉船 + D66 Reqqa Reef 50m+ 大壁 + P29 巡逻艇沉船 (no-fly 24h)","link":"atlantisgozo.com","cost":680},
-    {"date":"10/3-10/9","name":"★★ Strade Bianche / Tuscany Gravel 7 日","place":"意大利 Toscana (Chianti→Siena→Crete Senesi→Florence→Pienza→Montalcino)","desc":"D67-D73 6 骑乘日 + 1 Florence 休骑日; 经典 Strade Bianche 白路 60-80km/天 + Brunello/Sangiovese 沿途品鉴; 含 Buca Lapi 经典 Bistecca","link":"tuscanycycling.com / pavecycling.com","cost":2000},
-    {"date":"10/10","name":"★ Tuscan 烹饪课全日","place":"Chianti 农庄","desc":"D74 抵 Castellina agriturismo + 烹饪课入门 Vendemmia","link":"cookinginflorence.it","cost":240},
-    {"date":"10/11-10/13 + 10/18","name":"★★ Chianti Vendemmia 沉浸 4 日","place":"Castellina/Greve 农庄","desc":"D75/D76 葡萄园采收 + D77 lagar 脚踩 (Sangiovese 末段, 晚熟葡萄) + D82 blending 装瓶 (Y♡C 2026.10.12 蜜月标签)","link":"agriturismo.it","cost":500},
-    {"date":"10/14","name":"★★ Olive Harvest 全日","place":"Chianti 农庄","desc":"采橄榄 + frantoio 现榨新油 + 油 tasting + bruschetta 工作坊 (D78, 10 月中橄榄黄金季)","link":"agriturismo.it","cost":120},
-    {"date":"10/16","name":"★★ Cinque Terre 全程 Sentiero Azzurro 5 村","place":"利古里亚海岸","desc":"12km 5-6h, 5 村连走 (D80)","link":"parconazionale5terre.it","cost":50},
+    {"date":"9/30-10/6","name":"★ Morocco 7 日文化环 (Marrakech + Fes + Chefchaouen)","place":"摩洛哥","desc":"D64-D70 Marrakech medina + Jemaa el-Fnaa 夜市 + Bahia Palace + Atlas Ourika Valley day-trip + 蜜月 hammam + Fes Chouara 皮革染坊 + Bou Inania Madrasa + Chefchaouen 蓝城 + Spanish Mosque 日落 + Tangier Café Hafa","link":"booking.com / lesbainsdemarrakech.com","cost":800},
+    {"date":"10/7-10/9","name":"★★ Malta/Gozo 3 日 PADI Advanced 潜水","place":"马耳他/戈佐","desc":"地中海顶级潜水: D71 转场 TNG→MLA + D72 Gozo Blue Hole + Inland Sea + Karwela MV 沉船 + D73 Reqqa Reef 50m+ 大壁 + P29 巡逻艇沉船 (no-fly 24h)","link":"atlantisgozo.com","cost":680},
+    {"date":"10/11-10/13 + 10/18","name":"★★ Chianti Vendemmia 沉浸 4 日","place":"Castellina/Greve 农庄","desc":"D75/D76 葡萄园采收 + D77 lagar 脚踩 (Sangiovese 末段, 晚熟葡萄, Y♡C 2026.10.12 始酿日) + D82 blending 装瓶 (Y♡C 2026.10.12 蜜月标签)","link":"agriturismo.it","cost":500},
+    {"date":"10/14","name":"★ Tuscan 烹饪课全日","place":"Chianti 农庄","desc":"D78 Vendemmia 后慢节奏恢复日, 烹饪课入门 + ragù + Bistecca + tiramisù","link":"cookinginflorence.it","cost":240},
+    {"date":"10/15","name":"★★ Olive Harvest 全日","place":"Chianti 农庄","desc":"采橄榄 + frantoio 现榨新油 + 油 tasting + bruschetta 工作坊 (D79, 10 月中橄榄黄金季)","link":"agriturismo.it","cost":120},
+    {"date":"10/16","name":"★★ Cinque Terre 全程 Sentiero Azzurro 5 村 + Buca Lapi","place":"利古里亚海岸 + Florence","desc":"12km 5-6h, 5 村连走 (D80) + 收尾 Buca Lapi 1880 Bistecca alla Fiorentina (Antinori 宫殿地下室)","link":"parconazionale5terre.it / bucalapi.com","cost":170},
     {"date":"10/20-10/22","name":"★★ Grasse 香水 3 日","place":"法国 Côte d'Azur","desc":"D84-D86 Galimard 'Studio des Fragrances' 半日 + Molinard 全日大师班 + Domaine de Manon 茉莉田 (10 月 jasmine 季已尾, 但工坊/老厂/博物馆全开) + Fragonard","link":"galimard.com / molinard.com","cost":410},
     {"date":"10/24","name":"★★ Dawn Hunt #1 with Riccardo + Lagotto","place":"Roddi 森林","desc":"D88 truffle-hunt 5:30 pre-dawn 第 1 次挖松露 (Roddi 区, 3 只 Lagotto Romagnolo 狗)","link":"italyandwine.net","cost":120},
     {"date":"10/24-10/25","name":"★★ Alba White Truffle World Market 开幕周末","place":"Cortile della Maddalena","desc":"D88 Sat + D89 Sun 白松露 World Market 开幕周末 (Alba 节早期高峰, 量大 + 价位适中)","link":"fieradeltartufo.org","cost":160},

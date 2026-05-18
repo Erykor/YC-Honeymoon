@@ -25,36 +25,36 @@ window.BUDGET = [
     "note": "含高山+滑翔伞+冲浪+海钓+风筝+攀岩 lead+海岸骑乘+PADI Advanced 潜水+sea kayak"
   },
   {
-    "category": "欧洲段航班 (7 段) + 火车 (2 段) + 自驾跨境 (1 段)",
+    "category": "欧洲段航班 (9 段) + 火车 (2 段) + 自驾跨境 (1 段)",
     "aug": 800,
-    "sep": 1000,
-    "oct": 700,
+    "sep": 1100,
+    "oct": 1100,
     "nov": 0,
-    "note": "✈ SNN→EDI 8/6 + EDI→BUD 8/9 + VCE→SPU 9/1 + ZAD→ATH→KGS 9/7 + KGS→ATH→PMO 9/15 + MLA→FLR 10/3 + FLR→NCE 10/19; 🚆 BUD→VIE 8/17 RailJet €40/人 + VIE→INN 8/23 RailJet €60/人 (省 2 段飞行); 🚗 Grasse→Alba 10/22 自驾 5h (法意边境 A8/A10/A26, 省 1 段飞行)"
+    "note": "✈ SNN→EDI 8/6 + EDI→BUD 8/9 + VCE→SPU 9/1 + ZAD→ATH→KGS 9/7 + KGS→ATH→PMO 9/15 + PMO→FCO→CMN→RAK 9/30 + RAK→FEZ 10/3 + TNG→MAD→MLA 10/7 + MLA→FLR 10/10 + FLR→NCE 10/19; 🚆 BUD→VIE 8/17 RailJet €40/人 + VIE→INN 8/23 RailJet €60/人 (省 2 段飞行); 🚗 Grasse→Alba 10/22 自驾 5h (法意边境 A8/A10/A26, 省 1 段飞行)"
   },
   {
     "category": "火车+巴士+渡轮",
     "aug": 350,
-    "sep": 300,
-    "oct": 250,
+    "sep": 250,
+    "oct": 350,
     "nov": 0,
-    "note": "爱尔兰 Bus Éireann (Dublin→Galway + Galway→Shannon) + 🚆 BUD→VIE RailJet + VIE→INN RailJet + Trapani→Malta catamaran + Italo+Malpensa Express (Alba→MXP D101)"
+    "note": "爱尔兰 Bus Éireann (Dublin→Galway + Galway→Shannon) + 🚆 BUD→VIE RailJet + VIE→INN RailJet + Morocco grand taxi (Fes→Chefchaouen 4h + Chefchaouen→Tangier 1.5h) + Castellina SITA + Italo+Malpensa Express (Alba→MXP D94)"
   },
   {
-    "category": "精简自驾 (5 段共 18 天)",
+    "category": "精简自驾 (4 段共 13 天)",
     "aug": 280,
     "sep": 120,
-    "oct": 250,
-    "nov": 90,
-    "note": "多洛 5d + Grasse 2d (Nice 取/还车) + 托斯卡纳 gravel-Vendemmia 接驳 1d + 阿尔巴 5d"
+    "oct": 200,
+    "nov": 0,
+    "note": "多洛 5d + Grasse 2d (Nice 取/还车) + 阿尔巴 6d (Nice→Grasse→Alba 跨境 Hertz 单租 €280 含 droppage €80)"
   },
   {
     "category": "住宿 upgrade (4★ baseline)",
     "aug": 2400,
     "sep": 2300,
-    "oct": 2000,
+    "oct": 2100,
     "nov": 0,
-    "note": "Connemara 6 晚 B&B 营方含 + Galway 2 晚 + EDI 4 晚 + Vienna 1 区 6 晚 €150/晚 + Ortisei 8 晚 + Kornati B&B 5 晚营方含 + Marsala kite camp 14 晚 + Gozo 2 晚 + Cannes 2 晚 + Castellina 9 + Masouri 7 + La Morra 7 + Ortisei 4★ Spa 升级 1 晚 €200"
+    "note": "Connemara 6 晚 B&B 营方含 + Galway 2 晚 + EDI 4 晚 + Vienna 1 区 6 晚 €150/晚 + Ortisei 8 晚 + Kornati B&B 5 晚营方含 + Marsala kite camp 14 晚 + Marrakech riad 3 晚 + Fes riad 2 晚 + Chefchaouen 1 + Tangier 1 + Gozo 3 晚 + Castellina 9 + Florence hostel 1 + La Morra 7 + Cannes 2 + Ortisei 4★ Spa 升级 1 晚 €200"
   },
   {
     "category": "餐饮 baseline",
@@ -62,7 +62,7 @@ window.BUDGET = [
     "sep": 800,
     "oct": 800,
     "nov": 0,
-    "note": "两人 $30-40/天 + Vienna Kaffeehaus + Heuriger + Sicily 海鲜 + Malta 海鲜 + Kornati 渔家菜"
+    "note": "两人 $30-40/天 + Vienna Kaffeehaus + Heuriger + Sicily 海鲜 + Malta 海鲜 + Kornati 渔家菜 + Morocco tagine/medina 街食 + Dar Yacout/Dar Hatim 传统 8-菜套餐"
   },
   {
     "category": "节日通票 + 演出",
@@ -75,10 +75,10 @@ window.BUDGET = [
   {
     "category": "★★ 重点活动体验 (主投入 + 升级)",
     "aug": 6100,
-    "sep": 4800,
-    "oct": 4900,
+    "sep": 5200,
+    "oct": 4500,
     "nov": 0,
-    "note": "★★ Connemara Trail 6 日 €3,600/2人 + Cliffs of Moher + Glencoe £400/2人 + Vienna Tanzschule Elmayer 华尔兹 3 日 €700/2人 + Spanische Hofreitschule 晨训 + Schönbrunn 舞会模拟 + Konzerthaus 古典 + Seceda + Tre Cime + Via Ferrata + Kornati Sea Kayak 6 日 €1,700/2人 + Lo Stagnone 风筝 deep 14 日 €2,800/2人 含 foilboard + downwinder + kiteloop + Cantine Florio/Pellegrino + Erice + Mothia + Favignana + sunset catamaran + Malta/Gozo PADI Advanced 6 dives €680/2人 + Tuscany Gravel 7 日 €2,000/2人 + Tuscan 烹饪课 + Vendemmia 4 日 + 橄榄 harvest + Cinque Terre + Kalymnos 攀岩 7 日 €980/2人 + Vathy fjord 私艇 + Truffle Hunt #1 + #2 + Truffle Market + Frantoio 油坊"
+    "note": "★★ Connemara Trail 6 日 €3,600/2人 + Cliffs of Moher + Glencoe £400/2人 + Vienna Tanzschule Elmayer 华尔兹 3 日 €700/2人 + Spanische Hofreitschule 晨训 + Schönbrunn 舞会模拟 + Konzerthaus 古典 + Seceda + Tre Cime + Via Ferrata + Kornati Sea Kayak 6 日 €1,700/2人 + Lo Stagnone 风筝 deep 14 日 €2,800/2人 含 foilboard + downwinder + kiteloop + Cantine Florio/Pellegrino + Erice + Mothia + Favignana + sunset catamaran + Morocco Marrakech medina + Atlas Ourika + Fes Chouara 皮革染坊 + Chefchaouen 蓝城 + 蜜月 hammam €800/2人 + Malta/Gozo PADI Advanced 6 dives €680/2人 + Tuscan 烹饪课 + Vendemmia 4 日 + 橄榄 harvest + Cinque Terre + Buca Lapi Bistecca + Kalymnos 攀岩 7 日 €980/2人 + Vathy fjord 私艇 + Truffle Hunt #1 + #2 + Truffle Market + Frantoio 油坊"
   },
   {
     "category": "★ 升级体验 (Spa + 帝国晚餐, 非米其林)",
@@ -86,7 +86,7 @@ window.BUDGET = [
     "sep": 280,
     "oct": 0,
     "nov": 0,
-    "note": "Ortisei 4★ Spa 酒店 + 私汤双人按摩 + Ladin 山景晚餐 (dolomites.d6) + Schönbrunn 城堡舞会模拟 + Plachutta Tafelspitz + Konzerthaus 古典音乐 (vienna.d4) + Florence Buca Lapi 经典 Bistecca (gravel-tuscany.d5)"
+    "note": "Ortisei 4★ Spa 酒店 + 私汤双人按摩 + Ladin 山景晚餐 (dolomites.d6) + Schönbrunn 城堡舞会模拟 + Plachutta Tafelspitz + Konzerthaus 古典音乐 (vienna.d4) + Florence Buca Lapi 经典 Bistecca (tuscany.d7)"
   },
   {
     "category": "装备 + eSIM + 现金",
@@ -106,11 +106,11 @@ window.STATION_BUDGETS = {
   "vienna": "$2,300",
   "dolomites": "$2,000",
   "kornati": "$2,800",
-  "lo-stagnone": "$4,200",
-  "malta": "$1,500",
-  "grasse": "$1,800",
-  "gravel-tuscany": "$3,000",
-  "tuscany": "$1,800",
   "kalymnos": "$2,800",
+  "lo-stagnone": "$4,200",
+  "morocco": "$2,400",
+  "malta": "$1,800",
+  "tuscany": "$2,200",
+  "grasse": "$1,800",
   "truffle-hunt": "$2,400"
 };

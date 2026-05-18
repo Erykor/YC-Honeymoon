@@ -726,6 +726,91 @@ window.STATIONS = [
     ]
   },
   {
+    "id": "morocco",
+    "name": "Morocco",
+    "nameZh": "摩洛哥",
+    "fullName": "摩洛哥 Morocco - Marrakech + Fes + Chefchaouen 文化环 7 日",
+    "country": "🇲🇦 摩洛哥",
+    "color": "#B5563D",
+    "bg": "#FCE6DD",
+    "stroke": "#D67454",
+    "x": 530,
+    "y": 1240,
+    "labelPos": "left",
+    "activities": "★ Marrakech medina + Jemaa el-Fnaa · Atlas Ourika Valley 山谷 · Fes 老 medina + Chouara 皮革染坊 · Chefchaouen 蓝城 + Rif 山脚",
+    "festival": "★ Marrakech + Fes + Chefchaouen 7 日文化环",
+    "tips": "<strong>★ 7 日文化环 (Almoravid → Marinid → Andalusian 三段历史)：</strong> Marrakech 红城 3 晚 (1062 Almoravid 建) + Fes 千年学城 2 晚 (859 al-Qarawiyyin 世界最古老大学) + Chefchaouen 蓝城 2 晚 (1471 Andalusian Moriscos 难民建)。<strong>签证：</strong> 中国护照 2016 起免签 90 天 (落地盖章, 备 6 月+护照 + 返程票 + 酒店预订 + €500 现金 backup)。<strong>转场:</strong> 入: 9/30 ✈ Alitalia PMO→FCO 1h + Royal Air Maroc FCO→CMN 3h + CMN→RAK 50min 国内, 总 8h €280/人 (备 PMO→MAD→RAK Iberia/Air Europa 7h €260); 出: 10/7 ✈ Iberia TNG→MAD→MLA 7h €250/人 (Malta 站 d1 转场)。<strong>城际:</strong> Marrakech→Fes Royal Air Maroc 国内 RAK→FEZ 50min €80/人 (vs ONCF 普通快车 7h €25/人, 飞节省 5h 中场不耗); Fes→Chefchaouen grand taxi 大计程车 4h €30/人 (Bab Boujloud 出口拼 6 人/辆) 或专车 €100/4人; Chefchaouen→Tangier grand taxi 1.5h €20。<strong>住宿:</strong> Marrakech 老城 riad (传统庭院民居) €70/晚双人 (Riad BE Marrakech / Riad Yasmine), Fes 老城 riad €60/晚 (Riad Verus / Dar Roumana), Chefchaouen 蓝城 guesthouse €40/晚 (Dar Echchaouen), Tangier 老城 hotel €50/晚 (Dar Nour / La Tangerina)。<strong>装备:</strong> 长袖+长裤 (medina 文化尊重, 女性不必头巾但避免短裙) + 防晒 + 防滑鞋 (medina 石板滑) + 现金 Dirham (大部分 medina 只收现金, 银行卡仅大店/酒店, ATM 见 BMCE/Attijariwafa)。<strong>注意:</strong> Medina 内禁烟酒 (Fes/Chefchaouen 几乎找不到酒, Marrakech riad 内有酒吧); 摄影禁拍当地女性面孔; 大老 medina 雇本地导游 €25/半日 防迷路 + 解释工坊; 出租车坚持打表 (petit taxi 城内 / grand taxi 城际), 或用 InDriver app 防宰客。",
+    "days": [
+      {
+        "id": "d1",
+        "city": "转场 (Lo Stagnone→Marrakech) + Jemaa el-Fnaa 夜",
+        "am": "6:00 Marsala 退房 + 学校接驳 → PMO Palermo 机场 1.5h → 9:00 ✈ Alitalia PMO→FCO 1h + 11:00 转 12:30 Royal Air Maroc FCO→CMN 3h + 16:00 转 17:30 CMN→RAK 50min 国内 → 18:30 抵 Marrakech Menara RAK",
+        "pm": "19:30 出关 + petit taxi RAK→Marrakech medina 30min 100 dirham (谈定价或用 InDriver app 防宰客) + 20:30 入住 Riad BE Marrakech 老城 riad (传统庭院 + 屋顶平台 + 早餐含) + 21:00 ★ Jemaa el-Fnaa 主广场夜市步行 (露天烧烤 + 蛇人 + 说书人; 蜜月小仪式: 鲜榨橙汁 5 dirham + 蜗牛汤 dare) + 23:00 回 riad 屋顶看月光红城",
+        "lodging": "Marrakech medina Riad BE €70 (Morocco 第 1 晚)",
+        "star": true,
+        "intensity": 4,
+        "weatherBackup": "PMO→FCO 季节性停飞 / 延误 → 直接订 PMO→MAD→RAK 总 7h Iberia/Air Europa €290/人; 落地夜雷雨改 riad 内屋顶晚餐 (大部分 riad 含)"
+      },
+      {
+        "id": "d2",
+        "city": "★★ Marrakech medina 全日 + 蜜月 hammam",
+        "am": "★★ 9:00 Bahia Palace 1860 vizier 宫殿 (zellige 马赛克 + 雪松木雕顶 + 安达卢西亚庭院 2h) + 11:30 Madrasa Ben Youssef 1565 旧古兰学院 (Saadian 王朝雕花顶, 1.5h) + 13:00 medina souk 巷子穿梭午餐 Café Clock (camel burger 经典)",
+        "pm": "15:00 Majorelle Garden 1923 Yves Saint Laurent 故居 cobalt blue 花园 + Berber Museum + 17:00 Saadian Tombs 1578 Saadian 王陵 + 19:00 ★ 蜜月双人 hammam Les Bains de Marrakech 90min €100/2人 (传统蒸汽浴 + 黑皂 gommage + argan 油按摩, 蜜月仪式锚点) + 21:00 Nomad rooftop 晚餐 medina 屋顶 (新派摩洛哥料理 tagine + harira + 主厨 demo)",
+        "lodging": "Marrakech medina Riad BE",
+        "star": true,
+        "intensity": 4,
+        "weatherBackup": "白天暴雨 (10 月罕见) → 室内 Maison de la Photographie + Yves Saint Laurent Museum + Marrakech Museum 三连"
+      },
+      {
+        "id": "d3",
+        "city": "★★ Atlas Mountains Ourika Valley day-trip",
+        "am": "★★ 8:30 包车 Marrakech → High Atlas Ourika Valley 1.5h drive (海拔 1500m) + Berber 山村 Setti Fatma + 10:30 Cascades d'Ourika 7 瀑布徒步 2-3h (轻徒步, 山泉清凉, 可游泳)",
+        "pm": "13:00 Berber 农庄午餐 (tagine 山羊 + 自烤面包 + 薄荷茶, 在地家庭餐桌 €15/人) + 15:00 Setti Fatma 山村 souk (周日最热闹) + 16:30 返 Marrakech + 18:30 抵 + 自由探 Mellah 老犹太区 (medina 东南) + 20:00 Dar Yacout 传统 8 菜套餐晚餐 €60/人 (medina 老 riad 餐厅 1001 夜风格)",
+        "lodging": "Marrakech medina Riad BE",
+        "star": true,
+        "intensity": 4,
+        "weatherBackup": "Atlas 山雷暴 → 改 Aït Benhaddou 沙漠 kasbah day-trip (3h drive + UNESCO 土堡 + 角斗士/木乃伊归来取景地, 全天 + €70/人 包车)"
+      },
+      {
+        "id": "d4",
+        "city": "转场 (Marrakech→Fes) + Fes medina 入夜",
+        "am": "9:00 慢晨 + riad 早餐 + 退房 → 10:30 ✈ Royal Air Maroc RAK→FEZ 50min €80/人 国内直飞 (vs ONCF train 7h, 飞节省 5h 中场转场不耗) + 11:30 抵 Fes-Saïss FEZ + petit taxi 30min Fes Bab Boujloud 入医城 100 dirham",
+        "pm": "13:00 入住 Riad Verus 老城 €60 (Fes el-Bali 老城核心, 1280 riad 改造, 屋顶 medina 全景) + 14:30 medina 入口 Bab Boujloud 蓝门拍照 + 15:00 Talaa Kebira 主轴 medina 漫步 (1200 年前商道, 1km 内 200 个工坊) + 17:30 Bou Inania Madrasa 1356 Marinid 学院 (雪松雕顶 + 大理石庭) + 19:00 Café Clock Fes 晚餐 (camel burger + 现场 Andalusian 音乐 oud)",
+        "lodging": "Fes medina Riad Verus €60 (Morocco 第 4 晚)",
+        "star": true,
+        "intensity": 3,
+        "weatherBackup": "RAK→FEZ 国内停飞季节性 → 改 ONCF 一等舱座票 7h €25/人, 出发改 7:00 早班, 整日车上, 夜抵 Fes 跳过晚活动到 d5"
+      },
+      {
+        "id": "d5",
+        "city": "★★ Fes 老 medina 全日 + Chouara 皮革染坊",
+        "am": "★★ 9:00 雇本地导游 €25/半日 (riad 代订, 防 medina 9000 巷迷路 + 解释工坊) + Talaa Kebira → Souk el-Attarine 香料市场 + Henna Souk 海娜市场 + ★★ 11:00 Chouara Tannery 1000 年皮革染坊 (从屋顶俯瞰 60 个染色坑, 自然染料 indigo + saffron + poppy + henna, 拿薄荷叶遮鼻 dare)",
+        "pm": "13:30 Café Clock Fes 屋顶午餐 (medina 屋顶 + 主厨 demo) + 15:00 Karaouine Mosque 859 创立世界最古老大学 (非穆斯林只能院外看 + 入口 zellige 拍照) + 15:30 al-Attarine Madrasa 1325 Marinid 学院 (zellige 极致) + 17:00 Mellah 犹太老区 + Royal Palace 大门 (7 道铜门最美) + 19:30 Dar Hatim 私家晚餐 €40/人 (家庭餐桌, 老厨娘 6 菜传统 + Marinid 风格)",
+        "lodging": "Fes medina Riad Verus",
+        "star": true,
+        "intensity": 4
+      },
+      {
+        "id": "d6",
+        "city": "转场 (Fes→Chefchaouen) + 蓝城 afternoon",
+        "am": "8:30 退房 + grand taxi Bab Boujloud → Chefchaouen Place Outa el Hammam 4h drive €30/人 (拼 6 人 grand taxi 或专车 €100/4人) 过 Rif 山脉 + 11:00 中途 Ouezzane 小镇休 + 12:30 抵 Chefchaouen",
+        "pm": "13:00 入住 Dar Echchaouen guesthouse €40 (medina 边山坡 + Rif 山景) + 14:00 ★ Chefchaouen medina 蓝城漫步 (1471 Andalusian Moriscos 难民建, 1930s 当地犹太人染蓝传统) + Place Outa el Hammam 主广场 + Kasbah 老堡 + 17:00 Spanish Mosque 山顶日落 (徒步 30min, Chefchaouen 全景蓝白 + Rif 山脚) + 19:30 Bab Ssour 餐厅 (medina 边经典 Berber 晚餐 chicken bastilla + tagine de kefta)",
+        "lodging": "Chefchaouen Dar Echchaouen €40 (Morocco 第 6 晚)",
+        "star": true,
+        "intensity": 3
+      },
+      {
+        "id": "d7",
+        "city": "★ Chefchaouen 蓝城晨 + 转场 to Tangier",
+        "am": "★ 6:30 早起 Chefchaouen 蓝城无人晨拍 (日出后 1h 内最佳, 白色阳光 + 蓝墙) 2h + 8:30 riad 早餐 + 10:00 退房 + grand taxi Chefchaouen → Tangier 1.5h €20",
+        "pm": "12:00 抵 Tangier 老城 + 入住 Dar Nour 老 medina hotel €50 (Paul Bowles 时代波西米亚老租客地) + 13:00 Café Hafa 海岸悬崖咖啡 (Paul Bowles 老巴黎书生地, 海望 Spain) + 15:00 Tangier Kasbah 老堡 + American Legation Museum (1821 美国首个海外外交楼) + 17:00 Bab al-Bahar 海门 + Tangier marina 海边漫步 + 19:30 海鲜晚餐 Tanger Saveur du Poisson (老餐厅, 没菜单, 当日海鲜套餐 €25/人) + 早睡为次日早机",
+        "lodging": "Tangier 老城 Dar Nour €50 (Morocco 第 7 晚)",
+        "star": false,
+        "intensity": 3
+      }
+    ]
+  },
+  {
     "id": "malta",
     "name": "Malta",
     "nameZh": "马耳他/戈佐",
@@ -739,16 +824,17 @@ window.STATIONS = [
     "labelPos": "right",
     "activities": "★★ Gozo Blue Hole + Inland Sea 洞穿越 · MV Karwela 沉船 · Reqqa Reef 50m 壁 · 海蚀岩壁石灰岩",
     "festival": "★★ Malta/Gozo 3 日 PADI Advanced 潜水",
-    "tips": "<strong>★★ 3 日地中海顶级潜水 (PADI Advanced 级别)：</strong> 9 月地中海水温 24-26°C, 能见度 30m+, 是 PADI Advanced 玩家的梦想季。Gozo (兄弟岛) 是 Malta 最佳潜水基地, 5 大经典 dive sites: Blue Hole (火山洞) + Inland Sea 海蚀洞穿越 + MV Karwela 商船沉船 (38m, 2006 沉) + P29 巡逻艇沉船 (35m) + Reqqa Reef 50m+ 大壁。<strong>学校选:</strong> Atlantis Diving Centre Gozo (老牌专业) / Dive Systems Malta / Calypso Diving (Marsalforn 港边)。提前 1 月邮件订 3 日 6 dive package €280-350/人 (含装备 + 船 + 教练 + 国际保险)。<strong>转场:</strong> Marsala → Pozzallo (Sicily 港口) drive 1.5h + Virtu Ferries catamaran Pozzallo→Valletta 1.5h €100/人 (季节性, 旺季每日多班; 备用 ✈ TPS→MLA 40min)。Valletta → Gozo 渡船 Cirkewwa→Mġarr 25min €5/人。<strong>住宿:</strong> Marsalforn (Gozo 北岸潜水村) 公寓 €70-90/晚双人, 步行到 Reqqa Reef 起点。",
+    "tips": "<strong>★★ 3 日地中海顶级潜水 (PADI Advanced 级别)：</strong> 9-10 月地中海水温 24-26°C, 能见度 30m+, 是 PADI Advanced 玩家的梦想季。Gozo (兄弟岛) 是 Malta 最佳潜水基地, 5 大经典 dive sites: Blue Hole (火山洞) + Inland Sea 海蚀洞穿越 + MV Karwela 商船沉船 (38m, 2006 沉) + P29 巡逻艇沉船 (35m) + Reqqa Reef 50m+ 大壁。<strong>学校选:</strong> Atlantis Diving Centre Gozo (老牌专业) / Dive Systems Malta / Calypso Diving (Marsalforn 港边)。提前 1 月邮件订 3 日 6 dive package €280-350/人 (含装备 + 船 + 教练 + 国际保险)。<strong>转场:</strong> Morocco Tangier TNG → Malta MLA Iberia/Air Europa 经 MAD 7h €250/人 (整 d1 转场, 早班 9:00 出 TNG 17:30 抵 MLA)。Valletta → Gozo 渡船 Cirkewwa→Mġarr 25min €5/人。<strong>住宿:</strong> Marsalforn (Gozo 北岸潜水村) 公寓 €70-90/晚双人, 步行到 Reqqa Reef 起点。",
     "days": [
       {
         "id": "d1",
-        "city": "转场 (Lo Stagnone→Malta/Gozo)",
-        "am": "6:00 Marsala 退房 + 学校接驳 → Pozzallo 港 1.5h drive + 8:30 Virtu Ferries Pozzallo → Valletta catamaran 1.5h €100/人",
-        "pm": "11:00 抵 Valletta + bus X1 to Cirkewwa 北岸渡口 1h € → 14:00 Gozo ferry Cirkewwa→Mġarr 25min €5/人 → 15:30 抵 Gozo + 入住 Marsalforn 潜水公寓 + 学校 briefing 17:00 (装备 fit + 第二日 Blue Hole 介绍)",
+        "city": "转场 (Tangier→Malta/Gozo)",
+        "am": "6:00 Tangier Dar Nour 退房 + petit taxi → TNG Ibn Battuta 机场 30min + 9:00 ✈ Iberia TNG→MAD 2h + 12:00 MAD 转机 2.5h + 14:30 ✈ Iberia/Air Europa MAD→MLA 3h",
+        "pm": "17:30 抵 Malta Luqa MLA + 入境 + bus X1 to Cirkewwa 北岸渡口 1h €2 → 19:30 Gozo ferry Cirkewwa→Mġarr 25min €5/人 → 20:00 抵 Gozo + 入住 Marsalforn 潜水公寓 + 学校 briefing 21:00 (装备 fit + 第二日 Blue Hole 介绍)",
         "lodging": "Marsalforn 潜水公寓 €80",
         "star": false,
-        "intensity": 4
+        "intensity": 4,
+        "weatherBackup": "TNG→MAD→MLA 航段延误 / 季节性停飞 → 备 TNG→CMN→MLA Royal Air Maroc/Lufthansa 经 FCO 9h €280; 抵 MLA 晚于 22:00 → 改宿 Valletta 1 晚, 次日 d2 早渡 Gozo (压缩 dive 1 个)"
       },
       {
         "id": "d2",
@@ -768,89 +854,7 @@ window.STATIONS = [
         "lodging": "Marsalforn 潜水公寓 (Malta 第 3 晚)",
         "star": true,
         "intensity": 3,
-        "weatherBackup": "潜水气压 / 飞航 24h 间隔: 最后潜必须在 d3 上午完成, d3 整日不再潜; 次日 (grasse.d1) 中午后才能飞 NCE"
-      }
-    ]
-  },
-  {
-    "id": "gravel-tuscany",
-    "name": "Strade Bianche Gravel",
-    "nameZh": "托斯卡纳白路砾石",
-    "fullName": "Strade Bianche / Tuscany 白路 Gravel 7 日 (Chianti → Crete Senesi → Montalcino)",
-    "country": "🇮🇹 意大利 (Toscana)",
-    "color": "#A87C2D",
-    "bg": "#F6EBC9",
-    "stroke": "#C99340",
-    "x": 950,
-    "y": 925,
-    "labelPos": "right",
-    "activities": "★★ 7 日 gravel 长距离 · Strade Bianche 白路 · Chianti → Siena → Crete Senesi → Pienza → Montalcino · Florence 老城 + Buca Lapi 经典 Bistecca",
-    "festival": "★★ Tuscany Gravel Riding 7 日",
-    "tips": "<strong>★★ 7 日 gravel 长距离 (主升级, 新增)：</strong> Strade Bianche 白路 (literally \"white roads\") 是 Tuscany Crete Senesi 区域的标志性 gravel cycling 路线, 经典 pro race 路线 + 葡萄园 + 柏树大道。**Tuscany Cycling / Pavé Cycling Tours / InGamba** 提供 7 日 self-guided 或 supported package €1,500-2,500/人含: 高级 gravel bike (碳架, 35-40c 双胎) + GPS 路书 + 行李接驳 + B&B 全程 + 部分餐 + 救援车。<strong>路线 (6 骑乘日 + 1 休):</strong> Day 1 抵达 + bike fit; Day 2 Chianti 60km; Day 3 Castellina → Siena 70km; Day 4 Siena 周边 Crete Senesi 65km loop; Day 5 Florence 休 (Uffizi + Buca Lapi 经典 Bistecca Fiorentina); Day 6 Florence → Pienza 80km; Day 7 Pienza → Montalcino 65km + 还车 + 转 Chianti agriturismo (Vendemmia 起点)。<strong>装备:</strong> 自带骑行裤 + 防水冲锋 + 头盔 + 卡鞋 (车队提供 gravel bike, 但卡鞋自带最舒); 平均 60-80km/天 中等强度。<strong>胜过自驾日:</strong> Antinori / Siena / Val d'Orcia 全在 gravel 路上经过, 不再需要单独自驾日 (Tuscany 站对应砍 3 天)。",
-    "days": [
-      {
-        "id": "d1",
-        "city": "转场 (Malta→Florence) + bike fit + Chianti 短骑",
-        "am": "6:00 Marsalforn ferry Mġarr → Cirkewwa → Valletta + bus 1h → 10:00 ✈ Air Malta MLA → Florence FLR 直飞 3h €130/人 (季节性, 备 MLA→FCO→FLR 4h €110/人) — no-fly 24h+ 间隔 ({{day:malta.d3}} 已无潜)",
-        "pm": "13:30 抵 FLR + Tramvia + Tuscany Cycling 接驳 → 15:00 抵 Castellina agriturismo + bike fit (车架 + 鞍 + 把宽 + 双胎压) + 路书 briefing + 17:00 ★ 黄昏 Chianti 30km 短 loop 适应日 (Castellina → Radda → Castellina) + 19:30 Albergaccio Castellina 经典晚餐 (Sangiovese 单一品种)",
-        "lodging": "Castellina in Chianti agriturismo €90 (Gravel 第 1 晚)",
-        "star": true,
-        "intensity": 4,
-        "weatherBackup": "MLA→FLR 直飞季节性, 6 月内查 9 月时刻; 备 MLA→FCO 1.5h + Italo→FLR 1.5h €60 总 4h"
-      },
-      {
-        "id": "d2",
-        "city": "★★ Gravel Day 2 - Castellina → Siena 70km",
-        "am": "★★ 8:30 Castellina → Strade Bianche 白路 70km 点对点至 Siena. 经典段: Lecchi → Pievasciata → Vagliagli → Murlo (白色石灰岩 gravel + 柏树大道 + 葡萄园全景); +1,100m 爬升",
-        "pm": "14:00 Murlo agriturismo 午餐 + 15:30 续骑 Sovicille → 17:00 抵 Siena 城外 Pian dei Mantellini → 把 bike 寄存酒店 + Piazza del Campo 晚 Aperitivo + Trattoria Papei 晚餐 (Pici cacio e pepe + Bistecca alla Senese)",
-        "lodging": "Siena 老城 4★ Hotel Athena €160",
-        "star": true,
-        "intensity": 5
-      },
-      {
-        "id": "d3",
-        "city": "★★ Gravel Day 3 - Siena 周边 Crete Senesi 65km loop",
-        "am": "★★ 8:30 Siena 出 → Crete Senesi 黏土丘陵区 65km loop: Asciano → San Giovanni d'Asso → Buonconvento → 返 Siena. **Strade Bianche 真正核心** — 黄白相间 gravel + 孤立柏树 + 罗马式小教堂 (Monte Oliveto Maggiore 1313 创建本笃会修道院)",
-        "pm": "13:30 Buonconvento 老镇 trattoria 午餐 + 15:00 续骑 + 17:00 抵 Siena + Duomo + Torre del Mangia 登顶 (城内 88m, 88 级阶梯) + 19:30 Osteria Le Logge 米其林推荐",
-        "lodging": "Siena 老城",
-        "star": true,
-        "intensity": 5
-      },
-      {
-        "id": "d4",
-        "city": "★ Florence 休骑 + Uffizi",
-        "am": "★ 9:00 Siena → bike 车队接驳 Florence (1h drive) → 入住 Santo Spirito 区 €90 + 11:00 ★ Uffizi €25 (提前 1 月订, 第一批入场, 文艺复兴 1F 2-3h) — 完美 gravel 中场休骑日",
-        "pm": "14:00 Mercato Centrale 二楼 food court 午餐 + 15:30 Ponte Vecchio + Piazza della Signoria + 17:00 Boboli 花园 + Palazzo Pitti 慢看 + 19:30 Piazzale Michelangelo 日落 (Arno + 穹顶 + 老桥全景, gravel 后腿略沉但日落很美)",
-        "lodging": "Florence Santo Spirito €90",
-        "star": true,
-        "intensity": 2
-      },
-      {
-        "id": "d5",
-        "city": "Florence 慢游 + Buca Lapi 经典 Bistecca",
-        "am": "慢晨 + 10:00 Boboli 花园第二轮 (gravel 后慢逛, 不冲) + 11:30 San Miniato al Monte 罗马式教堂 (Florence 最古老) + 13:00 Trattoria Mario 排队午餐 (Florence 老牌)",
-        "pm": "15:00 Mercato Sant'Ambrogio 当地市场 + Cibreo 老牌餐厅 area 散步 + 17:30 Piazzale Michelangelo 日落 (Arno + 穹顶 + 老桥全景) → 19:30 Buca Lapi 1880 创立 Florence 经典老牌 Bistecca alla Fiorentina €60/人 (1.2kg T-bone 切尔比纳牛, 老柴火炭烤, 比米其林更地道)",
-        "lodging": "Florence Santo Spirito",
-        "star": true,
-        "intensity": 2
-      },
-      {
-        "id": "d6",
-        "city": "★★ Gravel Day 4 - Florence → Pienza 80km (最长)",
-        "am": "★★ 7:30 Florence → bike 车队接驳到 Greve in Chianti (gravel 起点, 避开 Florence 城内大马路) + 8:30 出发 Greve → Panzano → Castelnuovo Berardenga → Pienza 80km 点对点 (最长一天 +1,400m 爬升, 经典 Tuscany 全景)",
-        "pm": "13:00 Castelnuovo 农庄午餐 + 14:30 续骑 → 17:30 抵 Pienza 文艺复兴模范小镇 (Pope Pius II 1462 设计) + 入住 Pienza 中心 B&B + 18:30 Piazza Pio II 主广场 aperitivo + 19:30 La Terrazza del Chiostro pecorino + truffle 晚餐",
-        "lodging": "Pienza 中心 B&B €130",
-        "star": true,
-        "intensity": 5
-      },
-      {
-        "id": "d7",
-        "city": "★★ Gravel Day 5 - Pienza → Montalcino 65km + 还车",
-        "am": "★★ 8:30 Pienza → Montalcino 65km gravel: 经 Sant'Antimo (1118 罗马式修道院, gregorian chant 早晨弥撒) + San Quirico d'Orcia + Val d'Orcia UNESCO 景观 + Bagno Vignoni (中世纪温泉广场)",
-        "pm": "13:00 Montalcino 山顶城堡 + Castello Banfi 或 Casanova di Neri 酒庄午餐 + ★ Brunello di Montalcino Sangiovese Grosso 品鉴 (Italy 顶级 DOCG) + 15:30 bike 车队接驳 Montalcino → Castellina agriturismo (Tuscany Vendemmia 基地, 1h drive) + 18:30 抵 + Tuscan 烹饪课前夜 briefing + 早睡为次日 Vendemmia Day 1",
-        "lodging": "Castellina Chianti agriturismo €90 (Tuscany 第 1 晚)",
-        "star": true,
-        "intensity": 4
+        "weatherBackup": "潜水气压 / 飞航 24h 间隔: 最后潜必须在 d3 上午完成 (11:00 前 Reqqa Reef + P29), d3 整日不再潜; 次日 ({{day:tuscany.d1}}) 中午后才能飞 FLR"
       }
     ]
   },
@@ -866,12 +870,22 @@ window.STATIONS = [
     "x": 890,
     "y": 890,
     "labelPos": "left",
-    "activities": "★★ Vendemmia 4 日葡萄踩酿 · Tuscan 烹饪课 · 橄榄 harvest · Cinque Terre 5 村",
+    "activities": "★★ Vendemmia 4 日葡萄踩酿 · Tuscan 烹饪课 · 橄榄 harvest · Cinque Terre 5 村 + Buca Lapi 经典 Bistecca",
     "festival": "★★ Vendemmia 4 日沉浸 + Y♡C 2026.10.12 蜜月标签",
-    "tips": "<strong>★★ Vendemmia 4 日沉浸 (主升级)：</strong> {{day:tuscany.d1}}-{{day:tuscany.d3}} 葡萄园采收 + lagar 脚踩 + {{day:tuscany.d9}} blending 装瓶 (Y♡C 2026.10.12 蜜月标签, 1 年陈化版 2027 秋寄到中国)。<strong>10 天结构: </strong> {{day:tuscany.d1}}-{{day:tuscany.d3}} 葡萄采收 + lagar 脚踩 + {{day:tuscany.d4}} Tuscan 烹饪课 + {{day:tuscany.d5}} olive harvest 全日 + {{day:tuscany.d6}} 农庄休 + {{day:tuscany.d7}} Cinque Terre 5 村 + {{day:tuscany.d8}} 回 Chianti 缓冲 + {{day:tuscany.d9}} blending workshop 蜜月贴标 + {{day:tuscany.d10}} 转场。<strong>农庄：</strong> Castellina/Greve agriturismo, 双人间 €90/晚, 9 晚 €810。",
+    "tips": "<strong>★★ Vendemmia 4 日沉浸 (主升级)：</strong> {{day:tuscany.d2}}-{{day:tuscany.d4}} 葡萄园采收 + lagar 脚踩 + {{day:tuscany.d9}} blending 装瓶 (Y♡C 2026.10.12 蜜月标签, 1 年陈化版 2027 秋寄到中国)。<strong>10 天结构: </strong> {{day:tuscany.d1}} 转场 MLA→FLR + 入 Castellina 农庄 + {{day:tuscany.d2}}-{{day:tuscany.d4}} 葡萄采收 + lagar 脚踩 + {{day:tuscany.d5}} Tuscan 烹饪课 + {{day:tuscany.d6}} olive harvest 全日 + {{day:tuscany.d7}} Cinque Terre 5 村 + Florence Buca Lapi 经典 Bistecca 收尾 + {{day:tuscany.d8}} 回 Chianti 缓冲 + Greve/Volpaia + {{day:tuscany.d9}} blending workshop 蜜月贴标 + {{day:tuscany.d10}} 转场 Grasse。<strong>农庄：</strong> Castellina/Greve agriturismo, 双人间 €90/晚, 9 晚 €810。",
     "days": [
       {
         "id": "d1",
+        "city": "转场 (Malta→Florence) + 入 Castellina agriturismo",
+        "am": "6:00 Marsalforn 公寓退房 + 学校接驳 → Gozo Mġarr ferry → Cirkewwa → bus X1 to MLA 总 2h → 10:00 ✈ Air Malta MLA → Florence FLR 直飞 3h €130/人 (季节性, 备 MLA→FCO→FLR 4h €110/人) — no-fly 24h+ 间隔 ({{day:malta.d3}} 最后潜 11:00 前, 24h 后可飞)",
+        "pm": "13:30 抵 FLR + Tramvia + SITA 巴士 Florence Peretola → Castellina-Monteriggioni 1.5h €8 → 15:30 抵 Castellina agriturismo + welcome (农庄主带看 cantina + 葡萄园 + 次日 Vendemmia 1 briefing) + 19:30 Albergaccio Castellina 老镇晚餐 (Sangiovese 单一品种, agriturismo 推荐)",
+        "lodging": "Castellina in Chianti agriturismo €90 (Tuscany 第 1 晚)",
+        "star": false,
+        "intensity": 3,
+        "weatherBackup": "MLA→FLR 直飞季节性, 6 月内查 10 月时刻; 备 MLA→FCO 1.5h + Italo→FLR 1.5h €60 总 4h"
+      },
+      {
+        "id": "d2",
         "city": "★★ Vendemmia Day 1 - 葡萄园采收",
         "am": "★★ 6:30 起床, 农庄主带去葡萄园 → 跟 vignaiolo 一起剪 Sangiovese 串, 装筐 4-5h (背手剪 + 篮筐, 节奏比 olive 慢但更累)",
         "pm": "运葡萄回 cantina 选果台分拣 (烂果剔除) + 称重 + 看入破皮机 + 听 vignaiolo 讲 Chianti DOCG 规则。傍晚泳池放松 + 农庄家庭晚餐",
@@ -881,7 +895,7 @@ window.STATIONS = [
         "weatherBackup": "中雨可继续 (葡萄不怕轻雨); 暴雨/雷暴 → 转 cantina 室内分拣台 + 学发酵控温讲解 (含费)"
       },
       {
-        "id": "d2",
+        "id": "d3",
         "city": "★★ Vendemmia Day 2 - 继续采收 + 农庄家宴",
         "am": "★★ 7:00 第二批葡萄园 (高坡老藤 Sangiovese, 串小但浓度高), 整日跟农庄一起采 + 装筐, 中午农庄主家 panini + 自家酒 + 午休",
         "pm": "下午看昨日入桶果汁开始一次发酵 (每日测温度/糖度记入日志, 你们的桶单独编号)。19:30 农庄家庭正式晚宴 (3-4 道, 与采工同桌, 你们是这周的临时家人)",
@@ -890,25 +904,25 @@ window.STATIONS = [
         "intensity": 4
       },
       {
-        "id": "d3",
+        "id": "d4",
         "city": "★★ Vendemmia Day 3 - 传统 lagar 脚踩",
         "am": "★★ 早上挑选最好一批晚熟葡萄入石槽 (lagar) → 你俩光脚下槽 30-40min 传统脚踩 (蜜月仪式感: 共同压同一批果, 这批进你们专属小桶)",
-        "pm": "看果浆入小橡木桶 (你们这桶贴 Y♡C 2026.10.6 始酿日标签, 留酒庄陈化 1 年, 2027 秋寄 6 瓶熟成版到中国) + 农庄主讲品种/年份。傍晚 Castellina 老镇晚餐 Albergaccio (Sangiovese 单一品种深度)",
+        "pm": "看果浆入小橡木桶 (你们这桶贴 Y♡C 2026.10.12 始酿日标签, 留酒庄陈化 1 年, 2027 秋寄 6 瓶熟成版到中国) + 农庄主讲品种/年份。傍晚 Castellina 老镇晚餐 Albergaccio (Sangiovese 单一品种深度)",
         "lodging": "Chianti 农庄",
         "star": true,
         "intensity": 3
       },
       {
-        "id": "d4",
-        "city": "★ Tuscan 烹饪课 + 休骑日",
+        "id": "d5",
+        "city": "★ Tuscan 烹饪课全日",
         "am": "★ 9:30 Tuscan 烹饪课 (农庄内或 Chianti 老镇工坊) €120/人: 买菜 (农庄菜园 + 周边市场) + 手擀 tagliatelle + ragù + Bistecca alla Fiorentina + tiramisù。中午吃自己做的午餐",
-        "pm": "14:00 农庄泳池午休 + gravel 后腿恢复 + Castellina 老镇 18:00 aperitivo + 19:30 农庄家庭晚餐 (你们 Vendemmia Day 3 lagar 脚踩那桶进入发酵 24h, 农庄主报喜)",
+        "pm": "14:00 农庄泳池午休 + 慢节奏恢复 + Castellina 老镇 18:00 aperitivo + 19:30 农庄家庭晚餐 (你们 Vendemmia Day 3 lagar 脚踩那桶进入发酵 24h, 农庄主报喜)",
         "lodging": "Chianti 农庄",
         "star": true,
         "intensity": 2
       },
       {
-        "id": "d5",
+        "id": "d6",
         "city": "★★ Olive Harvest 全日",
         "am": "★★ 农庄 olive harvest 全天: 与农场工人一起背篓+网+轻摇杆采橄榄 4h, 装筐运 frantoio (合作社榨油坊)",
         "pm": "看自己采的橄榄进料 + 现榨新油 6-10L (按重量分得纪念瓶) + 现榨橄榄油 tasting + Tuscan bruschetta 工作坊 + 农庄主家自烧晚餐 (白松露体验留到 truffle-hunt 周)",
@@ -917,29 +931,20 @@ window.STATIONS = [
         "intensity": 4
       },
       {
-        "id": "d6",
-        "city": "★ 农庄休息日 + 葡萄园观景",
-        "am": "★ 慢晨 + Chianti 农庄泳池 + agriturismo 早午餐 + Castellina 老镇 Enoteca 葡萄酒店酒吧",
-        "pm": "下午 ★ Volpaia 山顶古村 (Chianti 区最美中世纪小村, 距 Castellina 30min) + Volpaia Castello 葡萄酒庄品鉴 + 19:30 Albergaccio Castellina 米其林推荐晚餐",
-        "lodging": "Chianti 农庄",
-        "star": false,
-        "intensity": 2
-      },
-      {
         "id": "d7",
-        "city": "★★ Cinque Terre 全程 Sentiero Azzurro 5 村",
+        "city": "★★ Cinque Terre 全程 Sentiero Azzurro 5 村 + Florence Buca Lapi 收尾",
         "am": "★★ 6:30 早 SITA 巴士 Castellina → Florence + 8:00 Florence SMN → La Spezia 火车 2.5h €25 → Cinque Terre Treno Card €27.5/天 + 10:30 Riomaggiore 起步",
-        "pm": "★★ Sentiero Azzurro 全程 12km 5-6h: Riomaggiore→Manarola→Corniglia→Vernazza→Monterosso (5 村连走, 用满体力)。傍晚 Monterosso 海滩泡脚 + 火车回 Florence hostel",
+        "pm": "★★ Sentiero Azzurro 全程 12km 5-6h: Riomaggiore→Manarola→Corniglia→Vernazza→Monterosso (5 村连走, 用满体力)。傍晚 Monterosso 海滩泡脚 + 18:00 火车回 Florence + ★ 19:30 Buca Lapi 1880 创立 Florence 经典老牌 Bistecca alla Fiorentina €60/人 (1.2kg T-bone 切尔比纳牛, 老柴火炭烤, Antinori 宫殿地下室, 提前 3 天订) + Florence hostel 夜",
         "lodging": "Florence hostel €60",
         "star": true,
         "intensity": 5,
-        "weatherBackup": "暴雨步道关 (Sentiero Azzurro 易因山体滑坡封段) → 仅火车连村 + 重点 Manarola 酒窖 + Vernazza 教堂 (室内)"
+        "weatherBackup": "暴雨步道关 (Sentiero Azzurro 易因山体滑坡封段) → 仅火车连村 + 重点 Manarola 酒窖 + Vernazza 教堂 (室内) + 早回 Florence Buca Lapi 提前到 18:30"
       },
       {
         "id": "d8",
-        "city": "回 Chianti + 农庄休息",
+        "city": "回 Chianti + 农庄休息 + Greve + Volpaia 古村",
         "am": "Florence Santa Maria Novella → Castellina-Monteriggioni 巴士 SITA 1.5h €8 (回 agriturismo 不取车) + Cinque Terre 12km 之后大腿沉, 慢晨",
-        "pm": "下午 ★ Greve in Chianti 主广场 + Macelleria Falorni 老牌肉店 + Montefioralle 古村 (Castellina 邻村) + 19:30 农庄家庭晚餐 (准备明日 Vendemmia 4 blending workshop)",
+        "pm": "下午 ★ Greve in Chianti 主广场 + Macelleria Falorni 老牌肉店 + Montefioralle 古村 (Castellina 邻村) + ★ Volpaia 山顶古村 (Chianti 区最美中世纪小村, 距 Castellina 30min, Volpaia Castello 酒庄品鉴 €15/人) + 19:30 农庄家庭晚餐 (准备明日 Vendemmia 4 blending workshop)",
         "lodging": "Chianti 农庄",
         "star": false,
         "intensity": 2
